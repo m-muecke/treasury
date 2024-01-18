@@ -96,7 +96,24 @@ tr_long_term_rate <- function(date = NULL) {
 #' @references <https://home.treasury.gov/treasury-daily-interest-rate-xml-feed>
 #' @export
 tr_real_yield_curve <- function(date = NULL) {
-  treasury("daily_treasury_real_yield_curve", date)
+  entries <- treasury("daily_treasury_real_yield_curve", date) |>
+    xml2::xml_find_all(".//m:properties")
+  data <- lapply(entries, \(entry) {
+    date <- entry |>
+      xml2::xml_find_all(".//d:NEW_DATE") |>
+      xml2::xml_text() |>
+      as.Date()
+    values <- entry |> xml2::xml_find_all("./*[starts-with(name(), 'd:TC_')]")
+    data.frame(
+      date = date,
+      maturity = values |> xml2::xml_name(),
+      rate = values |> xml2::xml_double()
+    )
+  })
+  data <- do.call(rbind, data)
+  data$maturity <- gsub("TC_", "", data$maturity) |> tolower()
+  data$maturity <- gsub("(\\d+)(\\w+)", "\\1 \\2", data$maturity)
+  as_tibble(data)
 }
 
 #' Return the daily treasury real long-term rates
