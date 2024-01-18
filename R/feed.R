@@ -50,7 +50,7 @@ tr_real_long_term <- function(date = NULL) {
 
 treasury <- function(data, date = NULL) {
   tr_make_request(data, date) |>
-    tr_parse_request()
+    tr_process_response()
 }
 
 tr_make_request <- function(data, date = NULL) {
@@ -72,7 +72,7 @@ tr_make_request <- function(data, date = NULL) {
     req_perform()
 }
 
-tr_parse_request <- function(resp) {
+tr_process_response <- function(resp) {
   entries <- resp |>
     resp_body_xml() |>
     xml2::xml_find_all(".//m:properties")
