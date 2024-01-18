@@ -32,7 +32,7 @@ tr_yield_curve <- function(date = NULL) {
 #' Return the daily treasury bill rates
 #'
 #' @inheritParams tr_yield_curve
-#' @references <https://home.treasury.gov/treasury-daily-interest-rate-xml-feed>
+#' @inherit tr_yield_curve references
 #' @export
 tr_bill_rates <- function(date = NULL) {
   entries <- treasury("daily_treasury_bill_rates", date)
@@ -67,7 +67,7 @@ tr_bill_rates <- function(date = NULL) {
 #' Return the daily treasury long-term rates
 #'
 #' @inheritParams tr_yield_curve
-#' @references <https://home.treasury.gov/treasury-daily-interest-rate-xml-feed>
+#' @inherit tr_yield_curve references
 #' @export
 tr_long_term_rate <- function(date = NULL) {
   entries <- treasury("daily_treasury_long_term_rate", date)
@@ -98,7 +98,7 @@ tr_long_term_rate <- function(date = NULL) {
 #' Return the daily treasury par real yield curve rates
 #'
 #' @inheritParams tr_yield_curve
-#' @references <https://home.treasury.gov/treasury-daily-interest-rate-xml-feed>
+#' @inherit tr_yield_curve references
 #' @export
 tr_real_yield_curve <- function(date = NULL) {
   entries <- treasury("daily_treasury_real_yield_curve", date)
@@ -127,7 +127,7 @@ tr_real_yield_curve <- function(date = NULL) {
 #' Return the daily treasury real long-term rates
 #'
 #' @inheritParams tr_yield_curve
-#' @references <https://home.treasury.gov/treasury-daily-interest-rate-xml-feed>
+#' @inherit tr_yield_curve references
 #' @export
 tr_real_long_term <- function(date = NULL) {
   entries <- treasury("daily_treasury_real_long_term", date)
