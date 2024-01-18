@@ -16,3 +16,11 @@ Return the daily treasury par yield curve rates
 \references{
 \url{https://home.treasury.gov/treasury-daily-interest-rate-xml-feed}
 }
+\seealso{
+Other treasury data: 
+\code{\link{tr_bill_rates}()},
+\code{\link{tr_long_term_rate}()},
+\code{\link{tr_real_long_term}()},
+\code{\link{tr_real_yield_curve}()}
+}
+\concept{treasury data}

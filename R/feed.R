@@ -3,6 +3,7 @@
 #' @param date `character(1)` or `numeric(1)` date in format yyyy or yyyymm.
 #'   If `NULL`, all data is returned. Default `NULL`.
 #' @references <https://home.treasury.gov/treasury-daily-interest-rate-xml-feed>
+#' @family treasury data
 #' @export
 tr_yield_curve <- function(date = NULL) {
   entries <- treasury("daily_treasury_yield_curve", date)
@@ -33,6 +34,7 @@ tr_yield_curve <- function(date = NULL) {
 #'
 #' @inheritParams tr_yield_curve
 #' @inherit tr_yield_curve references
+#' @family treasury data
 #' @export
 tr_bill_rates <- function(date = NULL) {
   entries <- treasury("daily_treasury_bill_rates", date)
@@ -68,6 +70,7 @@ tr_bill_rates <- function(date = NULL) {
 #'
 #' @inheritParams tr_yield_curve
 #' @inherit tr_yield_curve references
+#' @family treasury data
 #' @export
 tr_long_term_rate <- function(date = NULL) {
   entries <- treasury("daily_treasury_long_term_rate", date)
@@ -99,6 +102,7 @@ tr_long_term_rate <- function(date = NULL) {
 #'
 #' @inheritParams tr_yield_curve
 #' @inherit tr_yield_curve references
+#' @family treasury data
 #' @export
 tr_real_yield_curve <- function(date = NULL) {
   entries <- treasury("daily_treasury_real_yield_curve", date)
@@ -128,6 +132,7 @@ tr_real_yield_curve <- function(date = NULL) {
 #'
 #' @inheritParams tr_yield_curve
 #' @inherit tr_yield_curve references
+#' @family treasury data
 #' @export
 tr_real_long_term <- function(date = NULL) {
   entries <- treasury("daily_treasury_real_long_term", date)
