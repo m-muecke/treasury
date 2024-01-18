@@ -1,7 +1,9 @@
 ^.*\.Rproj$
 ^.Renviron$
+^.dockerignore$
 ^.pre-commit-config.yaml$
 ^CITATION.cff$
+^Dockerfile$
 ^LICENSE\.md$
 ^README.html$
 ^README\.Rmd$
@@ -14,6 +16,8 @@
 ^\.ignore$
 ^\.lintr$
 ^\.vscode$
+^_pkgdown\.yml$
+^compose.ya?ml$
 ^data-raw$
 ^docs$
 ^inst/extdata/.+\.R$
