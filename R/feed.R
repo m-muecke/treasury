@@ -66,7 +66,27 @@ tr_bill_rates <- function(date = NULL) {
 #' @references <https://home.treasury.gov/treasury-daily-interest-rate-xml-feed>
 #' @export
 tr_long_term_rate <- function(date = NULL) {
-  treasury("daily_treasury_long_term_rate", date)
+  entries <- treasury("daily_treasury_long_term_rate", date) |>
+    xml2::xml_find_all(".//m:properties")
+  data <- lapply(entries, \(entry) {
+    date <- entry |>
+      xml2::xml_find_all(".//d:QUOTE_DATE") |>
+      xml2::xml_text() |>
+      as.Date()
+    rate_type <- entry |>
+      xml2::xml_find_all(".//d:RATE_TYPE") |>
+      xml2::xml_text()
+    rate <- entry |>
+      xml2::xml_find_all(".//d:RATE") |>
+      xml2::xml_double()
+    data.frame(date = date, rate_type = rate_type, rate = rate)
+  })
+  data <- do.call(rbind, data)
+  data$rate_type <- tolower(data$rate_type)
+  data$rate_type <- gsub("^bc_", "", data$rate_type)
+  data$rate_type <- gsub("_", " ", data$rate_type)
+  data$rate_type <- gsub("(\\d+)(year?)", "\\1 \\2", data$rate_type)
+  as_tibble(data)
 }
 
 #' Return the daily treasury par real yield curve rates
