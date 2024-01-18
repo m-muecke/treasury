@@ -5,7 +5,25 @@
 #' @references <https://home.treasury.gov/treasury-daily-interest-rate-xml-feed>
 #' @export
 tr_yield_curve <- function(date = NULL) {
-  treasury("daily_treasury_yield_curve", date)
+  entries <- treasury("daily_treasury_yield_curve", date) |>
+    xml2::xml_find_all(".//m:properties")
+  data <- lapply(entries, \(entry) {
+    date <- entry |>
+      xml2::xml_find_all(".//d:NEW_DATE") |>
+      xml2::xml_text() |>
+      as.Date()
+    values <- entry |> xml2::xml_find_all("./*[starts-with(name(), 'd:BC_')]")
+    data.frame(
+      date = date,
+      maturity = values |> xml2::xml_name(),
+      rate = values |> xml2::xml_double()
+    )
+  })
+  data <- do.call(rbind, data)
+  data$maturity <- gsub("BC_", "", data$maturity) |> tolower()
+  data <- data[data$maturity != "BC_30YEARDISPLAY", ]
+  data$maturity <- gsub("(\\d+)(\\w+)", "\\1 \\2", data$maturity)
+  as_tibble(data)
 }
 
 #' Return the daily treasury bill rates
@@ -15,7 +33,30 @@ tr_yield_curve <- function(date = NULL) {
 #' @references <https://home.treasury.gov/treasury-daily-interest-rate-xml-feed>
 #' @export
 tr_bill_rates <- function(date = NULL) {
-  treasury("daily_treasury_bill_rates", date)
+  entries <- treasury("daily_treasury_bill_rates", date) |>
+    xml2::xml_find_all(".//m:properties")
+  data <- lapply(entries, \(entry) {
+    date <- entry |>
+      xml2::xml_find_all(".//d:INDEX_DATE") |>
+      xml2::xml_text() |>
+      as.Date()
+    values <- entry |>
+      xml2::xml_find_all("./*[starts-with(name(), 'd:ROUND_B1_')]")
+    data.frame(
+      date = date,
+      type = values |> xml2::xml_name(),
+      value = values |> xml2::xml_double()
+    )
+  })
+  data <- do.call(rbind, data)
+  data$type <- tolower(gsub("ROUND_B1_", "", data$type))
+  data$type <- gsub("_2$", "", data$type)
+  maturity <- strsplit(data$type, "_")
+  data$type <- vapply(maturity, "[[", NA_character_, 1L)
+  data$maturity <- vapply(maturity, "[[", NA_character_, 2L)
+  data$maturity <- gsub("wk", " weeks", data$maturity)
+  data <- data[c("date", "type", "maturity", "value")]
+  as_tibble(data)
 }
 
 #' Return the daily treasury long-term rates
@@ -49,11 +90,6 @@ tr_real_long_term <- function(date = NULL) {
 }
 
 treasury <- function(data, date = NULL) {
-  tr_make_request(data, date) |>
-    tr_process_response()
-}
-
-tr_make_request <- function(data, date = NULL) {
   stopifnot(is.character(data), length(data) == 1L)
   stopifnot(
     is.null(date) ||
@@ -69,30 +105,6 @@ tr_make_request <- function(data, date = NULL) {
   request("https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml") |>
     req_user_agent("treasury (https://m-muecke.github.io/treasury)") |>
     req_url_query(data = data, "{nm}" := date) |>
-    req_perform()
-}
-
-tr_process_response <- function(resp) {
-  entries <- resp |>
-    resp_body_xml() |>
-    xml2::xml_find_all(".//m:properties")
-
-  data <- lapply(entries, \(entry) {
-    date <- entry |>
-      xml2::xml_find_all(".//d:NEW_DATE") |>
-      xml2::xml_text() |>
-      as.Date()
-    values <- entry |> xml2::xml_find_all("./*[starts-with(name(), 'd:BC_')]")
-    data.frame(
-      date = date,
-      maturity = values |> xml2::xml_name(),
-      rate = values |> xml2::xml_double()
-    )
-  })
-  data <- do.call(rbind, data)
-
-  data <- data[data$maturity != "BC_30YEARDISPLAY", ]
-  data$maturity <- tolower(gsub("BC_", "", data$maturity))
-  data$maturity <- gsub("(\\d+)(\\w+)", "\\1-\\2", data$maturity)
-  as_tibble(data)
+    req_perform() |>
+    resp_body_xml()
 }

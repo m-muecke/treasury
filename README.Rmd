@@ -40,7 +40,7 @@ yield_curve
 
 library(ggplot2)
 
-subset(yield_curve, maturity == "10-year") |>
+subset(yield_curve, maturity == "10 year") |>
   ggplot(aes(x = date, y = rate)) +
   geom_line()
 ```
