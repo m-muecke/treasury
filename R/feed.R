@@ -123,7 +123,20 @@ tr_real_yield_curve <- function(date = NULL) {
 #' @references <https://home.treasury.gov/treasury-daily-interest-rate-xml-feed>
 #' @export
 tr_real_long_term <- function(date = NULL) {
-  treasury("daily_treasury_real_long_term", date)
+  entries <- treasury("daily_treasury_real_long_term", date) |>
+    xml2::xml_find_all(".//m:properties")
+  data <- lapply(entries, \(entry) {
+    date <- entry |>
+      xml2::xml_find_all(".//d:QUOTE_DATE") |>
+      xml2::xml_text() |>
+      as.Date()
+    rate <- entry |>
+      xml2::xml_find_all(".//d:RATE") |>
+      xml2::xml_double()
+    data.frame(date = date, rate = rate)
+  })
+  data <- do.call(rbind, data)
+  as_tibble(data)
 }
 
 treasury <- function(data, date = NULL) {
