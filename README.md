@@ -11,8 +11,8 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 <!-- badges: end -->
 
 The goal of treasury is to provide a simple interface to the [US
-treasury
-API](https://home.treasury.gov/treasury-daily-interest-rate-xml-feed)
+treasury XML
+feed](https://home.treasury.gov/treasury-daily-interest-rate-xml-feed)
 for daily interest rates.
 
 ## Installation
