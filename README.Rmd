@@ -34,4 +34,13 @@ pak::pak("m-muecke/treasury")
 
 ```{r demo, message = FALSE, dpi = 300}
 library(treasury)
+
+yield_curve <- tr_yield_curve(2020)
+yield_curve
+
+library(ggplot2)
+
+subset(yield_curve, maturity == "10-year") |>
+  ggplot(aes(x = date, y = rate)) +
+  geom_line()
 ```

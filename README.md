@@ -29,4 +29,29 @@ pak::pak("m-muecke/treasury")
 
 ``` r
 library(treasury)
+
+yield_curve <- tr_yield_curve(2020)
+yield_curve
+#> # A tibble: 3,012 × 3
+#>    date       maturity  rate
+#>    <date>     <chr>    <dbl>
+#>  1 2020-01-02 1-month   1.53
+#>  2 2020-01-02 2-month   1.55
+#>  3 2020-01-02 3-month   1.54
+#>  4 2020-01-02 6-month   1.57
+#>  5 2020-01-02 1-year    1.56
+#>  6 2020-01-02 2-year    1.58
+#>  7 2020-01-02 3-year    1.59
+#>  8 2020-01-02 5-year    1.67
+#>  9 2020-01-02 7-year    1.79
+#> 10 2020-01-02 10-year   1.88
+#> # ℹ 3,002 more rows
+
+library(ggplot2)
+
+subset(yield_curve, maturity == "10-year") |>
+  ggplot(aes(x = date, y = rate)) +
+  geom_line()
 ```
+
+<img src="man/figures/README-demo-1.png" width="100%" />

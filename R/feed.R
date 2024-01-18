@@ -49,6 +49,11 @@ tr_real_long_term <- function(date = NULL) {
 }
 
 treasury <- function(data, date = NULL) {
+  tr_make_request(data, date) |>
+    tr_parse_request()
+}
+
+tr_make_request <- function(data, date = NULL) {
   stopifnot(is.character(data), length(data) == 1L)
   stopifnot(
     is.null(date) ||
@@ -56,14 +61,38 @@ treasury <- function(data, date = NULL) {
   )
   date <- date %||% "all"
   date <- as.character(date)
-  nm <- if (grepl("[0-9]{6}", date)) {
-    "field_tdr_date_value_month"
+  if (grepl("[0-9]{6}", date)) {
+    nm <- "field_tdr_date_value_month"
   } else {
-    "field_tdr_date_value"
+    nm <- "field_tdr_date_value"
   }
   request("https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml") |>
     req_user_agent("treasury (https://m-muecke.github.io/treasury)") |>
     req_url_query(data = data, "{nm}" := date) |>
-    req_perform() |>
-    resp_body_xml()
+    req_perform()
+}
+
+tr_parse_request <- function(resp) {
+  entries <- resp |>
+    resp_body_xml() |>
+    xml2::xml_find_all(".//m:properties")
+
+  data <- lapply(entries, \(entry) {
+    date <- entry |>
+      xml2::xml_find_all(".//d:NEW_DATE") |>
+      xml2::xml_text() |>
+      as.Date()
+    values <- entry |> xml2::xml_find_all("./*[starts-with(name(), 'd:BC_')]")
+    data.frame(
+      date = date,
+      maturity = values |> xml2::xml_name(),
+      rate = values |> xml2::xml_double()
+    )
+  })
+  data <- do.call(rbind, data)
+
+  data <- data[data$maturity != "BC_30YEARDISPLAY", ]
+  data$maturity <- tolower(gsub("BC_", "", data$maturity))
+  data$maturity <- gsub("(\\d+)(\\w+)", "\\1-\\2", data$maturity)
+  as_tibble(data)
 }
