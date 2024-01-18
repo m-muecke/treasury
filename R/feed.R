@@ -30,8 +30,8 @@ tr_long_term_rate <- function(date = NULL) {
 #' @references <https://home.treasury.gov/treasury-daily-interest-rate-xml-feed>
 #' @export
 tr_real_yield_curve <- function(date = NULL) {
-  treasury("daily_treasury_real_yield_curve", field_tdr_date_value = date)
   date <- date %||% "all"
+  treasury("daily_treasury_real_yield_curve", field_tdr_date_value = date)
 }
 
 #' Return the daily treasury real long-term rates
