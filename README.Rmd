@@ -20,9 +20,11 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/m-muecke/treasury/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/m-muecke/treasury/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of treasury is to provide a simple interface to the [US treasury XML feed](https://home.treasury.gov/treasury-daily-interest-rate-xml-feed) for daily interest rates.
-
+## Overview
+The goal of treasury is to provide a simple and modern interface to the [US treasury XML feed](https://home.treasury.gov/treasury-daily-interest-rate-xml-feed) for daily interest rates.
+The main difference to other packages is that it's a modern implementation using the [httr2](https://httr2.r-lib.org) package.
 ## Installation
+
 You can install the development version of treasury from [GitHub](https://github.com/) with:
 
 ```{r, eval = FALSE}
@@ -31,6 +33,8 @@ pak::pak("m-muecke/treasury")
 ```
 
 ## Usage
+
+treasury functions are prefixed with `tr_` and follow the naming convention of the XML feed.
 
 ```{r demo, message = FALSE, dpi = 300}
 library(treasury)
@@ -44,3 +48,6 @@ subset(yield_curve, maturity == "10 year") |>
   ggplot(aes(x = date, y = rate)) +
   geom_line()
 ```
+## Related work
+
+- [ustyc](https://github.com/mrbcuda/ustyc) - R package to download and parse the US Treasury yield curve data

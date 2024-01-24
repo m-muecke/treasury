@@ -10,12 +10,14 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![R-CMD-check](https://github.com/m-muecke/treasury/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/m-muecke/treasury/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of treasury is to provide a simple interface to the [US
-treasury XML
-feed](https://home.treasury.gov/treasury-daily-interest-rate-xml-feed)
-for daily interest rates.
+## Overview
 
-## Installation
+The goal of treasury is to provide a simple and modern interface to the
+[US treasury XML
+feed](https://home.treasury.gov/treasury-daily-interest-rate-xml-feed)
+for daily interest rates. The main difference to other packages is that
+it’s a modern implementation using the [httr2](https://httr2.r-lib.org)
+package. \## Installation
 
 You can install the development version of treasury from
 [GitHub](https://github.com/) with:
@@ -27,12 +29,15 @@ pak::pak("m-muecke/treasury")
 
 ## Usage
 
+treasury functions are prefixed with `tr_` and follow the naming
+convention of the XML feed.
+
 ``` r
 library(treasury)
 
 yield_curve <- tr_yield_curve(2020)
 yield_curve
-#> # A tibble: 3,263 × 3
+#> # A tibble: 3,012 × 3
 #>    date       maturity  rate
 #>    <date>     <chr>    <dbl>
 #>  1 2020-01-02 1 month   1.53
@@ -45,7 +50,7 @@ yield_curve
 #>  8 2020-01-02 5 year    1.67
 #>  9 2020-01-02 7 year    1.79
 #> 10 2020-01-02 10 year   1.88
-#> # ℹ 3,253 more rows
+#> # ℹ 3,002 more rows
 
 library(ggplot2)
 
@@ -54,4 +59,8 @@ subset(yield_curve, maturity == "10 year") |>
   geom_line()
 ```
 
-<img src="man/figures/README-demo-1.png" width="100%" />
+<img src="man/figures/README-demo-1.png" width="100%" /> \## Related
+work
+
+- [ustyc](https://github.com/mrbcuda/ustyc) - R package to download and
+  parse the US Treasury yield curve data
