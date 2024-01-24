@@ -59,8 +59,9 @@ subset(yield_curve, maturity == "10 year") |>
   geom_line()
 ```
 
-<img src="man/figures/README-demo-1.png" width="100%" /> \## Related
-work
+<img src="man/figures/README-demo-1.png" width="100%" />
+
+## Related work
 
 - [ustyc](https://github.com/mrbcuda/ustyc) - R package to download and
   parse the US Treasury yield curve data

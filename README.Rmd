@@ -48,6 +48,7 @@ subset(yield_curve, maturity == "10 year") |>
   ggplot(aes(x = date, y = rate)) +
   geom_line()
 ```
+
 ## Related work
 
 - [ustyc](https://github.com/mrbcuda/ustyc) - R package to download and parse the US Treasury yield curve data
