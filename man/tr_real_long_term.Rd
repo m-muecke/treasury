@@ -10,6 +10,9 @@ tr_real_long_term(date = NULL)
 \item{date}{\code{character(1)} or \code{numeric(1)} date in format yyyy or yyyymm.
 If \code{NULL}, all data is returned. Default \code{NULL}.}
 }
+\value{
+A \code{data.frame()} with columns \code{date} and \code{rate}.
+}
 \description{
 Return the daily treasury real long-term rates
 }

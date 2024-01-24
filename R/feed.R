@@ -72,6 +72,8 @@ tr_bill_rates <- function(date = NULL) {
 #'
 #' @inheritParams tr_yield_curve
 #' @inherit tr_yield_curve references
+#' @returns A `data.frame()` with columns `date`, `rate_type` and `rate` or
+#'   `NULL` when no entries were found.
 #' @family treasury data
 #' @export
 tr_long_term_rate <- function(date = NULL) {
@@ -105,6 +107,8 @@ tr_long_term_rate <- function(date = NULL) {
 #'
 #' @inheritParams tr_yield_curve
 #' @inherit tr_yield_curve references
+#' @returns A `data.frame()` with columns `date`, `maturity` and `rate` or
+#'   `NULL` when no entries where found.
 #' @family treasury data
 #' @export
 tr_real_yield_curve <- function(date = NULL) {
@@ -136,6 +140,7 @@ tr_real_yield_curve <- function(date = NULL) {
 #'
 #' @inheritParams tr_yield_curve
 #' @inherit tr_yield_curve references
+#' @returns A `data.frame()` with columns `date` and `rate`.
 #' @family treasury data
 #' @export
 tr_real_long_term <- function(date = NULL) {
@@ -164,13 +169,16 @@ treasury <- function(data, date, resp_data) {
 }
 
 tr_make_request <- function(data, date) {
-  stopifnot(
-    is.null(date) ||
-      is.character(date) || is.numeric(date) && length(date) == 1L
-  )
-  date <- date %||% "all"
-  date <- as.character(date)
-  if (grepl("[0-9]{6}", date)) {
+  if (!is.null(date)) {
+    date <- as.character(date)
+    if (!(length(date) != 1L && grepl("[0-9]{4,6}", date))) {
+      stop("`date` must be a single value in format yyyy or yyyymm")
+    }
+  } else {
+    date <- "all"
+  }
+
+  if (nchar(date) == 6L) {
     nm <- "field_tdr_date_value_month"
   } else {
     nm <- "field_tdr_date_value"
