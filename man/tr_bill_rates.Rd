@@ -10,6 +10,10 @@ tr_bill_rates(date = NULL)
 \item{date}{\code{character(1)} or \code{numeric(1)} date in format yyyy or yyyymm.
 If \code{NULL}, all data is returned. Default \code{NULL}.}
 }
+\value{
+A \code{data.frame()} with columns \code{date}, \code{type}, \code{maturity} and \code{value}
+or \code{NULL} when no entries were found.
+}
 \description{
 Return the daily treasury bill rates
 }

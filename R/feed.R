@@ -2,6 +2,8 @@
 #'
 #' @param date `character(1)` or `numeric(1)` date in format yyyy or yyyymm.
 #'   If `NULL`, all data is returned. Default `NULL`.
+#' @returns A `data.frame()` with columns `date`, `maturity` and `rate` or
+#'   `NULL` when no entries were found.
 #' @references <https://home.treasury.gov/treasury-daily-interest-rate-xml-feed>
 #' @family treasury data
 #' @export
@@ -35,6 +37,8 @@ tr_yield_curve <- function(date = NULL) {
 #'
 #' @inheritParams tr_yield_curve
 #' @inherit tr_yield_curve references
+#' @returns A `data.frame()` with columns `date`, `type`, `maturity` and `value`
+#'   or `NULL` when no entries were found.
 #' @family treasury data
 #' @export
 tr_bill_rates <- function(date = NULL) {
@@ -140,7 +144,8 @@ tr_real_yield_curve <- function(date = NULL) {
 #'
 #' @inheritParams tr_yield_curve
 #' @inherit tr_yield_curve references
-#' @returns A `data.frame()` with columns `date` and `rate`.
+#' @returns A `data.frame()` with columns `date` and `rate` or `NULL` when no
+#'   entries where found.
 #' @family treasury data
 #' @export
 tr_real_long_term <- function(date = NULL) {

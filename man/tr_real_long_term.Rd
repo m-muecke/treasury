@@ -11,7 +11,8 @@ tr_real_long_term(date = NULL)
 If \code{NULL}, all data is returned. Default \code{NULL}.}
 }
 \value{
-A \code{data.frame()} with columns \code{date} and \code{rate}.
+A \code{data.frame()} with columns \code{date} and \code{rate} or \code{NULL} when no
+entries where found.
 }
 \description{
 Return the daily treasury real long-term rates
