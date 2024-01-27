@@ -11,7 +11,7 @@ Download daily interest rates from the US treasury XML feed.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://m-muecke.github.io/treasury}
+  \item \url{https://m-muecke.github.io/treasury/}
   \item \url{https://github.com/m-muecke/treasury}
   \item Report bugs at \url{https://github.com/m-muecke/treasury/issues}
 }

@@ -17,7 +17,9 @@ The goal of treasury is to provide a simple and modern interface to the
 feed](https://home.treasury.gov/treasury-daily-interest-rate-xml-feed)
 for daily interest rates. The main difference to other packages is that
 it’s a modern implementation using the [httr2](https://httr2.r-lib.org)
-package. \## Installation
+package.
+
+## Installation
 
 You can install the development version of treasury from
 [GitHub](https://github.com/) with:

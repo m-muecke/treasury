@@ -6,7 +6,7 @@ Authors@R:
            comment = c(ORCID = "0009-0000-9432-9795"))
 Description: Download daily interest rates from the US treasury XML feed.
 License: MIT + file LICENSE
-URL: https://m-muecke.github.io/treasury,
+URL: https://m-muecke.github.io/treasury/,
     https://github.com/m-muecke/treasury
 BugReports: https://github.com/m-muecke/treasury/issues
 Depends:
