@@ -68,7 +68,11 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>The goal of treasury is to provide a simple and modern interface to the <a href="https://home.treasury.gov/treasury-daily-interest-rate-xml-feed" class="external-link">US treasury XML feed</a> for daily interest rates. The main difference to other packages is that it’s a modern implementation using the <a href="https://httr2.r-lib.org" class="external-link">httr2</a> package. ## Installation</p>
+<p>The goal of treasury is to provide a simple and modern interface to the <a href="https://home.treasury.gov/treasury-daily-interest-rate-xml-feed" class="external-link">US treasury XML feed</a> for daily interest rates. The main difference to other packages is that it’s a modern implementation using the <a href="https://httr2.r-lib.org" class="external-link">httr2</a> package.</p>
+</div>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>You can install the development version of treasury from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
@@ -79,7 +83,7 @@
 </h2>
 <p>treasury functions are prefixed with <code>tr_</code> and follow the naming convention of the XML feed.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://m-muecke.github.io/treasury">treasury</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://m-muecke.github.io/treasury/">treasury</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">yield_curve</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/tr_yield_curve.html">tr_yield_curve</a></span><span class="op">(</span><span class="fl">2020</span><span class="op">)</span></span>
 <span><span class="va">yield_curve</span></span>
