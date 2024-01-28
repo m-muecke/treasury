@@ -194,7 +194,7 @@ tr_make_request <- function(data, date) {
 
   if (date == "all") {
     req_perform_iterative(req,
-      iterate_with_offset("page", start = 0, resp_complete = is_complete),
+      iterate_with_offset("page", start = 0L, resp_complete = is_complete),
       max_reqs = Inf
     )
   } else {
@@ -219,7 +219,7 @@ tr_process_response <- function(resps, resp_data) {
 }
 
 is_complete <- function(resp) {
-  length(tr_parse_response(resp)) == 0
+  length(tr_parse_response(resp)) == 0L
 }
 
 tr_parse_response <- function(resp) {
