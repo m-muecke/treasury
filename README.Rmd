@@ -11,6 +11,7 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+options(tibble.print_min = 5, tibble.print_max = 5)
 ```
 
 # treasury
@@ -47,7 +48,12 @@ library(ggplot2)
 
 subset(yield_curve, maturity == "10 year") |>
   ggplot(aes(x = date, y = rate)) +
-  geom_line()
+  geom_line() +
+  labs(
+    title = "US Treasury Yield Curve 2020 (10 Year Maturity)",
+    x = NULL, y = NULL
+  ) +
+  theme_minimal()
 ```
 
 ## Related work
