@@ -10,5 +10,6 @@
 #' @importFrom httr2 request
 #' @importFrom httr2 resp_body_xml
 #' @importFrom httr2 resps_data
+#' @importFrom httr2 resps_successes
 ## usethis namespace: end
 NULL
