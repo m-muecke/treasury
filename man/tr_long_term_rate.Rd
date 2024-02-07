@@ -17,6 +17,12 @@ A \code{data.frame()} with columns \code{date}, \code{rate_type} and \code{rate}
 \description{
 Return the daily treasury long-term rates
 }
+\examples{
+# get data for a single month
+tr_long_term_rate("202201")
+# or for the entire year
+tr_long_term_rate(2022)
+}
 \references{
 \url{https://home.treasury.gov/treasury-daily-interest-rate-xml-feed}
 }

@@ -17,6 +17,12 @@ entries where found.
 \description{
 Return the daily treasury real long-term rates
 }
+\examples{
+# get data for a single month
+tr_real_long_term("202201")
+# or for the entire year
+tr_real_long_term(2022)
+}
 \references{
 \url{https://home.treasury.gov/treasury-daily-interest-rate-xml-feed}
 }

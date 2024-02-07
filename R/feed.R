@@ -7,6 +7,11 @@
 #' @references <https://home.treasury.gov/treasury-daily-interest-rate-xml-feed>
 #' @family treasury data
 #' @export
+#' @examples
+#' # get data for a single month
+#' tr_yield_curve("202201")
+#' # or for the entire year
+#' tr_yield_curve(2022)
 tr_yield_curve <- function(date = NULL) {
   data <- treasury("daily_treasury_yield_curve", date, \(entries) {
     data <- lapply(entries, \(entry) {
@@ -41,6 +46,11 @@ tr_yield_curve <- function(date = NULL) {
 #'   or `NULL` when no entries were found.
 #' @family treasury data
 #' @export
+#' @examples
+#' # get data for a single month
+#' tr_bill_rates("202201")
+#' # or for the entire year
+#' tr_bill_rates(2022)
 tr_bill_rates <- function(date = NULL) {
   data <- treasury("daily_treasury_bill_rates", date, \(entries) {
     data <- lapply(entries, \(entry) {
@@ -80,6 +90,11 @@ tr_bill_rates <- function(date = NULL) {
 #'   `NULL` when no entries were found.
 #' @family treasury data
 #' @export
+#' @examples
+#' # get data for a single month
+#' tr_long_term_rate("202201")
+#' # or for the entire year
+#' tr_long_term_rate(2022)
 tr_long_term_rate <- function(date = NULL) {
   data <- treasury("daily_treasury_long_term_rate", date, \(entries) {
     data <- lapply(entries, \(entry) {
@@ -115,6 +130,11 @@ tr_long_term_rate <- function(date = NULL) {
 #'   `NULL` when no entries where found.
 #' @family treasury data
 #' @export
+#' @examples
+#' # get data for a single month
+#' tr_real_yield_curve("202201")
+#' # or for the entire year
+#' tr_real_yield_curve(2022)
 tr_real_yield_curve <- function(date = NULL) {
   data <- treasury("daily_treasury_real_yield_curve", date, \(entries) {
     data <- lapply(entries, \(entry) {
@@ -148,6 +168,11 @@ tr_real_yield_curve <- function(date = NULL) {
 #'   entries where found.
 #' @family treasury data
 #' @export
+#' @examples
+#' # get data for a single month
+#' tr_real_long_term("202201")
+#' # or for the entire year
+#' tr_real_long_term(2022)
 tr_real_long_term <- function(date = NULL) {
   data <- treasury("daily_treasury_real_long_term", date, \(entries) {
     data <- lapply(entries, \(entry) {
@@ -183,10 +208,10 @@ tr_make_request <- function(data, date) {
     date <- "all"
   }
 
-  if (nchar(date) == 6L) {
-    nm <- "field_tdr_date_value_month"
+  nm <- if (nchar(date) == 6L) {
+    "field_tdr_date_value_month"
   } else {
-    nm <- "field_tdr_date_value"
+    "field_tdr_date_value"
   }
   req <- request("https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml") |> # nolint
     req_user_agent("treasury (https://m-muecke.github.io/treasury)") |>
