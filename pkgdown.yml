@@ -2,7 +2,7 @@ pandoc: 2.19.2
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles: {}
-last_built: 2024-02-07T16:41Z
+last_built: 2024-02-10T14:00Z
 urls:
   reference: https://m-muecke.github.io/treasury/reference
   article: https://m-muecke.github.io/treasury/articles
