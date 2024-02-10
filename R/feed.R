@@ -86,8 +86,7 @@ clean_bill_rates <- function(data) {
   data$type <- vapply(maturity, "[[", NA_character_, 1L)
   data$maturity <- vapply(maturity, "[[", NA_character_, 2L)
   data$maturity <- gsub("wk", " weeks", data$maturity)
-  data <- data[c("date", "type", "maturity", "value")]
-  data
+  data[c("date", "type", "maturity", "value")]
 }
 
 #' Return the daily treasury long-term rates
