@@ -1,0 +1,10 @@
+linters: all_linters(
+    implicit_integer_linter(allow_colon = TRUE),
+    object_overwrite_linter(allow_names = c("data", "date")),
+    object_usage_linter = NULL,
+    strings_as_factors_linter = NULL,
+    nonportable_path_linter = NULL
+  )
+exclusions: list(
+    "tests/testthat.R"
+  )

@@ -12,7 +12,7 @@ test_that("input validation works", {
     expect_error(fn("202"))
     expect_error(fn("abcd"))
     expect_error(fn("abcdef"))
-    expect_error(fn(c(2020, 2021)))
+    expect_error(fn(c(2020L, 2021L)))
     expect_error(fn(c("2020", "2021")))
     expect_error(fn(1L))
   }
@@ -35,7 +35,7 @@ test_that("clean_yield_curve works", {
     "1 year", "2 year", "3 year", "5 year",
     "7 year", "10 year", "20 year", "30 year"
   )
-  expect_equal(actual, expected)
+  expect_identical(actual, expected)
 })
 
 test_that("clean_bill_rates works", {
@@ -71,5 +71,5 @@ test_that("clean_bill_rates works", {
   expected <- data.frame(
     date = date, type = type, maturity = maturity, value = rate
   )
-  expect_equal(actual, expected)
+  expect_identical(actual, expected)
 })
