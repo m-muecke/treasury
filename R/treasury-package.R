@@ -11,5 +11,6 @@
 #' @importFrom httr2 resp_body_xml
 #' @importFrom httr2 resps_data
 #' @importFrom httr2 resps_successes
+#' @importFrom rlang :=
 ## usethis namespace: end
 NULL
