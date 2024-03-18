@@ -27,3 +27,4 @@
 ^paper$
 ^pkgdown$
 ^revdep$
+^CRAN-SUBMISSION$
