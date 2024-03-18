@@ -226,10 +226,9 @@ tr_make_request <- function(data, date) {
     date <- "all"
   }
 
-  nm <- if (nchar(date) == 6L) {
-    "field_tdr_date_value_month"
-  } else {
-    "field_tdr_date_value"
+  nm <- "field_tdr_date_value"
+  if (nchar(date) == 6L) {
+    nm <- paste(nm, "month", sep = "_")
   }
   req <- request("https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml") |> # nolint
     req_user_agent("treasury (https://m-muecke.github.io/treasury)") |>
