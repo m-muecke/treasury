@@ -18,10 +18,12 @@ or \code{NULL} when no entries were found.
 Return the daily treasury bill rates
 }
 \examples{
+\donttest{
 # get data for a single month
 tr_bill_rates("202201")
 # or for the entire year
 tr_bill_rates(2022)
+}
 }
 \references{
 \url{https://home.treasury.gov/treasury-daily-interest-rate-xml-feed}

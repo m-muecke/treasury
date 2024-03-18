@@ -8,10 +8,12 @@
 #' @family treasury data
 #' @export
 #' @examples
+#' \donttest{
 #' # get data for a single month
 #' tr_yield_curve("202201")
 #' # or for the entire year
 #' tr_yield_curve(2022)
+#' }
 tr_yield_curve <- function(date = NULL) {
   data <- treasury("daily_treasury_yield_curve", date, parse_yield_curve)
   if (is.null(data)) {
@@ -51,10 +53,12 @@ clean_yield_curve <- function(data) {
 #' @family treasury data
 #' @export
 #' @examples
+#' \donttest{
 #' # get data for a single month
 #' tr_bill_rates("202201")
 #' # or for the entire year
 #' tr_bill_rates(2022)
+#' }
 tr_bill_rates <- function(date = NULL) {
   data <- treasury("daily_treasury_bill_rates", date, parse_bill_rates)
   if (is.null(data)) {
@@ -97,10 +101,12 @@ clean_bill_rates <- function(data) {
 #' @family treasury data
 #' @export
 #' @examples
+#' \donttest{
 #' # get data for a single month
 #' tr_long_term_rate("202201")
 #' # or for the entire year
 #' tr_long_term_rate(2022)
+#' }
 tr_long_term_rate <- function(date = NULL) {
   data <- treasury("daily_treasury_long_term_rate", date, parse_long_term_rate)
   if (is.null(data)) {
@@ -141,10 +147,12 @@ clean_long_term_rate <- function(data) {
 #' @family treasury data
 #' @export
 #' @examples
+#' \donttest{
 #' # get data for a single month
 #' tr_real_yield_curve("202201")
 #' # or for the entire year
 #' tr_real_yield_curve(2022)
+#' }
 tr_real_yield_curve <- function(date = NULL) {
   data <- treasury(
     "daily_treasury_real_yield_curve", date, parse_real_yield_curve
@@ -185,10 +193,12 @@ clean_real_yield_curves <- function(data) {
 #' @family treasury data
 #' @export
 #' @examples
+#' \donttest{
 #' # get data for a single month
 #' tr_real_long_term("202201")
 #' # or for the entire year
 #' tr_real_long_term(2022)
+#' }
 tr_real_long_term <- function(date = NULL) {
   data <- treasury("daily_treasury_real_long_term", date, parse_real_long_term)
   if (is.null(data)) {
