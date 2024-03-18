@@ -73,3 +73,25 @@ test_that("clean_bill_rates works", {
   )
   expect_identical(actual, expected)
 })
+
+test_that("clean_long_term_rate works", {
+  date <- rep("2020-02-03", 10L)
+  rate_type <- rep(c("BC_20year", "Over_10_years", "Real_Rate"), 10L)
+  rate <- 1:10
+  data <- data.frame(date = date, rate_type = rate_type, rate = rate)
+  actual <- clean_long_term_rate(data)
+  expected <- actual
+  expected$rate_type <- rep(c("20 year", "over 10 years", "real rate"), 10L)
+  expect_identical(actual, expected)
+})
+
+test_that("clean_real_yield_curves works", {
+  date <- rep("2020-02-03", 10L)
+  maturity <- rep(c("TC_5YEAR", "TC_7YEAR", "TC_10YEAR", "TC_20YEAR", "TC_30YEAR"), 2L)
+  rate <- 1:10
+  data <- data.frame(date = date, maturity = maturity, rate = rate)
+  actual <- clean_real_yield_curves(data)
+  expected <- data
+  expected$maturity <- c("5 year", "7 year", "10 year", "20 year", "30 year")
+  expect_identical(actual, expected)
+})
