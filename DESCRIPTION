@@ -4,7 +4,12 @@ Version: 0.1.0
 Authors@R:
     person("Maximilian", "Muecke", , "muecke.maximilian@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0009-0000-9432-9795"))
-Description: Download daily interest rates from the US treasury XML feed.
+Description: Download daily interest rates from the US Treasury XML feed.
+    Leveraging
+    <https://home.treasury.gov/treasury-daily-interest-rate-xml-feed>,
+    this package serves as a wrapper, facilitating the retrieval of daily
+    treasury rates across various categories, including par yield curves,
+    treasury bills, long-term rates, and real yield curves.
 License: MIT + file LICENSE
 URL: https://m-muecke.github.io/treasury/,
     https://github.com/m-muecke/treasury

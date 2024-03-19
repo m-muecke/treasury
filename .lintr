@@ -1,10 +1,10 @@
 linters: all_linters(
-    line_length_linter = line_length_linter(88),
+    line_length_linter = line_length_linter(88L),
     object_usage_linter = NULL,
     todo_comment_linter = NULL,
     strings_as_factors_linter = NULL,
     extraction_operator_linter = NULL,
-    implicit_integer_linter = NULL,
+    implicit_integer_linter = implicit_integer_linter(allow_colon = TRUE),
     nonportable_path_linter = NULL
   )
 exclusions: list(

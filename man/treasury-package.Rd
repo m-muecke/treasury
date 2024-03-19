@@ -6,7 +6,7 @@
 \alias{treasury-package}
 \title{treasury: US Treasury XML Feed Wrapper}
 \description{
-Download daily interest rates from the US treasury XML feed.
+Download daily interest rates from the US Treasury XML feed. Leveraging \url{https://home.treasury.gov/treasury-daily-interest-rate-xml-feed}, this package serves as a wrapper, facilitating the retrieval of daily treasury rates across various categories, including par yield curves, treasury bills, long-term rates, and real yield curves.
 }
 \seealso{
 Useful links:
