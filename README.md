@@ -23,8 +23,14 @@ package.
 
 ## Installation
 
-You can install the development version of treasury from
-[GitHub](https://github.com/) with:
+You can install the released version of **treasury** from
+[CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("treasury")
+```
+
+And the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("pak")

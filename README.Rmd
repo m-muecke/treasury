@@ -28,7 +28,13 @@ The main difference to other packages is that it's a modern implementation using
 
 ## Installation
 
-You can install the development version of treasury from [GitHub](https://github.com/) with:
+You can install the released version of **treasury** from [CRAN](https://CRAN.R-project.org) with:
+
+```{r, eval = FALSE}
+install.packages("treasury")
+```
+
+And the development version from [GitHub](https://github.com/) with:
 
 ```{r, eval = FALSE}
 # install.packages("pak")
