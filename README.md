@@ -43,7 +43,6 @@ treasury functions are prefixed with `tr_` and follow the naming
 convention of the XML feed.
 
 ``` r
-library(ggplot2)
 library(treasury)
 
 yield_curve <- tr_yield_curve(2020)
@@ -57,18 +56,9 @@ yield_curve
 #> 4 2020-01-02 6 month   1.57
 #> 5 2020-01-02 1 year    1.56
 #> # ℹ 3,007 more rows
-
-subset(yield_curve, maturity == "10 year") |>
-  ggplot(aes(x = date, y = rate)) +
-  geom_line() +
-  labs(
-    title = "US Treasury Yield Curve 2020 (10 Year Maturity)",
-    x = NULL, y = NULL
-  ) +
-  theme_minimal()
 ```
 
-<img src="man/figures/README-demo-1.png" width="100%" />
+<img src="man/figures/README-plot-1.png" width="100%" />
 
 ## Related work
 
