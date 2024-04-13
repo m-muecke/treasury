@@ -2,20 +2,31 @@
 % Please edit documentation in R/feed.R
 \name{tr_yield_curve}
 \alias{tr_yield_curve}
-\title{Return the daily treasury par yield curve rates}
+\alias{tr_bill_rates}
+\alias{tr_long_term_rate}
+\alias{tr_real_yield_curve}
+\alias{tr_real_long_term}
+\title{Returns the daily treasury interest rate}
 \usage{
 tr_yield_curve(date = NULL)
+
+tr_bill_rates(date = NULL)
+
+tr_long_term_rate(date = NULL)
+
+tr_real_yield_curve(date = NULL)
+
+tr_real_long_term(date = NULL)
 }
 \arguments{
 \item{date}{\code{character(1)} or \code{numeric(1)} date in format yyyy or yyyymm.
 If \code{NULL}, all data is returned. Default \code{NULL}.}
 }
 \value{
-A \code{data.frame()} with columns \code{date}, \code{maturity} and \code{rate} or
-\code{NULL} when no entries were found.
+A \code{data.frame()} containing the rates or \code{NULL} when no entries were found.
 }
 \description{
-Return the daily treasury par yield curve rates
+Returns the daily treasury interest rate
 }
 \examples{
 \donttest{
@@ -28,11 +39,3 @@ tr_yield_curve(2022)
 \references{
 \url{https://home.treasury.gov/treasury-daily-interest-rate-xml-feed}
 }
-\seealso{
-Other treasury data: 
-\code{\link{tr_bill_rates}()},
-\code{\link{tr_long_term_rate}()},
-\code{\link{tr_real_long_term}()},
-\code{\link{tr_real_yield_curve}()}
-}
-\concept{treasury data}

@@ -1,11 +1,9 @@
-#' Return the daily treasury par yield curve rates
+#' Returns the daily treasury interest rate
 #'
 #' @param date `character(1)` or `numeric(1)` date in format yyyy or yyyymm.
 #'   If `NULL`, all data is returned. Default `NULL`.
-#' @returns A `data.frame()` with columns `date`, `maturity` and `rate` or
-#'   `NULL` when no entries were found.
+#' @returns A `data.frame()` containing the rates or `NULL` when no entries were found.
 #' @references <https://home.treasury.gov/treasury-daily-interest-rate-xml-feed>
-#' @family treasury data
 #' @export
 #' @examples
 #' \donttest{
@@ -44,21 +42,8 @@ clean_yield_curve <- function(data) {
   data
 }
 
-#' Return the daily treasury bill rates
-#'
-#' @inheritParams tr_yield_curve
-#' @inherit tr_yield_curve references
-#' @returns A `data.frame()` with columns `date`, `type`, `maturity` and `value`
-#'   or `NULL` when no entries were found.
-#' @family treasury data
 #' @export
-#' @examples
-#' \donttest{
-#' # get data for a single month
-#' tr_bill_rates("202201")
-#' # or for the entire year
-#' tr_bill_rates(2022)
-#' }
+#' @rdname tr_yield_curve
 tr_bill_rates <- function(date = NULL) {
   data <- treasury("daily_treasury_bill_rates", date, parse_bill_rates)
   if (is.null(data)) {
@@ -92,21 +77,8 @@ clean_bill_rates <- function(data) {
   data[c("date", "type", "maturity", "value")]
 }
 
-#' Return the daily treasury long-term rates
-#'
-#' @inheritParams tr_yield_curve
-#' @inherit tr_yield_curve references
-#' @returns A `data.frame()` with columns `date`, `rate_type` and `rate` or
-#'   `NULL` when no entries were found.
-#' @family treasury data
 #' @export
-#' @examples
-#' \donttest{
-#' # get data for a single month
-#' tr_long_term_rate("202201")
-#' # or for the entire year
-#' tr_long_term_rate(2022)
-#' }
+#' @rdname tr_yield_curve
 tr_long_term_rate <- function(date = NULL) {
   data <- treasury("daily_treasury_long_term_rate", date, parse_long_term_rate)
   if (is.null(data)) {
@@ -138,21 +110,8 @@ clean_long_term_rate <- function(data) {
   data
 }
 
-#' Return the daily treasury par real yield curve rates
-#'
-#' @inheritParams tr_yield_curve
-#' @inherit tr_yield_curve references
-#' @returns A `data.frame()` with columns `date`, `maturity` and `rate` or
-#'   `NULL` when no entries where found.
-#' @family treasury data
 #' @export
-#' @examples
-#' \donttest{
-#' # get data for a single month
-#' tr_real_yield_curve("202201")
-#' # or for the entire year
-#' tr_real_yield_curve(2022)
-#' }
+#' @rdname tr_yield_curve
 tr_real_yield_curve <- function(date = NULL) {
   data <- treasury(
     "daily_treasury_real_yield_curve", date, parse_real_yield_curve
@@ -184,21 +143,8 @@ clean_real_yield_curves <- function(data) {
   data
 }
 
-#' Return the daily treasury real long-term rates
-#'
-#' @inheritParams tr_yield_curve
-#' @inherit tr_yield_curve references
-#' @returns A `data.frame()` with columns `date` and `rate` or `NULL` when no
-#'   entries where found.
-#' @family treasury data
 #' @export
-#' @examples
-#' \donttest{
-#' # get data for a single month
-#' tr_real_long_term("202201")
-#' # or for the entire year
-#' tr_real_long_term(2022)
-#' }
+#' @rdname tr_yield_curve
 tr_real_long_term <- function(date = NULL) {
   data <- treasury("daily_treasury_real_long_term", date, parse_real_long_term)
   if (is.null(data)) {
