@@ -17,9 +17,7 @@ status](https://www.r-pkg.org/badges/version/treasury)](https://CRAN.R-project.o
 The goal of treasury is to provide a simple and modern interface to the
 [US treasury XML
 feed](https://home.treasury.gov/treasury-daily-interest-rate-xml-feed)
-for daily interest rates. The main difference to other packages is that
-it’s a modern implementation using the [httr2](https://httr2.r-lib.org)
-package.
+for daily interest rates.
 
 ## Installation
 
