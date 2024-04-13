@@ -45,17 +45,17 @@ convention of the XML feed.
 ``` r
 library(treasury)
 
-yield_curve <- tr_yield_curve(2020)
+yield_curve <- tr_yield_curve(2023)
 yield_curve
-#> # A tibble: 3,012 × 3
+#> # A tibble: 3,250 × 3
 #>   date       maturity  rate
 #>   <date>     <chr>    <dbl>
-#> 1 2020-01-02 1 month   1.53
-#> 2 2020-01-02 2 month   1.55
-#> 3 2020-01-02 3 month   1.54
-#> 4 2020-01-02 6 month   1.57
-#> 5 2020-01-02 1 year    1.56
-#> # ℹ 3,007 more rows
+#> 1 2023-01-03 1 month   4.17
+#> 2 2023-01-03 2 month   4.42
+#> 3 2023-01-03 3 month   4.53
+#> 4 2023-01-03 4 month   4.7 
+#> 5 2023-01-03 6 month   4.77
+#> # ℹ 3,245 more rows
 ```
 
 <img src="man/figures/README-plot-1.png" width="100%" />
