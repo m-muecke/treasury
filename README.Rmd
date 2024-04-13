@@ -73,9 +73,7 @@ subset(yield_curve, maturity == "10 year") |>
     axis.title = element_blank(),
     plot.margin = margin(10, 10, 10, 10)
   ) +
-  labs(
-    title = "US Treasury Yield Curve 2020 (10 Year Maturity)"
-  )
+  labs(title = "US Treasury Yield Curve 2023 (10 Year Maturity)")
 ```
 
 ## Related work
