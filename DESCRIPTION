@@ -20,6 +20,7 @@ Imports:
     httr2,
     readxl,
     rlang,
+    tidyr,
     xml2
 Suggests:
     ggplot2,

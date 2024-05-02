@@ -22,12 +22,11 @@ tr_hqm <- function() {
     })
     res <- res[, -2L]
     res <- tidyr::pivot_longer(res, -maturity,
-      names_to = "yearmonth", values_to = "yield"
+      names_to = "yearmonth", values_to = "yield", values_drop_na = TRUE
     )
     res$yearmonth <- paste("01", res$yearmonth, sep = "-") |>
       as.Date(format = "%d-%B-%Y")
-    res <- res[c("yearmonth", "maturity", "yield")]
-    stats::na.omit(res)
+    res[c("yearmonth", "maturity", "yield")]
   })
   do.call(rbind, res)
 }
