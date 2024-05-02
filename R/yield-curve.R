@@ -8,7 +8,7 @@
 #'   `spot_rate`.
 #' @family yield curve
 #' @export
-tr_hqm_yield_curve <- function(x = c("average", "end-of-month"), year = NULL) {
+tr_hqm <- function(x = c("average", "end-of-month"), year = NULL) {
   stopifnot(is_count_or_null(year), 1984L <= year, year <= 2028L)
   x <- match.arg(x)
   x <- if (x == "average") "hqm" else "hqmeom"
@@ -48,7 +48,7 @@ tr_hqm_yield_curve <- function(x = c("average", "end-of-month"), year = NULL) {
   do.call(rbind, res)
 }
 
-#' @rdname tr_hqm_yield_curve
+#' @rdname tr_hqm
 #' @export
 tr_hqm_pars <- function(x = c("average", "end-of-month")) {
   x <- match.arg(x)

@@ -62,3 +62,5 @@ yield_curve
 
 - [ustyc](https://github.com/mrbcuda/ustyc) - R package to download and
   parse the US Treasury yield curve data
+- [ustfd](https://github.com/groditi/ustfd) - R client for US Treasury
+  Fiscal Data API
