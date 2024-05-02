@@ -1,14 +1,14 @@
-#' Download Treasury Yield Curve Data
+#' The Treasury High Quality Market (HQM) Corporate Bond Yield Curve
 #'
 #' @param x `character(1)`. Either `"average"` or `"end-of-month"`.
 #'   Default is `"average"`.
 #' @param year `integer(1)`. Year to download. Default is `NULL`.
 #'   If `NULL`, then all available years are downloaded.
 #' @returns A `data.frame()` with the following columns: `yearmonth`, `maturity`,
-#'   `yield`.
+#'   `spot_rate`.
 #' @family yield curve
 #' @export
-tr_hqm <- function(x = c("average", "end-of-month"), year = NULL) {
+tr_hqm_yield_curve <- function(x = c("average", "end-of-month"), year = NULL) {
   stopifnot(is_count_or_null(year), 1984L <= year, year <= 2028L)
   x <- match.arg(x)
   x <- if (x == "average") "hqm" else "hqmeom"
@@ -40,15 +40,15 @@ tr_hqm <- function(x = c("average", "end-of-month"), year = NULL) {
     })
     res <- res[, -2L]
     res <- tidyr::pivot_longer(res, -maturity,
-      names_to = "yearmonth", values_to = "yield", values_drop_na = TRUE
+      names_to = "yearmonth", values_to = "spot_rate", values_drop_na = TRUE
     )
     res$yearmonth <- as.Date(paste("01", res$yearmonth, sep = "-"), format = "%d-%B-%Y")
-    res[c("yearmonth", "maturity", "yield")]
+    res[c("yearmonth", "maturity", "spot_rate")]
   })
   do.call(rbind, res)
 }
 
-#' @rdname tr_hqm
+#' @rdname tr_hqm_yield_curve
 #' @export
 tr_hqm_pars <- function(x = c("average", "end-of-month")) {
   x <- match.arg(x)
@@ -63,12 +63,13 @@ tr_hqm_pars <- function(x = c("average", "end-of-month")) {
   )
   res <- res[, -2L]
   res <- tidyr::pivot_longer(res, -yearmonth,
-    names_to = "maturity", values_to = "yield"
+    names_to = "maturity", values_to = "par_yield"
   )
   res$yearmonth <- as.Date(paste("01", res$yearmonth), format = "%d %B %Y")
   res
 }
 
+#' The Treasury Nominal Coupon-Issue (TNC) Yield Curve
 tr_tnc <- function() {
   # TODO: there is an edge case for 1976-1977
   start_year <- seq(1978L, 2027L, by = 5L)
