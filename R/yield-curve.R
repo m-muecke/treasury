@@ -6,6 +6,7 @@
 #'   If `NULL`, then all available years are downloaded.
 #' @returns A `data.frame()` with the following columns: `yearmonth`, `maturity`,
 #'   `yield`.
+#' @family yield curve
 #' @export
 tr_hqm <- function(x = c("average", "end-of-month"), year = NULL) {
   stopifnot(is_count_or_null(year), 1984L <= year, year <= 2028L)

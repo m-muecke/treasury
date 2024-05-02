@@ -11,3 +11,7 @@ reference:
     - tr_long_term_rate
     - tr_real_yield_curve
     - tr_real_long_term
+
+  - subtitle: Corporate Bond Yield Curve
+    contents:
+    - tr_hqm

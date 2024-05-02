@@ -23,3 +23,4 @@ A \code{data.frame()} with the following columns: \code{yearmonth}, \code{maturi
 \description{
 Download Treasury Yield Curve Data
 }
+\concept{yield curve}
