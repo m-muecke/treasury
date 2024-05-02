@@ -16,7 +16,9 @@ repos:
       - id: roxygenize
         additional_dependencies:
           - httr2
+          - readxl
           - rlang
+          - tidyr
           - xml2
       - id: deps-in-desc
       - id: no-browser-statement
