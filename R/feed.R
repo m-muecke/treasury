@@ -36,7 +36,8 @@ parse_yield_curve <- function(x) {
 
 clean_yield_curve <- function(data) {
   data <- data[data$maturity != "BC_30YEARDISPLAY", ]
-  data$maturity <- tolower(data$maturity) |>
+  data$maturity <- data$maturity |>
+    tolower() |>
     gsub("bc_", "", x = _, fixed = TRUE) |>
     gsub("(\\d+)(\\w+)", "\\1 \\2", x = _)
   data
@@ -67,12 +68,14 @@ parse_bill_rates <- function(x) {
 }
 
 clean_bill_rates <- function(data) {
-  data$type <- tolower(data$type) |>
+  data$type <- data$type |>
+    tolower() |>
     gsub("round_b1_", "", x = _, fixed = TRUE) |>
     gsub("_2$", "", x = _)
   maturity <- strsplit(data$type, "_", fixed = TRUE)
   data$type <- vapply(maturity, "[[", NA_character_, 1L)
-  data$maturity <- vapply(maturity, "[[", NA_character_, 2L) |>
+  data$maturity <- maturity |>
+    vapply("[[", NA_character_, 2L) |>
     gsub("wk", " weeks", x = _, fixed = TRUE)
   data[c("date", "type", "maturity", "value")]
 }
@@ -103,7 +106,8 @@ parse_long_term_rate <- function(x) {
 }
 
 clean_long_term_rate <- function(data) {
-  data$rate_type <- tolower(data$rate_type) |>
+  data$rate_type <- data$rate_type |>
+    tolower() |>
     gsub("^bc_", "", x = _) |>
     gsub("_", " ", x = _, fixed = TRUE) |>
     gsub("(\\d+)(year?)", "\\1 \\2", x = _)
@@ -137,7 +141,8 @@ parse_real_yield_curve <- function(x) {
 }
 
 clean_real_yield_curves <- function(data) {
-  data$maturity <- tolower(data$maturity) |>
+  data$maturity <- data$maturity |>
+    tolower() |>
     gsub("tc_", "", x = _, fixed = TRUE) |>
     gsub("(\\d+)(\\w+)", "\\1 \\2", x = _)
   data
