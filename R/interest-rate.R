@@ -54,9 +54,21 @@ clean_yield_curve <- function(data) {
 #' Daily treasury bill rates
 #'
 #' @description
-#' These rates are indicative closing market bid quotations on the most recently
-#' auctioned Treasury Bills in the over-the-counter market as obtained by the Federal
-#' Reserve Bank of New York at approximately 3:30 PM each business day.
+#' These rates are the daily secondary market quotations on the most recently
+#' auctioned Treasury Bills for each maturity tranche (4-week, 8-week, 13-week,
+#' 17-week, 26-week, and 52-week) for which Treasury currently issues new
+#' bills.
+#'
+#' @details
+#' Market quotations are obtained at approximately 3:30 PM each business
+#' day by the Federal Reserve Bank of New York. The Bank Discount rate is the
+#' rate at which a bill is quoted in the secondary market and is based on the
+#' par value, amount of the discount and a 360-day year. The Coupon Equivalent,
+#' also called the Bond Equivalent, or the Investment Yield, is the bill's
+#' yield based on the purchase price, discount, and a 365- or 366-day year. The
+#' Coupon Equivalent can be used to compare the yield on a discount bill to the
+#' yield on a nominal coupon security that pays semiannual interest with the
+#' same maturity date.
 #'
 #' @inherit tr_yield_curve
 #' @family interest rate
