@@ -1,9 +1,17 @@
-#' Returns the daily treasury interest rate
+#' Daily treasury par yield curve rates
+#'
+#' @description
+#' This par yield curve, which relates the par yield on a security to its time to
+#' maturity, is based on the closing market bid prices on the most recently auctioned
+#' Treasury securities in the over-the-counter market. The par yields are derived from
+#' input market prices, which are indicative quotations obtained by the Federal Reserve
+#' Bank of New York at approximately 3:30 PM each business day.
 #'
 #' @param date `character(1)` or `numeric(1)` date in format yyyy or yyyymm.
 #'   If `NULL`, all data is returned. Default `NULL`.
 #' @returns A `data.frame()` containing the rates or `NULL` when no entries were found.
 #' @references <https://home.treasury.gov/treasury-daily-interest-rate-xml-feed>
+#' @family interest rate
 #' @export
 #' @examples
 #' \donttest{
@@ -43,8 +51,23 @@ clean_yield_curve <- function(data) {
   data
 }
 
+#' Daily treasury bill rates
+#'
+#' @description
+#' These rates are indicative closing market bid quotations on the most recently
+#' auctioned Treasury Bills in the over-the-counter market as obtained by the Federal
+#' Reserve Bank of New York at approximately 3:30 PM each business day.
+#'
+#' @inherit tr_yield_curve
+#' @family interest rate
 #' @export
-#' @rdname tr_yield_curve
+#' @examples
+#' \donttest{
+#' # get data for a single month
+#' tr_bill_rates("202201")
+#' # or for the entire year
+#' tr_bill_rates(2022)
+#' }
 tr_bill_rates <- function(date = NULL) {
   data <- treasury("daily_treasury_bill_rates", date, parse_bill_rates)
   if (is.null(data)) {
@@ -80,8 +103,26 @@ clean_bill_rates <- function(data) {
   data[c("date", "type", "maturity", "value")]
 }
 
+#' Daily treasury long-term rates
+#'
+#' @description
+#' Treasury ceased publication of the 30-year constant maturity series on
+#' February 18, 2002 and resumed that series on February 9, 2006.
+#' To estimate a 30-year rate during that time frame, this series includes the
+#' Treasury 20-year Constant Maturity rate and an "adjustment factor," which may be
+#' added to the 20-year rate to estimate a 30-year rate during the period of time in
+#' which Treasury did not issue the 30-year bonds.
+#'
+#' @inherit tr_yield_curve
+#' @family interest rate
 #' @export
-#' @rdname tr_yield_curve
+#' @examples
+#' \donttest{
+#' # get data for a single month
+#' tr_long_term_rate("202201")
+#' # or for the entire year
+#' tr_long_term_rate(2022)
+#' }
 tr_long_term_rate <- function(date = NULL) {
   data <- treasury("daily_treasury_long_term_rate", date, parse_long_term_rate)
   if (is.null(data)) {
@@ -114,8 +155,27 @@ clean_long_term_rate <- function(data) {
   data
 }
 
+#' Daily treasury par real yield curve rates
+#'
+#' @description
+#' The par real curve, which relates the par real yield on a Treasury Inflation
+#' Protected Security (TIPS) to its time to maturity, is based on the closing market
+#' bid prices on the most recently auctioned TIPS in the over-the-counter market.
+#' The par real yields are derived from input market prices, which are indicative
+#' quotations obtained by the Federal Reserve Bank of New York at approximately 3:30 PM
+#' each business day. Treasury began publishing this series on January 2, 2004.
+#' At that time Treasury released 1 year of historical data.
+#'
+#' @inherit tr_yield_curve
+#' @family interest rate
 #' @export
-#' @rdname tr_yield_curve
+#' @examples
+#' \donttest{
+#' # get data for a single month
+#' tr_real_yield_curve("202201")
+#' # or for the entire year
+#' tr_real_yield_curve(2022)
+#' }
 tr_real_yield_curve <- function(date = NULL) {
   data <- treasury(
     "daily_treasury_real_yield_curve", date, parse_real_yield_curve
@@ -148,8 +208,23 @@ clean_real_yield_curves <- function(data) {
   data
 }
 
+#' Daily treasury real long-term rate averages
+#'
+#' @description
+#' The Long-Term Real Rate Average is the unweighted average of bid real yields
+#' on all outstanding TIPS with remaining maturities of more than 10 years and
+#' is intended as a proxy for long-term real rates.
+#'
+#' @inherit tr_yield_curve
+#' @family interest rate
 #' @export
-#' @rdname tr_yield_curve
+#' @examples
+#' \donttest{
+#' # get data for a single month
+#' tr_real_long_term("202201")
+#' # or for the entire year
+#' tr_real_long_term(2022)
+#' }
 tr_real_long_term <- function(date = NULL) {
   data <- treasury("daily_treasury_real_long_term", date, parse_real_long_term)
   if (is.null(data)) {
