@@ -18,6 +18,7 @@ Depends:
     R (>= 4.2.0)
 Imports:
     httr2,
+    readxl,
     rlang,
     xml2
 Suggests:
