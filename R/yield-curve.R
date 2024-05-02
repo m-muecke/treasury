@@ -1,7 +1,20 @@
-tr_hqm <- function(x = c("average", "end-of-month")) {
+#' Download Treasury Yield Curve Data
+#'
+#' @param x `character(1)`. Either `"average"` or `"end-of-month"`.
+#'   Default is `"average"`.
+#' @param year `integer(1)`. Year to download. Default is `NULL`.
+#'   If `NULL`, then all available years are downloaded.
+#' @returns A `data.frame()` with the following columns: `yearmonth`, `maturity`,
+#'   `yield`.
+#' @export
+tr_hqm <- function(x = c("average", "end-of-month"), year = NULL) {
+  stopifnot(is_count_or_null(year), 1984L <= year, year <= 2028L)
   x <- match.arg(x)
   x <- if (x == "average") "hqm" else "hqmeom"
-  start_year <- seq(1984L, 2028L, by = 5L)
+  start_year <- seq(1984L, 2024L, by = 5L)
+  if (!is.null(year)) {
+    start_year <- start_year[findInterval(year, start_year)]
+  }
   urls <- vapply(start_year, \(year) {
     sprintf(
       "https://home.treasury.gov/system/files/226/%s_%02d_%02d.xls",
@@ -28,12 +41,14 @@ tr_hqm <- function(x = c("average", "end-of-month")) {
     res <- tidyr::pivot_longer(res, -maturity,
       names_to = "yearmonth", values_to = "yield", values_drop_na = TRUE
     )
-    res$yearmonth <- paste("01", res$yearmonth, sep = "-") |> as.Date("%d-%B-%Y")
+    res$yearmonth <- as.Date(paste("01", res$yearmonth, sep = "-"), format = "%d-%B-%Y")
     res[c("yearmonth", "maturity", "yield")]
   })
   do.call(rbind, res)
 }
 
+#' @rdname tr_hqm
+#' @export
 tr_hqm_pars <- function(x = c("average", "end-of-month")) {
   x <- match.arg(x)
   x <- if (x == "average") "hqm" else "hqmeom"
@@ -49,7 +64,7 @@ tr_hqm_pars <- function(x = c("average", "end-of-month")) {
   res <- tidyr::pivot_longer(res, -yearmonth,
     names_to = "maturity", values_to = "yield"
   )
-  res$yearmonth <- paste("01", res$yearmonth) |> as.Date("%d %B %Y")
+  res$yearmonth <- as.Date(paste("01", res$yearmonth), format = "%d %B %Y")
   res
 }
 
@@ -79,7 +94,7 @@ tr_tnc <- function() {
     res <- tidyr::pivot_longer(res, -maturity,
       names_to = "yearmonth", values_to = "yield", values_drop_na = TRUE
     )
-    res$yearmonth <- paste("01", res$yearmonth, sep = "-") |> as.Date("%d-%B-%Y")
+    res$yearmonth <- as.Date(paste("01", res$yearmonth, sep = "-"), format = "%d-%B-%Y")
     res[c("yearmonth", "maturity", "yield")]
   })
   do.call(rbind, res)
