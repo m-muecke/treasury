@@ -6,6 +6,7 @@
 #'   If `NULL`, then all available years are downloaded.
 #' @returns A `data.frame()` with the following columns: `yearmonth`, `maturity`,
 #'   `spot_rate`.
+#' @source <https://home.treasury.gov/data/treasury-coupon-issues-and-corporate-bond-yield-curve/corporate-bond-yield-curve>
 #' @family yield curve
 #' @export
 tr_hqm <- function(x = c("average", "end-of-month"), year = NULL) {
@@ -70,6 +71,7 @@ tr_hqm_pars <- function(x = c("average", "end-of-month")) {
 }
 
 #' The Treasury Nominal Coupon-Issue (TNC) Yield Curve
+#' @source <https://home.treasury.gov/data/treasury-coupon-issues-and-corporate-bond-yield-curves/treasury-coupon-issues>
 tr_tnc <- function() {
   # TODO: there is an edge case for 1976-1977
   start_year <- seq(1978L, 2027L, by = 5L)

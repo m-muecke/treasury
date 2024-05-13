@@ -3,6 +3,9 @@
 \name{tr_real_long_term}
 \alias{tr_real_long_term}
 \title{Daily treasury real long-term rate averages}
+\source{
+\url{https://home.treasury.gov/treasury-daily-interest-rate-xml-feed}
+}
 \usage{
 tr_real_long_term(date = NULL)
 }
@@ -25,9 +28,6 @@ tr_real_long_term("202201")
 # or for the entire year
 tr_real_long_term(2022)
 }
-}
-\references{
-\url{https://home.treasury.gov/treasury-daily-interest-rate-xml-feed}
 }
 \seealso{
 Other interest rate: 

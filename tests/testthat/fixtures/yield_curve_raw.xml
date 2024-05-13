@@ -1,0 +1,17 @@
+<m:properties>
+  <d:Id m:type="Edm.Int32">8030</d:Id>
+  <d:NEW_DATE m:type="Edm.DateTime">2022-02-01T00:00:00</d:NEW_DATE>
+  <d:BC_1MONTH m:type="Edm.Double">0.04</d:BC_1MONTH>
+  <d:BC_2MONTH m:type="Edm.Double">0.10</d:BC_2MONTH>
+  <d:BC_3MONTH m:type="Edm.Double">0.19</d:BC_3MONTH>
+  <d:BC_6MONTH m:type="Edm.Double">0.48</d:BC_6MONTH>
+  <d:BC_1YEAR m:type="Edm.Double">0.78</d:BC_1YEAR>
+  <d:BC_2YEAR m:type="Edm.Double">1.18</d:BC_2YEAR>
+  <d:BC_3YEAR m:type="Edm.Double">1.39</d:BC_3YEAR>
+  <d:BC_5YEAR m:type="Edm.Double">1.63</d:BC_5YEAR>
+  <d:BC_7YEAR m:type="Edm.Double">1.76</d:BC_7YEAR>
+  <d:BC_10YEAR m:type="Edm.Double">1.81</d:BC_10YEAR>
+  <d:BC_20YEAR m:type="Edm.Double">2.19</d:BC_20YEAR>
+  <d:BC_30YEAR m:type="Edm.Double">2.12</d:BC_30YEAR>
+  <d:BC_30YEARDISPLAY m:type="Edm.Double">2.12</d:BC_30YEARDISPLAY>
+</m:properties>

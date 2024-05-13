@@ -4,6 +4,9 @@
 \alias{tr_hqm}
 \alias{tr_hqm_pars}
 \title{The Treasury High Quality Market (HQM) Corporate Bond Yield Curve}
+\source{
+\url{https://home.treasury.gov/data/treasury-coupon-issues-and-corporate-bond-yield-curve/corporate-bond-yield-curve}
+}
 \usage{
 tr_hqm(x = c("average", "end-of-month"), year = NULL)
 

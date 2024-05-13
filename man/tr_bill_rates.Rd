@@ -3,6 +3,9 @@
 \name{tr_bill_rates}
 \alias{tr_bill_rates}
 \title{Daily treasury bill rates}
+\source{
+\url{https://home.treasury.gov/treasury-daily-interest-rate-xml-feed}
+}
 \usage{
 tr_bill_rates(date = NULL)
 }
@@ -37,9 +40,6 @@ tr_bill_rates("202201")
 # or for the entire year
 tr_bill_rates(2022)
 }
-}
-\references{
-\url{https://home.treasury.gov/treasury-daily-interest-rate-xml-feed}
 }
 \seealso{
 Other interest rate: 

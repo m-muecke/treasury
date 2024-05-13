@@ -3,6 +3,9 @@
 \name{tr_tnc}
 \alias{tr_tnc}
 \title{The Treasury Nominal Coupon-Issue (TNC) Yield Curve}
+\source{
+\url{https://home.treasury.gov/data/treasury-coupon-issues-and-corporate-bond-yield-curves/treasury-coupon-issues}
+}
 \usage{
 tr_tnc()
 }

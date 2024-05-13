@@ -3,6 +3,9 @@
 \name{tr_yield_curve}
 \alias{tr_yield_curve}
 \title{Daily treasury par yield curve rates}
+\source{
+\url{https://home.treasury.gov/treasury-daily-interest-rate-xml-feed}
+}
 \usage{
 tr_yield_curve(date = NULL)
 }
@@ -27,9 +30,6 @@ tr_yield_curve("202201")
 # or for the entire year
 tr_yield_curve(2022)
 }
-}
-\references{
-\url{https://home.treasury.gov/treasury-daily-interest-rate-xml-feed}
 }
 \seealso{
 Other interest rate: 
