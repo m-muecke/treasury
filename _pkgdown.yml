@@ -12,6 +12,6 @@ reference:
     - tr_real_yield_curve
     - tr_real_long_term
 
-  - subtitle: Corporate Bond Yield Curve
+  - subtitle: Treasury Coupon Issues and Corporate Bond Yield Curve
     contents:
-    - tr_hqm
+    - tr_curve_rates
