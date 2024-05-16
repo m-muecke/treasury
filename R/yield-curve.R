@@ -1,30 +1,53 @@
-#' The Treasury High Quality Market (HQM) Corporate Bond Yield Curve
+#' Download Treasury Yield Curve Rates
 #'
-#' @param x `character(1)`. Either `"monthly"` or `"end-of-month"`.
+#' @param x `character(1)`. Defaults to `"hqm"`. One of:
+#'   * `"hqm"`: The Treasury High Quality Market (HQM) Corporate Bond Yield Curve.
+#'   * `"tnc"`: The Treasury Nominal Coupon-Issue (TNC) Yield Curve.
+#'   * `"trc"`: The Treasury Real Coupon-Issue (TRC) Yield Curve.
+#'   * `"tbi"`: The Treasury Breakeven Inflation (TBI) Curve.
+#' @param type `character(1)`. Either `"monthly"` or `"end-of-month"`.
 #'   Default is `"monthly"`.
 #' @param year `integer(1)`. Year to download. Default is `NULL`.
 #'   If `NULL`, then all available years are downloaded.
-#' @returns A `data.frame()` with the following columns: `yearmonth`, `maturity`,
-#'   `spot_rate`.
-#' @source <https://home.treasury.gov/data/treasury-coupon-issues-and-corporate-bond-yield-curve/corporate-bond-yield-curve>
+#' @returns
+#' A `data.frame()` with the following columns: `yearmonth`, `maturity`, `rate`.
 #' @family yield curve
+#' @source <https://home.treasury.gov/data/treasury-coupon-issues-and-corporate-bond-yield-curve/corporate-bond-yield-curve>
 #' @export
-tr_hqm <- function(x = c("monthly", "end-of-month"), year = NULL) {
-  stopifnot(is_count_or_null(year), 1984L <= year, year <= 2028L)
+#' @examples
+#' \dontrun{
+#' tr_curve_rates("tbi")
+#' tr_curve_rates("trc", "end-of-month", year = 2024L)
+#' }
+tr_curve_rates <- function(x = c("hqm", "tnc", "trc", "tbi"),
+                           type = c("monthly", "end-of-month"),
+                           year = NULL) {
+  stopifnot(is_count_or_null(year))
   x <- match.arg(x)
-  x <- if (x == "monthly") "hqm" else "hqmeom"
-  start_year <- seq(1984L, 2024L, by = 5L)
+  type <- match.arg(type)
+  x <- if (type == "monthly") x else paste0(x, "eom")
+
+  start_year <- switch(x,
+    hqm = 1984L,
+    tnc = 1978L,
+    trc = 2003L,
+    tbi = 2003L
+  )
+  years <- seq(start_year, 2027L, by = 5L)
   if (!is.null(year)) {
-    start_year <- start_year[findInterval(year, start_year)]
+    years <- years[findInterval(year, years)]
   }
-  urls <- vapply(start_year, \(year) {
+  urls <- vapply(years, \(year) {
     sprintf(
-      "https://home.treasury.gov/system/files/226/%s_%02d_%02d.xls",
-      x, year %% 100L, (year + 4L) %% 100L
+      "https://home.treasury.gov/system/files/226/%s_%02d_%02d.%s",
+      x,
+      year %% 100L,
+      (year + 4L) %% 100L,
+      if (year >= 2023L && !startsWith(x, "hqm")) "xlsx" else "xls"
     )
   }, NA_character_)
   if (x == "hqmeom") {
-    urls[[1L]] <- sub("88\\.xls$", "88_0.xls", urls[[1L]])
+    urls <- sub("88\\.xls$", "88_0.xls", urls)
   }
 
   months <- rep.int(month.name, 5L)
@@ -33,7 +56,7 @@ tr_hqm <- function(x = c("monthly", "end-of-month"), year = NULL) {
     on.exit(unlink(tf), add = TRUE)
     utils::download.file(urls[[i]], destfile = tf, quiet = TRUE, mode = "wb")
     res <- readxl::read_excel(tf, skip = 4L, .name_repair = \(nms) {
-      year <- start_year[[i]]
+      year <- years[[i]]
       years <- rep(year:(year + 4L), each = 12L)
       nms <- paste(months, years, sep = "-")
       nms <- c("maturity", "tmp", nms)
@@ -41,16 +64,14 @@ tr_hqm <- function(x = c("monthly", "end-of-month"), year = NULL) {
     })
     res <- res[, -2L]
     res <- tidyr::pivot_longer(res, -maturity,
-      names_to = "yearmonth", values_to = "spot_rate", values_drop_na = TRUE
+      names_to = "yearmonth", values_to = "rate", values_drop_na = TRUE
     )
     res$yearmonth <- as.Date(paste("01", res$yearmonth, sep = "-"), format = "%d-%B-%Y")
-    res[c("yearmonth", "maturity", "spot_rate")]
+    res[c("yearmonth", "maturity", "rate")]
   })
   do.call(rbind, res)
 }
 
-#' @rdname tr_hqm
-#' @export
 tr_hqm_pars <- function(x = c("monthly", "end-of-month")) {
   x <- match.arg(x)
   x <- if (x == "monthly") "hqm" else "hqmeom"
@@ -70,52 +91,6 @@ tr_hqm_pars <- function(x = c("monthly", "end-of-month")) {
   res
 }
 
-#' The Treasury Nominal Coupon-Issue (TNC) Yield Curve
-#'
-#' @inheritParams tr_hqm
-#' @inherit tr_hqm return
-#' @family yield curve
-#' @source <https://home.treasury.gov/data/treasury-coupon-issues-and-corporate-bond-yield-curves/treasury-coupon-issues>
-#' @export
-tr_tnc <- function(x = c("monthly", "end-of-month"), year = NULL) {
-  stopifnot(is_count_or_null(year), 1978L <= year, year <= 2027L)
-  x <- match.arg(x)
-  x <- if (x == "monthly") "tnc" else "tnceom"
-  start_year <- seq(1978L, 2027L, by = 5L)
-  if (!is.null(year)) {
-    start_year <- start_year[findInterval(year, start_year)]
-  }
-  urls <- vapply(start_year, \(year) {
-    sprintf(
-      "https://home.treasury.gov/system/files/226/%s_%02d_%02d.%s",
-      x, year %% 100L, (year + 4L) %% 100L, if (year >= 2023L) "xlsx" else "xls"
-    )
-  }, NA_character_)
-
-  months <- rep.int(month.name, 5L)
-  res <- lapply(seq_along(urls), \(i) {
-    tf <- tempfile()
-    on.exit(unlink(tf), add = TRUE)
-    utils::download.file(urls[[i]], destfile = tf, quiet = TRUE, mode = "wb")
-    res <- readxl::read_excel(tf, skip = 4L, .name_repair = \(nms) {
-      year <- start_year[[i]]
-      years <- rep(year:(year + 4L), each = 12L)
-      nms <- paste(months, years, sep = "-")
-      nms <- c("maturity", "tmp", nms)
-      nms
-    })
-    res <- res[, -2L]
-    res <- tidyr::pivot_longer(res, -maturity,
-      names_to = "yearmonth", values_to = "yield", values_drop_na = TRUE
-    )
-    res$yearmonth <- as.Date(paste("01", res$yearmonth, sep = "-"), format = "%d-%B-%Y")
-    res[c("yearmonth", "maturity", "yield")]
-  })
-  do.call(rbind, res)
-}
-
-#' @rdname tr_tnc
-#' @export
 tr_tnc_pars <- function(x = c("monthly", "end-of-month")) {
   x <- match.arg(x)
   x <- if (x == "monthly") "tnc_qh_pars_1" else "tnceom_qh_pars"
