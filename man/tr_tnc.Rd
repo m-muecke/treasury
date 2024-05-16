@@ -2,13 +2,32 @@
 % Please edit documentation in R/yield-curve.R
 \name{tr_tnc}
 \alias{tr_tnc}
+\alias{tr_tnc_pars}
 \title{The Treasury Nominal Coupon-Issue (TNC) Yield Curve}
 \source{
 \url{https://home.treasury.gov/data/treasury-coupon-issues-and-corporate-bond-yield-curves/treasury-coupon-issues}
 }
 \usage{
-tr_tnc()
+tr_tnc(x = c("monthly", "end-of-month"), year = NULL)
+
+tr_tnc_pars(x = c("monthly", "end-of-month"))
+}
+\arguments{
+\item{x}{\code{character(1)}. Either \code{"monthly"} or \code{"end-of-month"}.
+Default is \code{"monthly"}.}
+
+\item{year}{\code{integer(1)}. Year to download. Default is \code{NULL}.
+If \code{NULL}, then all available years are downloaded.}
+}
+\value{
+A \code{data.frame()} with the following columns: \code{yearmonth}, \code{maturity},
+\code{spot_rate}.
 }
 \description{
 The Treasury Nominal Coupon-Issue (TNC) Yield Curve
 }
+\seealso{
+Other yield curve: 
+\code{\link{tr_hqm}()}
+}
+\concept{yield curve}

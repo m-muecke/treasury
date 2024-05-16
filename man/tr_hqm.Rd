@@ -8,13 +8,13 @@
 \url{https://home.treasury.gov/data/treasury-coupon-issues-and-corporate-bond-yield-curve/corporate-bond-yield-curve}
 }
 \usage{
-tr_hqm(x = c("average", "end-of-month"), year = NULL)
+tr_hqm(x = c("monthly", "end-of-month"), year = NULL)
 
-tr_hqm_pars(x = c("average", "end-of-month"))
+tr_hqm_pars(x = c("monthly", "end-of-month"))
 }
 \arguments{
-\item{x}{\code{character(1)}. Either \code{"average"} or \code{"end-of-month"}.
-Default is \code{"average"}.}
+\item{x}{\code{character(1)}. Either \code{"monthly"} or \code{"end-of-month"}.
+Default is \code{"monthly"}.}
 
 \item{year}{\code{integer(1)}. Year to download. Default is \code{NULL}.
 If \code{NULL}, then all available years are downloaded.}
@@ -25,5 +25,9 @@ A \code{data.frame()} with the following columns: \code{yearmonth}, \code{maturi
 }
 \description{
 The Treasury High Quality Market (HQM) Corporate Bond Yield Curve
+}
+\seealso{
+Other yield curve: 
+\code{\link{tr_tnc}()}
 }
 \concept{yield curve}
