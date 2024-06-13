@@ -15,7 +15,7 @@ URL: https://m-muecke.github.io/treasury/,
     https://github.com/m-muecke/treasury
 BugReports: https://github.com/m-muecke/treasury/issues
 Depends:
-    R (>= 4.2.0)
+    R (>= 4.1.0)
 Imports:
     httr2,
     readxl,
