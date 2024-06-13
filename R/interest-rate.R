@@ -103,8 +103,8 @@ parse_bill_rates <- function(x) {
 
 clean_bill_rates <- function(data) {
   data$type <- tolower(data$type)
-  data$type <- gsub("round_b1_", "", data$maturity, fixed = TRUE)
-  data$type <- gsub("_2$", "", data$maturity)
+  data$type <- gsub("round_b1_", "", data$type, fixed = TRUE)
+  data$type <- gsub("_2$", "", data$type)
   maturity <- strsplit(data$type, "_", fixed = TRUE)
   data$type <- vapply(maturity, `[[`, NA_character_, 1L)
   maturity <- vapply(maturity, `[[`, NA_character_, 2L)
