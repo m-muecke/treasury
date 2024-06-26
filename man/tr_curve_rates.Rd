@@ -37,7 +37,7 @@ Download Treasury Yield Curve Rates
 \examples{
 \dontrun{
 tr_curve_rates("tbi")
-tr_curve_rates("trc", "end-of-month", year = 2024L)
+tr_curve_rates("trc", "end-of-month", 2024L)
 }
 }
 \concept{yield curve}

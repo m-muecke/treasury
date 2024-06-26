@@ -17,7 +17,7 @@
 #' @examples
 #' \dontrun{
 #' tr_curve_rates("tbi")
-#' tr_curve_rates("trc", "end-of-month", year = 2024L)
+#' tr_curve_rates("trc", "end-of-month", 2024L)
 #' }
 tr_curve_rates <- function(x = c("hqm", "tnc", "trc", "tbi"),
                            type = c("monthly", "end-of-month"),
@@ -25,15 +25,14 @@ tr_curve_rates <- function(x = c("hqm", "tnc", "trc", "tbi"),
   stopifnot(is_count_or_null(year))
   x <- match.arg(x)
   type <- match.arg(type)
-  x <- if (type == "monthly") x else paste0(x, "eom")
-
   start_year <- switch(x,
     hqm = 1984L,
     tnc = 1978L,
     trc = 2003L,
     tbi = 2003L
   )
-  years <- seq(start_year, 2027L, by = 5L)
+  x <- if (type == "monthly") x else paste0(x, "eom")
+  years <- seq.int(start_year, 2027L, by = 5L)
   if (!is.null(year)) {
     years <- years[findInterval(year, years)]
   }
