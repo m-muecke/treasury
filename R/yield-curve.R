@@ -109,3 +109,37 @@ tr_tnc_pars <- function(x = c("monthly", "end-of-month")) {
   res$yearmonth <- as.Date(paste("01", res$yearmonth), format = "%d %B %Y")
   res
 }
+
+tr_forward <- function(x = c("tnc", "trc", "tbi"),
+                       type = c("monthly", "end-of-month")) {
+  x <- match.arg(x)
+  type <- match.arg(type)
+  if (type == "monthly") {
+    if (x == "tnc") {
+      x <- sprintf("%s_qh_forwards_0", x)
+    } else {
+      x <- sprintf("%s_qh_forwards", x)
+    }
+  } else {
+    x <- sprintf("%seom_qh_forwards", x)
+  }
+  url <- sprintf("https://home.treasury.gov/system/files/226/%s.xls", x)
+  tf <- tempfile()
+  on.exit(unlink(tf), add = TRUE)
+  utils::download.file(url, destfile = tf, quiet = TRUE, mode = "wb")
+  nms <- c(
+    "yearmonth",
+    "tmp",
+    "2-year forward rate 2 years hence",
+    "5-year forward rate 5 years hence",
+    "10-year forward rate 10 years hence",
+    "1-year forward rate 30 years hence"
+  )
+  res <- readxl::read_excel(tf, col_names = nms, skip = 6L)
+  res <- res[, -2L]
+  res <- tidyr::pivot_longer(res, -yearmonth,
+    names_to = "type", values_to = "forward_rate"
+  )
+  res$yearmonth <- as.Date(paste("01", res$yearmonth), format = "%d %B %Y")
+  res
+}
