@@ -1,6 +1,6 @@
-#' Download Treasury Yield Curve Rates
+#' Download treasury yield curve rates
 #'
-#' @param x `character(1)`. Defaults to `"hqm"`. One of:
+#' @param x `character(1)`. Must be one of the following options:
 #'   * `"hqm"`: The Treasury High Quality Market (HQM) Corporate Bond Yield Curve.
 #'   * `"tnc"`: The Treasury Nominal Coupon-Issue (TNC) Yield Curve.
 #'   * `"trc"`: The Treasury Real Coupon-Issue (TRC) Yield Curve.
@@ -12,16 +12,16 @@
 #' @returns
 #' A `data.frame()` with the following columns: `yearmonth`, `maturity`, `rate`.
 #' @family yield curve
-#' @source <https://home.treasury.gov/data/treasury-coupon-issues-and-corporate-bond-yield-curve/corporate-bond-yield-curve>
+#' @source <https://home.treasury.gov/data/treasury-coupon-issues-and-corporate-bond-yield-curves>
 #' @export
 #' @examples
 #' \dontrun{
-#' tr_curve_rates("tbi")
-#' tr_curve_rates("trc", "end-of-month", 2024L)
+#' tr_curve_rate("tbi")
+#' tr_curve_rate("trc", "end-of-month", 2024L)
 #' }
-tr_curve_rates <- function(x = c("hqm", "tnc", "trc", "tbi"),
-                           type = c("monthly", "end-of-month"),
-                           year = NULL) {
+tr_curve_rate <- function(x = c("hqm", "tnc", "trc", "tbi"),
+                          type = c("monthly", "end-of-month"),
+                          year = NULL) {
   stopifnot(is_count_or_null(year))
   x <- match.arg(x)
   type <- match.arg(type)
@@ -71,7 +71,7 @@ tr_curve_rates <- function(x = c("hqm", "tnc", "trc", "tbi"),
   do.call(rbind, res)
 }
 
-#' @rdname tr_curve_rates
+#' @rdname tr_curve_rate
 #' @export
 tr_par_yields <- function(x = c("hqm", "tnc", "trc"),
                           type = c("monthly", "end-of-month")) {
@@ -97,7 +97,7 @@ tr_par_yields <- function(x = c("hqm", "tnc", "trc"),
   download_data(x, nms, 6L, "maturity", "par_yield")
 }
 
-#' @rdname tr_curve_rates
+#' @rdname tr_curve_rate
 #' @export
 tr_forward_rate <- function(x = c("tnc", "trc", "tbi"),
                             type = c("monthly", "end-of-month")) {
