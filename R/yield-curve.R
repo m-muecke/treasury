@@ -71,16 +71,19 @@ tr_curve_rates <- function(x = c("hqm", "tnc", "trc", "tbi"),
   do.call(rbind, res)
 }
 
-tr_hqm_pars <- function(x = c("monthly", "end-of-month")) {
-  x <- match.arg(x)
-  x <- if (x == "monthly") "hqm_qh_pars" else "hqmeom_qh_pars"
-  nms <- c("yearmonth", "tmp", "2 years", "5 years", "10 years", "30 years")
-  download_data(x, nms, 6L, "maturity", "par_yield")
-}
-
-tr_par_yield <- function(x = c("tnc", "trc"), type = c("monthly", "end-of-month")) {
+tr_par_yield <- function(x = c("hqm", "tnc", "trc"),
+                         type = c("monthly", "end-of-month")) {
   x <- match.arg(x)
   type <- match.arg(type)
+
+  if (x == "hqm") {
+    nms <- c("yearmonth", "tmp", "2 years", "5 years", "10 years", "30 years")
+  } else {
+    nms <- c(
+      "yearmonth", "tmp", "2 years", "3 years", "5 years", "7 years", "10 years",
+      "20 years", "30 years"
+    )
+  }
 
   if (type == "monthly") {
     sfx <- if (x == "tnc") "_qh_pars_1" else "_qh_pars"
@@ -89,10 +92,6 @@ tr_par_yield <- function(x = c("tnc", "trc"), type = c("monthly", "end-of-month"
   }
   x <- paste0(x, sfx)
 
-  nms <- c(
-    "yearmonth", "tmp", "2 years", "3 years", "5 years", "7 years", "10 years",
-    "20 years", "30 years"
-  )
   download_data(x, nms, 6L, "maturity", "par_yield")
 }
 
