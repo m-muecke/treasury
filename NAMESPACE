@@ -2,7 +2,9 @@
 
 export(tr_bill_rates)
 export(tr_curve_rates)
+export(tr_forward_rate)
 export(tr_long_term_rate)
+export(tr_par_yields)
 export(tr_real_long_term)
 export(tr_real_yield_curve)
 export(tr_yield_curve)

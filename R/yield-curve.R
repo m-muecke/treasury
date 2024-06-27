@@ -71,8 +71,10 @@ tr_curve_rates <- function(x = c("hqm", "tnc", "trc", "tbi"),
   do.call(rbind, res)
 }
 
-tr_par_yield <- function(x = c("hqm", "tnc", "trc"),
-                         type = c("monthly", "end-of-month")) {
+#' @rdname tr_curve_rates
+#' @export
+tr_par_yields <- function(x = c("hqm", "tnc", "trc"),
+                          type = c("monthly", "end-of-month")) {
   x <- match.arg(x)
   type <- match.arg(type)
 
@@ -95,6 +97,8 @@ tr_par_yield <- function(x = c("hqm", "tnc", "trc"),
   download_data(x, nms, 6L, "maturity", "par_yield")
 }
 
+#' @rdname tr_curve_rates
+#' @export
 tr_forward_rate <- function(x = c("tnc", "trc", "tbi"),
                             type = c("monthly", "end-of-month")) {
   x <- match.arg(x)

@@ -1,8 +1,10 @@
 # treasury (development version)
 
 * Better docs
-* Support for treasury High Quality Market (HQM) Corporate Bond Yield Curve data
-* Support for treasury Nominal Coupon-Issue (TNC) Yield Curve data
+* Support for Treasury High Quality Market (HQM) Corporate Bond Yield Curve data
+* Support for Treasury Nominal Coupon-Issue (TNC) Yield Curve data
+* Support for Treasury Real Coupon-Issue (TRC) Yield Curve data
+* Support for Treasury Breakeven Inflation Curve (TBI curve) data
 
 # treasury 0.1.0
 
