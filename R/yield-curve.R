@@ -73,60 +73,41 @@ tr_curve_rates <- function(x = c("hqm", "tnc", "trc", "tbi"),
 
 tr_hqm_pars <- function(x = c("monthly", "end-of-month")) {
   x <- match.arg(x)
-  x <- if (x == "monthly") "hqm" else "hqmeom"
-  url <- sprintf("https://home.treasury.gov/system/files/226/%s_qh_pars.xls", x)
-  tf <- tempfile()
-  on.exit(unlink(tf), add = TRUE)
-  utils::download.file(url, destfile = tf, quiet = TRUE, mode = "wb")
-  res <- readxl::read_excel(tf,
-    col_names = c("yearmonth", "tmp", "2 years", "5 years", "10 years", "30 years"),
-    skip = 6L
-  )
-  res <- res[, -2L]
-  res <- tidyr::pivot_longer(res, -yearmonth,
-    names_to = "maturity", values_to = "par_yield"
-  )
-  res$yearmonth <- as.Date(paste("01", res$yearmonth), format = "%d %B %Y")
-  res
+  x <- if (x == "monthly") "hqm_qh_pars" else "hqmeom_qh_pars"
+  nms <- c("yearmonth", "tmp", "2 years", "5 years", "10 years", "30 years")
+  download_data(x, nms, 6L, "maturity", "par_yield")
 }
 
-tr_tnc_pars <- function(x = c("monthly", "end-of-month")) {
+tr_par_yield <- function(x = c("tnc", "trc"), type = c("monthly", "end-of-month")) {
   x <- match.arg(x)
-  x <- if (x == "monthly") "tnc_qh_pars_1" else "tnceom_qh_pars"
-  url <- sprintf("https://home.treasury.gov/system/files/226/%s.xls", x)
-  tf <- tempfile()
-  on.exit(unlink(tf), add = TRUE)
-  utils::download.file(url, destfile = tf, quiet = TRUE, mode = "wb")
+  type <- match.arg(type)
+
+  if (type == "monthly") {
+    sfx <- if (x == "tnc") "_qh_pars_1" else "_qh_pars"
+  } else {
+    sfx <- "eom_qh_pars"
+  }
+  x <- paste0(x, sfx)
+
   nms <- c(
     "yearmonth", "tmp", "2 years", "3 years", "5 years", "7 years", "10 years",
     "20 years", "30 years"
   )
-  res <- readxl::read_excel(tf, col_names = nms, skip = 5L)
-  res <- res[, -2L]
-  res <- tidyr::pivot_longer(res, -yearmonth,
-    names_to = "maturity", values_to = "par_yield"
-  )
-  res$yearmonth <- as.Date(paste("01", res$yearmonth), format = "%d %B %Y")
-  res
+  download_data(x, nms, 6L, "maturity", "par_yield")
 }
 
-tr_forward <- function(x = c("tnc", "trc", "tbi"),
-                       type = c("monthly", "end-of-month")) {
+tr_forward_rate <- function(x = c("tnc", "trc", "tbi"),
+                            type = c("monthly", "end-of-month")) {
   x <- match.arg(x)
   type <- match.arg(type)
+
   if (type == "monthly") {
-    if (x == "tnc") {
-      x <- sprintf("%s_qh_forwards_0", x)
-    } else {
-      x <- sprintf("%s_qh_forwards", x)
-    }
+    sfx <- if (x == "tnc") "_qh_forwards_0" else "_qh_forwards"
   } else {
-    x <- sprintf("%seom_qh_forwards", x)
+    sfx <- "eom_qh_forwards"
   }
-  url <- sprintf("https://home.treasury.gov/system/files/226/%s.xls", x)
-  tf <- tempfile()
-  on.exit(unlink(tf), add = TRUE)
-  utils::download.file(url, destfile = tf, quiet = TRUE, mode = "wb")
+  x <- paste0(x, sfx)
+
   nms <- c(
     "yearmonth",
     "tmp",
@@ -135,10 +116,18 @@ tr_forward <- function(x = c("tnc", "trc", "tbi"),
     "10-year forward rate 10 years hence",
     "1-year forward rate 30 years hence"
   )
-  res <- readxl::read_excel(tf, col_names = nms, skip = 6L)
+  download_data(x, nms, 6L, "type", "forward_rate")
+}
+
+download_data <- function(x, col_names, skip, names_to, values_to) {
+  url <- sprintf("https://home.treasury.gov/system/files/226/%s.xls", x)
+  tf <- tempfile()
+  on.exit(unlink(tf), add = TRUE)
+  utils::download.file(url, destfile = tf, quiet = TRUE, mode = "wb")
+  res <- readxl::read_excel(tf, col_names = col_names, skip = skip)
   res <- res[, -2L]
   res <- tidyr::pivot_longer(res, -yearmonth,
-    names_to = "type", values_to = "forward_rate"
+    names_to = names_to, values_to = values_to
   )
   res$yearmonth <- as.Date(paste("01", res$yearmonth), format = "%d %B %Y")
   res
