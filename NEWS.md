@@ -1,4 +1,4 @@
-# treasury (development version)
+# treasury 0.2.0
 
 * Better docs
 * Support for Treasury High Quality Market (HQM) Corporate Bond Yield Curve data
