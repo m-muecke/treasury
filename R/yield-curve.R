@@ -1,4 +1,11 @@
-#' Download treasury yield curve rates
+#' Download Treasury Coupon Issues and Corporate Bond Yield Curves
+#'
+#' @description
+#' The Yield Curve for Treasury Nominal Coupon Issues (TNC yield curve) is derived from
+#' Treasury nominal notes and bonds. The Yield Curve for Treasury Real Coupon Issues
+#' (TRC yield curve) is derived from Treasury Inflation-Protected Securities (TIPS).
+#' The Treasury Breakeven Inflation Curve (TBI curve) is derived from the TNC and TRC
+#' yield curves combined.
 #'
 #' @param x `character(1)`. Must be one of the following options:
 #'   * `"hqm"`: The Treasury High Quality Market (HQM) Corporate Bond Yield Curve.
@@ -10,14 +17,19 @@
 #' @param year `integer(1)`. Year to download. Default is `NULL`.
 #'   If `NULL`, then all available years are downloaded.
 #' @returns
-#' A `data.frame()` with the following columns: `yearmonth`, `maturity`, `rate`.
+#' A `data.frame()` containing the treasury rates.
 #' @family yield curve
 #' @source <https://home.treasury.gov/data/treasury-coupon-issues-and-corporate-bond-yield-curves>
 #' @export
 #' @examples
 #' \dontrun{
+#' # TBI Treasury Curve Breakeven Rates
 #' tr_curve_rate("tbi")
 #' tr_curve_rate("trc", "end-of-month", 2024L)
+#' # TRC Treasury Yield Curve Par Yields, Monthly Average
+#' tr_par_yields("trc")
+#' # TNC Treasury Yield Curve Forward Rates, End of Month
+#' tr_forward_rate("tnc", "end-of-month")
 #' }
 tr_curve_rate <- function(x = c("hqm", "tnc", "trc", "tbi"),
                           type = c("monthly", "end-of-month"),

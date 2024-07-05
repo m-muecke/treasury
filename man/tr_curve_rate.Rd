@@ -4,7 +4,7 @@
 \alias{tr_curve_rate}
 \alias{tr_par_yields}
 \alias{tr_forward_rate}
-\title{Download treasury yield curve rates}
+\title{Download Treasury Coupon Issues and Corporate Bond Yield Curves}
 \source{
 \url{https://home.treasury.gov/data/treasury-coupon-issues-and-corporate-bond-yield-curves}
 }
@@ -38,15 +38,24 @@ Default is \code{"monthly"}.}
 If \code{NULL}, then all available years are downloaded.}
 }
 \value{
-A \code{data.frame()} with the following columns: \code{yearmonth}, \code{maturity}, \code{rate}.
+A \code{data.frame()} containing the treasury rates.
 }
 \description{
-Download treasury yield curve rates
+The Yield Curve for Treasury Nominal Coupon Issues (TNC yield curve) is derived from
+Treasury nominal notes and bonds. The Yield Curve for Treasury Real Coupon Issues
+(TRC yield curve) is derived from Treasury Inflation-Protected Securities (TIPS).
+The Treasury Breakeven Inflation Curve (TBI curve) is derived from the TNC and TRC
+yield curves combined.
 }
 \examples{
 \dontrun{
+# TBI Treasury Curve Breakeven Rates
 tr_curve_rate("tbi")
 tr_curve_rate("trc", "end-of-month", 2024L)
+# TRC Treasury Yield Curve Par Yields, Monthly Average
+tr_par_yields("trc")
+# TNC Treasury Yield Curve Forward Rates, End of Month
+tr_forward_rate("tnc", "end-of-month")
 }
 }
 \concept{yield curve}
