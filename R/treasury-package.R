@@ -14,3 +14,5 @@
 #' @importFrom rlang :=
 ## usethis namespace: end
 NULL
+
+utils::globalVariables(c("maturity", "yearmonth"))
