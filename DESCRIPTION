@@ -1,5 +1,5 @@
 Package: treasury
-Title: US Treasury XML Feed Wrapper
+Title: Client for US Treasury XML Feed and Published Data
 Version: 0.2.0
 Authors@R:
     person("Maximilian", "Muecke", , "muecke.maximilian@gmail.com", role = c("aut", "cre"),
