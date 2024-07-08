@@ -1,45 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://m-muecke.github.io/treasury/404.html</loc>
-  </url>
-  <url>
-    <loc>https://m-muecke.github.io/treasury/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://m-muecke.github.io/treasury/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://m-muecke.github.io/treasury/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://m-muecke.github.io/treasury/index.html</loc>
-  </url>
-  <url>
-    <loc>https://m-muecke.github.io/treasury/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://m-muecke.github.io/treasury/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://m-muecke.github.io/treasury/reference/tr_bill_rates.html</loc>
-  </url>
-  <url>
-    <loc>https://m-muecke.github.io/treasury/reference/tr_curve_rate.html</loc>
-  </url>
-  <url>
-    <loc>https://m-muecke.github.io/treasury/reference/tr_long_term_rate.html</loc>
-  </url>
-  <url>
-    <loc>https://m-muecke.github.io/treasury/reference/tr_real_long_term.html</loc>
-  </url>
-  <url>
-    <loc>https://m-muecke.github.io/treasury/reference/tr_real_yield_curve.html</loc>
-  </url>
-  <url>
-    <loc>https://m-muecke.github.io/treasury/reference/tr_yield_curve.html</loc>
-  </url>
-  <url>
-    <loc>https://m-muecke.github.io/treasury/reference/treasury-package.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://m-muecke.github.io/treasury/404.html</loc></url>
+<url><loc>https://m-muecke.github.io/treasury/LICENSE-text.html</loc></url>
+<url><loc>https://m-muecke.github.io/treasury/LICENSE.html</loc></url>
+<url><loc>https://m-muecke.github.io/treasury/authors.html</loc></url>
+<url><loc>https://m-muecke.github.io/treasury/index.html</loc></url>
+<url><loc>https://m-muecke.github.io/treasury/news/index.html</loc></url>
+<url><loc>https://m-muecke.github.io/treasury/reference/index.html</loc></url>
+<url><loc>https://m-muecke.github.io/treasury/reference/tr_bill_rates.html</loc></url>
+<url><loc>https://m-muecke.github.io/treasury/reference/tr_curve_rate.html</loc></url>
+<url><loc>https://m-muecke.github.io/treasury/reference/tr_long_term_rate.html</loc></url>
+<url><loc>https://m-muecke.github.io/treasury/reference/tr_real_long_term.html</loc></url>
+<url><loc>https://m-muecke.github.io/treasury/reference/tr_real_yield_curve.html</loc></url>
+<url><loc>https://m-muecke.github.io/treasury/reference/tr_yield_curve.html</loc></url>
+<url><loc>https://m-muecke.github.io/treasury/reference/treasury-package.html</loc></url>
 </urlset>
+
