@@ -2,6 +2,7 @@ url: https://m-muecke.github.io/treasury
 
 template:
   bootstrap: 5
+  light-switch: true
 
 reference:
   - subtitle: Interest Rates
