@@ -38,7 +38,8 @@ parse_yield_curve <- function(x) {
   data.frame(
     date = date,
     maturity = xml2::xml_name(values),
-    rate = xml2::xml_double(values)
+    rate = xml2::xml_double(values),
+    check.names = FALSE
   )
 }
 
@@ -97,7 +98,8 @@ parse_bill_rates <- function(x) {
   data.frame(
     date = date,
     type = xml2::xml_name(values),
-    value = xml2::xml_double(values)
+    value = xml2::xml_double(values),
+    check.names = FALSE
   )
 }
 
@@ -152,7 +154,7 @@ parse_long_term_rate <- function(x) {
   rate <- x |>
     xml2::xml_find_all(".//d:RATE") |>
     xml2::xml_double()
-  data.frame(date = date, rate_type = rate_type, rate = rate)
+  data.frame(date = date, rate_type = rate_type, rate = rate, check.names = FALSE)
 }
 
 clean_long_term_rate <- function(data) {
@@ -204,7 +206,8 @@ parse_real_yield_curve <- function(x) {
   data.frame(
     date = date,
     maturity = xml2::xml_name(values),
-    rate = xml2::xml_double(values)
+    rate = xml2::xml_double(values),
+    check.names = FALSE
   )
 }
 
@@ -248,7 +251,7 @@ parse_real_long_term <- function(x) {
   rate <- x |>
     xml2::xml_find_all(".//d:RATE") |>
     xml2::xml_double()
-  data.frame(date = date, rate = rate)
+  data.frame(date = date, rate = rate, check.names = FALSE)
 }
 
 treasury <- function(data, date, fn) {
