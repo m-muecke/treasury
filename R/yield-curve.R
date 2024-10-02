@@ -48,7 +48,7 @@ tr_curve_rate <- function(x = c("hqm", "tnc", "trc", "tbi"),
   if (!is.null(year)) {
     years <- years[findInterval(year, years)]
   }
-  urls <- vapply(years, \(year) {
+  urls <- vapply(years, function(year) {
     sprintf(
       "https://home.treasury.gov/system/files/226/%s_%02d_%02d.%s",
       x,
@@ -62,11 +62,11 @@ tr_curve_rate <- function(x = c("hqm", "tnc", "trc", "tbi"),
   }
 
   months <- rep.int(month.name, 5L)
-  res <- lapply(seq_along(urls), \(i) {
+  res <- lapply(seq_along(urls), function(i) {
     tf <- tempfile()
     on.exit(unlink(tf), add = TRUE)
     utils::download.file(urls[[i]], destfile = tf, quiet = TRUE, mode = "wb")
-    res <- readxl::read_excel(tf, skip = 4L, .name_repair = \(nms) {
+    res <- readxl::read_excel(tf, skip = 4L, .name_repair = function(nms) {
       year <- years[[i]]
       years <- rep(year:(year + 4L), each = 12L)
       nms <- paste(months, years, sep = "-")
