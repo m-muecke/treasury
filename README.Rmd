@@ -11,6 +11,7 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+options(datatable.prettyprint.char = 30L)
 ```
 
 # treasury
@@ -22,6 +23,7 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 ## Overview
+
 The goal of treasury is to provide a simple and modern interface to the [US treasury XML feed](https://home.treasury.gov/treasury-daily-interest-rate-xml-feed) for daily interest rates.
 
 ## Installation
