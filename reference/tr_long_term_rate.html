@@ -78,7 +78,7 @@ If <code>NULL</code>, all data is returned. Default <code>NULL</code>.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <code><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame()</a></code> containing the rates or <code>NULL</code> when no entries were found.</p>
+    <p>A <code>data.table()</code> containing the rates or <code>NULL</code> when no entries were found.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -94,36 +94,84 @@ If <code>NULL</code>, all data is returned. Default <code>NULL</code>.</p></dd>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="co"># get data for a single month</span></span></span>
 <span class="r-in"><span><span class="fu">tr_long_term_rate</span><span class="op">(</span><span class="st">"202201"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 60 × 3</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    date       rate_type      rate</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2022-01-03 20 year        2.05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2022-01-03 over 10 years  2   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2022-01-03 real rate     -<span style="color: #BB0000;">0.43</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2022-01-04 20 year        2.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2022-01-04 over 10 years  2.06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2022-01-04 real rate     -<span style="color: #BB0000;">0.35</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2022-01-05 20 year        2.12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2022-01-05 over 10 years  2.08</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2022-01-05 real rate     -<span style="color: #BB0000;">0.27</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2022-01-06 20 year        2.12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 50 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           date     rate_type  rate</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         &lt;Date&gt;        &lt;char&gt; &lt;num&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1: 2022-01-03       20 year  2.05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2: 2022-01-03 over 10 years  2.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3: 2022-01-03     real rate -0.43</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4: 2022-01-04       20 year  2.10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5: 2022-01-04 over 10 years  2.06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  6: 2022-01-04     real rate -0.35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  7: 2022-01-05       20 year  2.12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  8: 2022-01-05 over 10 years  2.08</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  9: 2022-01-05     real rate -0.27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10: 2022-01-06       20 year  2.12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11: 2022-01-06 over 10 years  2.08</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12: 2022-01-06     real rate -0.21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13: 2022-01-07       20 year  2.15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14: 2022-01-07 over 10 years  2.11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15: 2022-01-07     real rate -0.22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16: 2022-01-10       20 year  2.15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17: 2022-01-10 over 10 years  2.11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18: 2022-01-10     real rate -0.21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19: 2022-01-11       20 year  2.13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20: 2022-01-11 over 10 years  2.08</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21: 2022-01-11     real rate -0.29</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22: 2022-01-12       20 year  2.13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23: 2022-01-12 over 10 years  2.09</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24: 2022-01-12     real rate -0.23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25: 2022-01-13       20 year  2.10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26: 2022-01-13 over 10 years  2.05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27: 2022-01-13     real rate -0.23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28: 2022-01-14       20 year  2.18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29: 2022-01-14 over 10 years  2.13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30: 2022-01-14     real rate -0.16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31: 2022-01-18       20 year  2.24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32: 2022-01-18 over 10 years  2.19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33: 2022-01-18     real rate -0.12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34: 2022-01-19       20 year  2.20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35: 2022-01-19 over 10 years  2.16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36: 2022-01-19     real rate -0.11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37: 2022-01-20       20 year  2.19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38: 2022-01-20 over 10 years  2.15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39: 2022-01-20     real rate -0.10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40: 2022-01-21       20 year  2.13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41: 2022-01-21 over 10 years  2.08</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42: 2022-01-21     real rate -0.18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43: 2022-01-24       20 year  2.15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44: 2022-01-24 over 10 years  2.11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45: 2022-01-24     real rate -0.19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46: 2022-01-25       20 year  2.18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47: 2022-01-25 over 10 years  2.13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48: 2022-01-25     real rate -0.16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49: 2022-01-26       20 year  2.22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50: 2022-01-26 over 10 years  2.18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51: 2022-01-26     real rate -0.10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52: 2022-01-27       20 year  2.17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53: 2022-01-27 over 10 years  2.11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54: 2022-01-27     real rate -0.17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55: 2022-01-28       20 year  2.14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56: 2022-01-28 over 10 years  2.09</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57: 2022-01-28     real rate -0.21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58: 2022-01-31       20 year  2.17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59: 2022-01-31 over 10 years  2.12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60: 2022-01-31     real rate -0.19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           date     rate_type  rate</span>
 <span class="r-in"><span><span class="co"># or for the entire year</span></span></span>
 <span class="r-in"><span><span class="fu">tr_long_term_rate</span><span class="op">(</span><span class="fl">2022</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 747 × 3</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    date       rate_type      rate</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2022-01-03 20 year        2.05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2022-01-03 over 10 years  2   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2022-01-03 real rate     -<span style="color: #BB0000;">0.43</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2022-01-04 20 year        2.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2022-01-04 over 10 years  2.06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2022-01-04 real rate     -<span style="color: #BB0000;">0.35</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2022-01-05 20 year        2.12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2022-01-05 over 10 years  2.08</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2022-01-05 real rate     -<span style="color: #BB0000;">0.27</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2022-01-06 20 year        2.12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 737 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            date     rate_type  rate</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          &lt;Date&gt;        &lt;char&gt; &lt;num&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1: 2022-01-03       20 year  2.05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   2: 2022-01-03 over 10 years  2.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   3: 2022-01-03     real rate -0.43</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   4: 2022-01-04       20 year  2.10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   5: 2022-01-04 over 10 years  2.06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ---                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 743: 2022-12-29 over 10 years  4.06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 744: 2022-12-29     real rate  1.74</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 745: 2022-12-30       20 year  4.14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 746: 2022-12-30 over 10 years  4.11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 747: 2022-12-30     real rate  1.78</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>

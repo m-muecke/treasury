@@ -72,7 +72,7 @@ If <code>NULL</code>, all data is returned. Default <code>NULL</code>.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <code><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame()</a></code> containing the rates or <code>NULL</code> when no entries were found.</p>
+    <p>A <code>data.table()</code> containing the rates or <code>NULL</code> when no entries were found.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -100,36 +100,34 @@ same maturity date.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="co"># get data for a single month</span></span></span>
 <span class="r-in"><span><span class="fu">tr_bill_rates</span><span class="op">(</span><span class="st">"202201"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 200 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    date       type  maturity value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2022-01-03 close 4 weeks   0.05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2022-01-03 yield 4 weeks   0.05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2022-01-03 close 8 weeks   0.06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2022-01-03 yield 8 weeks   0.06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2022-01-03 close 13 weeks  0.09</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2022-01-03 yield 13 weeks  0.09</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2022-01-03 close 26 weeks  0.22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2022-01-03 yield 26 weeks  0.22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2022-01-03 close 52 weeks  0.39</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2022-01-03 yield 52 weeks  0.4 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 190 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            date   type maturity value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          &lt;Date&gt; &lt;char&gt;   &lt;char&gt; &lt;num&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1: 2022-01-03  close  4 weeks  0.05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   2: 2022-01-03  yield  4 weeks  0.05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   3: 2022-01-03  close  8 weeks  0.06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   4: 2022-01-03  yield  8 weeks  0.06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   5: 2022-01-03  close 13 weeks  0.09</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ---                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 196: 2022-01-31  yield 13 weeks  0.24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 197: 2022-01-31  close 26 weeks  0.49</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 198: 2022-01-31  yield 26 weeks  0.50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 199: 2022-01-31  close 52 weeks  0.76</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 200: 2022-01-31  yield 52 weeks  0.77</span>
 <span class="r-in"><span><span class="co"># or for the entire year</span></span></span>
 <span class="r-in"><span><span class="fu">tr_bill_rates</span><span class="op">(</span><span class="fl">2022</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2,590 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    date       type  maturity value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2022-01-03 close 4 weeks   0.05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2022-01-03 yield 4 weeks   0.05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2022-01-03 close 8 weeks   0.06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2022-01-03 yield 8 weeks   0.06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2022-01-03 close 13 weeks  0.09</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2022-01-03 yield 13 weeks  0.09</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2022-01-03 close 26 weeks  0.22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2022-01-03 yield 26 weeks  0.22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2022-01-03 close 52 weeks  0.39</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2022-01-03 yield 52 weeks  0.4 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 2,580 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             date   type maturity value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           &lt;Date&gt; &lt;char&gt;   &lt;char&gt; &lt;num&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    1: 2022-01-03  close  4 weeks  0.05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    2: 2022-01-03  yield  4 weeks  0.05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    3: 2022-01-03  close  8 weeks  0.06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    4: 2022-01-03  yield  8 weeks  0.06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    5: 2022-01-03  close 13 weeks  0.09</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ---                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2586: 2022-12-30  yield 17 weeks  4.70</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2587: 2022-12-30  close 26 weeks  4.60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2588: 2022-12-30  yield 26 weeks  4.77</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2589: 2022-12-30  close 52 weeks  4.51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2590: 2022-12-30  yield 52 weeks  4.73</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
