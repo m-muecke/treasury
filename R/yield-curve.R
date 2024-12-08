@@ -17,7 +17,7 @@
 #' @param year `integer(1)`. Year to download. Default is `NULL`.
 #'   If `NULL`, then all available years are downloaded.
 #' @returns
-#' A `data.frame()` containing the treasury rates.
+#' A `data.table()` containing the treasury rates.
 #' @family yield curve
 #' @source <https://home.treasury.gov/data/treasury-coupon-issues-and-corporate-bond-yield-curves>
 #' @export
@@ -34,6 +34,9 @@
 tr_curve_rate <- function(x = c("hqm", "tnc", "trc", "tbi"),
                           type = c("monthly", "end-of-month"),
                           year = NULL) {
+  if (requireNamespace("readxl", quietly = TRUE)) {
+    stop("Please install the readxl package to use this function.", call. = FALSE)
+  }
   stopifnot(is_count_or_null(year))
   x <- match.arg(x)
   type <- match.arg(type)
@@ -66,27 +69,35 @@ tr_curve_rate <- function(x = c("hqm", "tnc", "trc", "tbi"),
     tf <- tempfile()
     on.exit(unlink(tf), add = TRUE)
     utils::download.file(urls[[i]], destfile = tf, quiet = TRUE, mode = "wb")
-    res <- readxl::read_excel(tf, skip = 4L, .name_repair = function(nms) {
+    dt <- readxl::read_excel(tf, skip = 4L, .name_repair = function(nms) {
       year <- years[[i]]
       years <- rep(year:(year + 4L), each = 12L)
       nms <- paste(months, years, sep = "-")
       nms <- c("maturity", "tmp", nms)
       nms
-    })
-    res <- res[, -2L]
-    res <- tidyr::pivot_longer(res, -maturity,
-      names_to = "yearmonth", values_to = "rate", values_drop_na = TRUE
+    }) |>
+      setDT()
+    dt[, 2L := NULL]
+    dt[, names(.SD) := lapply(.SD, as.numeric), .SDcols = is.logical]
+    dt <- melt(dt,
+      id.vars = "maturity",
+      variable.name = "yearmonth",
+      value.name = "rate",
+      na.rm = TRUE
     )
-    res$yearmonth <- as.Date(paste("01", res$yearmonth, sep = "-"), format = "%d-%B-%Y")
-    res[c("yearmonth", "maturity", "rate")]
+    dt[, yearmonth := as.Date(paste("01", yearmonth, sep = "-"), format = "%d-%B-%Y")]
+    dt[, c("yearmonth", "maturity", "rate")]
   })
-  do.call(rbind, res)
+  rbindlist(res)
 }
 
 #' @rdname tr_curve_rate
 #' @export
 tr_par_yields <- function(x = c("hqm", "tnc", "trc"),
                           type = c("monthly", "end-of-month")) {
+  if (requireNamespace("readxl", quietly = TRUE)) {
+    stop("Please install the readxl package to use this function.", call. = FALSE)
+  }
   x <- match.arg(x)
   type <- match.arg(type)
 
@@ -113,6 +124,9 @@ tr_par_yields <- function(x = c("hqm", "tnc", "trc"),
 #' @export
 tr_forward_rate <- function(x = c("tnc", "trc", "tbi"),
                             type = c("monthly", "end-of-month")) {
+  if (requireNamespace("readxl", quietly = TRUE)) {
+    stop("Please install the readxl package to use this function.", call. = FALSE)
+  }
   x <- match.arg(x)
   type <- match.arg(type)
 
@@ -139,11 +153,13 @@ download_data <- function(x, col_names, skip, names_to, values_to) {
   tf <- tempfile()
   on.exit(unlink(tf), add = TRUE)
   utils::download.file(url, destfile = tf, quiet = TRUE, mode = "wb")
-  res <- readxl::read_excel(tf, col_names = col_names, skip = skip)
-  res <- res[, -2L]
-  res <- tidyr::pivot_longer(res, -yearmonth,
-    names_to = names_to, values_to = values_to
+  dt <- readxl::read_excel(tf, col_names = col_names, skip = skip) |>
+    setDT()
+  dt[, 2L := NULL]
+  dt <- melt(dt,
+    id.vars = "yearmonth",
+    variable.name = names_to,
+    value.name = values_to
   )
-  res$yearmonth <- as.Date(paste("01", res$yearmonth), format = "%d %B %Y")
-  res
+  dt[, yearmonth := as.Date(paste("01", yearmonth), format = "%d %B %Y")][]
 }

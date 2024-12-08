@@ -1,5 +1,7 @@
 # treasury (development version)
 
+* Migrate to data.table package
+
 # treasury 0.2.0
 
 * Better docs

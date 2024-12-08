@@ -9,7 +9,7 @@
 #'
 #' @param date `character(1)` or `numeric(1)` date in format yyyy or yyyymm.
 #'   If `NULL`, all data is returned. Default `NULL`.
-#' @returns A `data.frame()` containing the rates or `NULL` when no entries were found.
+#' @returns A `data.table()` containing the rates or `NULL` when no entries were found.
 #' @source <https://home.treasury.gov/treasury-daily-interest-rate-xml-feed>
 #' @family interest rate
 #' @export
@@ -26,7 +26,7 @@ tr_yield_curve <- function(date = NULL) {
     return()
   }
   data <- clean_yield_curve(data)
-  as_tibble(data)
+  data
 }
 
 parse_yield_curve <- function(x) {
@@ -35,20 +35,17 @@ parse_yield_curve <- function(x) {
     xml2::xml_text() |>
     as.Date()
   values <- xml2::xml_find_all(x, "./*[starts-with(name(), 'd:BC_')]")
-  data.frame(
+  data.table(
     date = date,
     maturity = xml2::xml_name(values),
-    rate = xml2::xml_double(values),
-    check.names = FALSE
+    rate = xml2::xml_double(values)
   )
 }
 
-clean_yield_curve <- function(data) {
-  data <- data[data$maturity != "BC_30YEARDISPLAY", ]
-  data$maturity <- tolower(data$maturity)
-  data$maturity <- gsub("bc_", "", data$maturity, fixed = TRUE)
-  data$maturity <- gsub("(\\d+)(\\w+)", "\\1 \\2", data$maturity)
-  data
+clean_yield_curve <- function(dt) {
+  dt <- dt[maturity != "BC_30YEARDISPLAY"]
+  dt[, maturity := gsub("bc_", "", tolower(maturity), fixed = TRUE)]
+  dt[, maturity := gsub("(\\d+)(\\w+)", "\\1 \\2", maturity)][]
 }
 
 #' Daily treasury bill rates
@@ -86,7 +83,7 @@ tr_bill_rates <- function(date = NULL) {
     return()
   }
   data <- clean_bill_rates(data)
-  as_tibble(data)
+  data
 }
 
 parse_bill_rates <- function(x) {
@@ -95,23 +92,21 @@ parse_bill_rates <- function(x) {
     xml2::xml_text() |>
     as.Date()
   values <- xml2::xml_find_all(x, "./*[starts-with(name(), 'd:ROUND_B1_')]")
-  data.frame(
+  data.table(
     date = date,
     type = xml2::xml_name(values),
-    value = xml2::xml_double(values),
-    check.names = FALSE
+    value = xml2::xml_double(values)
   )
 }
 
-clean_bill_rates <- function(data) {
-  data$type <- tolower(data$type)
-  data$type <- gsub("round_b1_", "", data$type, fixed = TRUE)
-  data$type <- gsub("_2$", "", data$type)
-  maturity <- strsplit(data$type, "_", fixed = TRUE)
-  data$type <- vapply(maturity, `[[`, NA_character_, 1L)
-  maturity <- vapply(maturity, `[[`, NA_character_, 2L)
-  data$maturity <- gsub("wk", " weeks", maturity, fixed = TRUE)
-  data[c("date", "type", "maturity", "value")]
+clean_bill_rates <- function(dt) {
+  dt[, type := gsub("round_b1_", "", tolower(type), fixed = TRUE)]
+  dt[, type := gsub("_2$", "", type)]
+  dt[, maturity := strsplit(type, "_", fixed = TRUE)]
+  dt[, type := vapply(maturity, `[[`, NA_character_, 1L)]
+  dt[, maturity := vapply(maturity, `[[`, NA_character_, 2L)]
+  dt[, maturity := gsub("wk", " weeks", maturity, fixed = TRUE)]
+  dt[, c("date", "type", "maturity", "value")]
 }
 
 #' Daily treasury long-term rates
@@ -140,7 +135,7 @@ tr_long_term_rate <- function(date = NULL) {
     return()
   }
   data <- clean_long_term_rate(data)
-  as_tibble(data)
+  data
 }
 
 parse_long_term_rate <- function(x) {
@@ -154,15 +149,13 @@ parse_long_term_rate <- function(x) {
   rate <- x |>
     xml2::xml_find_all(".//d:RATE") |>
     xml2::xml_double()
-  data.frame(date = date, rate_type = rate_type, rate = rate, check.names = FALSE)
+  data.table(date = date, rate_type = rate_type, rate = rate)
 }
 
-clean_long_term_rate <- function(data) {
-  data$rate_type <- tolower(data$rate_type)
-  data$rate_type <- gsub("^bc_", "", data$rate_type)
-  data$rate_type <- gsub("_", " ", data$rate_type, fixed = TRUE)
-  data$rate_type <- gsub("(\\d+)(year?)", "\\1 \\2", data$rate_type)
-  data
+clean_long_term_rate <- function(dt) {
+  dt[, rate_type := gsub("^bc_", "", tolower(rate_type))]
+  dt[, rate_type := gsub("_", " ", rate_type, fixed = TRUE)]
+  dt[, rate_type := gsub("(\\d+)(year?)", "\\1 \\2", rate_type)][]
 }
 
 #' Daily treasury par real yield curve rates
@@ -187,14 +180,12 @@ clean_long_term_rate <- function(data) {
 #' tr_real_yield_curve(2022)
 #' }
 tr_real_yield_curve <- function(date = NULL) {
-  data <- treasury(
-    "daily_treasury_real_yield_curve", date, parse_real_yield_curve
-  )
+  data <- treasury("daily_treasury_real_yield_curve", date, parse_real_yield_curve)
   if (is.null(data)) {
     return()
   }
   data <- clean_real_yield_curves(data)
-  as_tibble(data)
+  data
 }
 
 parse_real_yield_curve <- function(x) {
@@ -203,19 +194,16 @@ parse_real_yield_curve <- function(x) {
     xml2::xml_text() |>
     as.Date()
   values <- xml2::xml_find_all(x, "./*[starts-with(name(), 'd:TC_')]")
-  data.frame(
+  data.table(
     date = date,
     maturity = xml2::xml_name(values),
-    rate = xml2::xml_double(values),
-    check.names = FALSE
+    rate = xml2::xml_double(values)
   )
 }
 
-clean_real_yield_curves <- function(data) {
-  data$maturity <- tolower(data$maturity)
-  data$maturity <- gsub("tc_", "", data$maturity, fixed = TRUE)
-  data$maturity <- gsub("(\\d+)(\\w+)", "\\1 \\2", data$maturity)
-  data
+clean_real_yield_curves <- function(dt) {
+  dt[, maturity := gsub("tc_", "", tolower(maturity), fixed = TRUE)]
+  dt[, maturity := gsub("(\\d+)(\\w+)", "\\1 \\2", maturity)][]
 }
 
 #' Daily treasury real long-term rate averages
@@ -240,7 +228,7 @@ tr_real_long_term <- function(date = NULL) {
   if (is.null(data)) {
     return()
   }
-  as_tibble(data)
+  data
 }
 
 parse_real_long_term <- function(x) {
@@ -251,7 +239,7 @@ parse_real_long_term <- function(x) {
   rate <- x |>
     xml2::xml_find_all(".//d:RATE") |>
     xml2::xml_double()
-  data.frame(date = date, rate = rate, check.names = FALSE)
+  data.table(date = date, rate = rate)
 }
 
 treasury <- function(data, date, fn) {
@@ -262,7 +250,7 @@ treasury <- function(data, date, fn) {
 tr_make_request <- function(data, date) {
   if (!is.null(date)) {
     date <- as.character(date)
-    if (!(length(date) == 1L && grepl("^\\d{4,6}$", date))) {
+    if (length(date) != 1L || !grepl("^\\d{4,6}$", date)) {
       stop(
         "`date` must be a single value in format yyyy or yyyymm",
         call. = FALSE
@@ -314,5 +302,5 @@ tr_parse_response <- function(resp, fn) {
   if (length(entries) == 0L) {
     return()
   }
-  do.call(rbind, lapply(entries, fn))
+  rbindlist(lapply(entries, fn))
 }

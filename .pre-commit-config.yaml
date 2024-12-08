@@ -15,10 +15,9 @@ repos:
     hooks:
       - id: roxygenize
         additional_dependencies:
+          - data.table
           - httr2
           - readxl
-          - rlang
-          - tidyr
           - xml2
       - id: deps-in-desc
       - id: no-browser-statement
