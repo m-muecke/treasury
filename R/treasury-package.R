@@ -11,4 +11,4 @@
 #' @importFrom httr2 resps_successes
 "_PACKAGE"
 
-utils::globalVariables(c("maturity", "yearmonth"))
+utils::globalVariables(c("maturity", "yearmonth", "rate_type", "type"))
