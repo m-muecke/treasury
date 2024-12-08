@@ -38,7 +38,7 @@ Default is \code{"monthly"}.}
 If \code{NULL}, then all available years are downloaded.}
 }
 \value{
-A \code{data.frame()} containing the treasury rates.
+A \code{data.table()} containing the treasury rates.
 }
 \description{
 The Yield Curve for Treasury Nominal Coupon Issues (TNC yield curve) is derived from

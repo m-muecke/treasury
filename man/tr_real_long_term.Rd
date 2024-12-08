@@ -14,7 +14,7 @@ tr_real_long_term(date = NULL)
 If \code{NULL}, all data is returned. Default \code{NULL}.}
 }
 \value{
-A \code{data.frame()} containing the rates or \code{NULL} when no entries were found.
+A \code{data.table()} containing the rates or \code{NULL} when no entries were found.
 }
 \description{
 The Long-Term Real Rate Average is the unweighted average of bid real yields

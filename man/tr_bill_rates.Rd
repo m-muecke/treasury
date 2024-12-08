@@ -14,7 +14,7 @@ tr_bill_rates(date = NULL)
 If \code{NULL}, all data is returned. Default \code{NULL}.}
 }
 \value{
-A \code{data.frame()} containing the rates or \code{NULL} when no entries were found.
+A \code{data.table()} containing the rates or \code{NULL} when no entries were found.
 }
 \description{
 These rates are the daily secondary market quotations on the most recently

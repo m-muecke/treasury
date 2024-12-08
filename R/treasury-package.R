@@ -1,7 +1,5 @@
 #' @keywords internal
-"_PACKAGE"
-
-## usethis namespace: start
+#' @import data.table
 #' @importFrom httr2 iterate_with_offset
 #' @importFrom httr2 req_perform
 #' @importFrom httr2 req_perform_iterative
@@ -11,8 +9,6 @@
 #' @importFrom httr2 resp_body_xml
 #' @importFrom httr2 resps_data
 #' @importFrom httr2 resps_successes
-#' @importFrom rlang :=
-## usethis namespace: end
-NULL
+"_PACKAGE"
 
 utils::globalVariables(c("maturity", "yearmonth"))
