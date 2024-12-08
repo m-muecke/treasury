@@ -1,6 +1,7 @@
 # treasury (development version)
 
-* Migrate to data.table package
+* Migration to data.table package. Internal data manipulation is now done using
+  data.table and all functions return data.table objects.
 
 # treasury 0.2.0
 
