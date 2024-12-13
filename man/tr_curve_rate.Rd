@@ -23,7 +23,7 @@ tr_forward_rate(
 )
 }
 \arguments{
-\item{x}{\code{character(1)}. Must be one of the following options:
+\item{x}{(\code{character(1)}) one of the following options:
 \itemize{
 \item \code{"hqm"}: The Treasury High Quality Market (HQM) Corporate Bond Yield Curve.
 \item \code{"tnc"}: The Treasury Nominal Coupon-Issue (TNC) Yield Curve.
@@ -31,10 +31,10 @@ tr_forward_rate(
 \item \code{"tbi"}: The Treasury Breakeven Inflation (TBI) Curve.
 }}
 
-\item{type}{\code{character(1)}. Either \code{"monthly"} or \code{"end-of-month"}.
+\item{type}{(\code{character(1)}) either \code{"monthly"} or \code{"end-of-month"}.
 Default is \code{"monthly"}.}
 
-\item{year}{\code{integer(1)}. Year to download. Default is \code{NULL}.
+\item{year}{(\code{integer(1)}) year to download. Default is \code{NULL}.
 If \code{NULL}, then all available years are downloaded.}
 }
 \value{

@@ -7,14 +7,14 @@
 #' The Treasury Breakeven Inflation Curve (TBI curve) is derived from the TNC and TRC
 #' yield curves combined.
 #'
-#' @param x `character(1)`. Must be one of the following options:
+#' @param x (`character(1)`) one of the following options:
 #'   * `"hqm"`: The Treasury High Quality Market (HQM) Corporate Bond Yield Curve.
 #'   * `"tnc"`: The Treasury Nominal Coupon-Issue (TNC) Yield Curve.
 #'   * `"trc"`: The Treasury Real Coupon-Issue (TRC) Yield Curve.
 #'   * `"tbi"`: The Treasury Breakeven Inflation (TBI) Curve.
-#' @param type `character(1)`. Either `"monthly"` or `"end-of-month"`.
+#' @param type (`character(1)`) either `"monthly"` or `"end-of-month"`.
 #'   Default is `"monthly"`.
-#' @param year `integer(1)`. Year to download. Default is `NULL`.
+#' @param year (`integer(1)`) year to download. Default is `NULL`.
 #'   If `NULL`, then all available years are downloaded.
 #' @returns
 #' A `data.table()` containing the treasury rates.
