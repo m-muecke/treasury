@@ -16,8 +16,7 @@
 #'   Default is `"monthly"`.
 #' @param year (`integer(1)`) year to download. Default is `NULL`.
 #'   If `NULL`, then all available years are downloaded.
-#' @returns
-#' A `data.table()` containing the treasury rates.
+#' @returns A [data.table::data.table()] containing the treasury rates.
 #' @family yield curve
 #' @source <https://home.treasury.gov/data/treasury-coupon-issues-and-corporate-bond-yield-curves>
 #' @export
