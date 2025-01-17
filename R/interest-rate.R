@@ -264,7 +264,9 @@ tr_make_request <- function(data, date) {
   if (nchar(date) == 6L) {
     nm <- paste(nm, "month", sep = "_")
   }
-  req <- request("https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml") |> # nolint
+  req <- request(
+    "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml" # nolint
+  ) |>
     req_user_agent("treasury (https://m-muecke.github.io/treasury)") |>
     req_url_query(data = data, "{nm}" := date) # nolint
 
