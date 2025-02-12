@@ -21,12 +21,12 @@
 #' tr_yield_curve(2022)
 #' }
 tr_yield_curve <- function(date = NULL) {
-  data <- treasury("daily_treasury_yield_curve", date, parse_yield_curve)
-  if (is.null(data)) {
+  dt <- treasury("daily_treasury_yield_curve", date, parse_yield_curve)
+  if (is.null(dt)) {
     return()
   }
-  data <- clean_yield_curve(data)
-  data
+  dt <- clean_yield_curve(dt)
+  dt
 }
 
 parse_yield_curve <- function(x) {
@@ -78,12 +78,12 @@ clean_yield_curve <- function(dt) {
 #' tr_bill_rates(2022)
 #' }
 tr_bill_rates <- function(date = NULL) {
-  data <- treasury("daily_treasury_bill_rates", date, parse_bill_rates)
-  if (is.null(data)) {
+  dt <- treasury("daily_treasury_bill_rates", date, parse_bill_rates)
+  if (is.null(dt)) {
     return()
   }
-  data <- clean_bill_rates(data)
-  data
+  dt <- clean_bill_rates(dt)
+  dt
 }
 
 parse_bill_rates <- function(x) {
@@ -130,12 +130,12 @@ clean_bill_rates <- function(dt) {
 #' tr_long_term_rate(2022)
 #' }
 tr_long_term_rate <- function(date = NULL) {
-  data <- treasury("daily_treasury_long_term_rate", date, parse_long_term_rate)
-  if (is.null(data)) {
+  dt <- treasury("daily_treasury_long_term_rate", date, parse_long_term_rate)
+  if (is.null(dt)) {
     return()
   }
-  data <- clean_long_term_rate(data)
-  data
+  dt <- clean_long_term_rate(dt)
+  dt
 }
 
 parse_long_term_rate <- function(x) {
@@ -180,12 +180,12 @@ clean_long_term_rate <- function(dt) {
 #' tr_real_yield_curve(2022)
 #' }
 tr_real_yield_curve <- function(date = NULL) {
-  data <- treasury("daily_treasury_real_yield_curve", date, parse_real_yield_curve)
-  if (is.null(data)) {
+  dt <- treasury("daily_treasury_real_yield_curve", date, parse_real_yield_curve)
+  if (is.null(dt)) {
     return()
   }
-  data <- clean_real_yield_curves(data)
-  data
+  dt <- clean_real_yield_curves(dt)
+  dt
 }
 
 parse_real_yield_curve <- function(x) {
@@ -224,11 +224,11 @@ clean_real_yield_curves <- function(dt) {
 #' tr_real_long_term(2022)
 #' }
 tr_real_long_term <- function(date = NULL) {
-  data <- treasury("daily_treasury_real_long_term", date, parse_real_long_term)
-  if (is.null(data)) {
+  dt <- treasury("daily_treasury_real_long_term", date, parse_real_long_term)
+  if (is.null(dt)) {
     return()
   }
-  data
+  dt
 }
 
 parse_real_long_term <- function(x) {
