@@ -30,9 +30,11 @@
 #' # TNC Treasury Yield Curve Forward Rates, End of Month
 #' tr_forward_rate("tnc", "end-of-month")
 #' }
-tr_curve_rate <- function(x = c("hqm", "tnc", "trc", "tbi"),
-                          type = c("monthly", "end-of-month"),
-                          year = NULL) {
+tr_curve_rate <- function(
+  x = c("hqm", "tnc", "trc", "tbi"),
+  type = c("monthly", "end-of-month"),
+  year = NULL
+) {
   if (requireNamespace("readxl", quietly = TRUE)) {
     stop("Please install the readxl package to use this function.", call. = FALSE)
   }
@@ -92,8 +94,10 @@ tr_curve_rate <- function(x = c("hqm", "tnc", "trc", "tbi"),
 
 #' @rdname tr_curve_rate
 #' @export
-tr_par_yields <- function(x = c("hqm", "tnc", "trc"),
-                          type = c("monthly", "end-of-month")) {
+tr_par_yields <- function(
+  x = c("hqm", "tnc", "trc"),
+  type = c("monthly", "end-of-month")
+) {
   if (requireNamespace("readxl", quietly = TRUE)) {
     stop("Please install the readxl package to use this function.", call. = FALSE)
   }
@@ -121,8 +125,10 @@ tr_par_yields <- function(x = c("hqm", "tnc", "trc"),
 
 #' @rdname tr_curve_rate
 #' @export
-tr_forward_rate <- function(x = c("tnc", "trc", "tbi"),
-                            type = c("monthly", "end-of-month")) {
+tr_forward_rate <- function(
+  x = c("tnc", "trc", "tbi"),
+  type = c("monthly", "end-of-month")
+) {
   if (requireNamespace("readxl", quietly = TRUE)) {
     stop("Please install the readxl package to use this function.", call. = FALSE)
   }
