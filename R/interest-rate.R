@@ -271,7 +271,8 @@ tr_make_request <- function(data, date) {
     req_url_query(data = data, "{nm}" := date) # nolint
 
   if (date == "all") {
-    req_perform_iterative(req,
+    req_perform_iterative(
+      req,
       iterate_with_offset("page", start = 0L, resp_complete = is_complete),
       max_reqs = Inf
     )

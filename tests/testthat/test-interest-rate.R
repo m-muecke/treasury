@@ -22,19 +22,40 @@ test_that("clean_yield_curve works", {
   data <- data.table(
     date = rep("2020-02-03", 13L),
     maturity = c(
-      "BC_1MONTH", "BC_2MONTH", "BC_3MONTH", "BC_6MONTH", "BC_1YEAR",
-      "BC_2YEAR", "BC_3YEAR", "BC_5YEAR", "BC_7YEAR", "BC_10YEAR",
-      "BC_20YEAR", "BC_30YEAR", "BC_30YEARDISPLAY"
+      "BC_1MONTH",
+      "BC_2MONTH",
+      "BC_3MONTH",
+      "BC_6MONTH",
+      "BC_1YEAR",
+      "BC_2YEAR",
+      "BC_3YEAR",
+      "BC_5YEAR",
+      "BC_7YEAR",
+      "BC_10YEAR",
+      "BC_20YEAR",
+      "BC_30YEAR",
+      "BC_30YEARDISPLAY"
     ),
     rate = rnorm(13L)
   )
   actual <- clean_yield_curve(data)
   expected <- copy(data[1:12])
-  expected[, maturity := c(
-    "1 month", "2 month", "3 month", "6 month",
-    "1 year", "2 year", "3 year", "5 year",
-    "7 year", "10 year", "20 year", "30 year"
-  )]
+  expected[,
+    maturity := c(
+      "1 month",
+      "2 month",
+      "3 month",
+      "6 month",
+      "1 year",
+      "2 year",
+      "3 year",
+      "5 year",
+      "7 year",
+      "10 year",
+      "20 year",
+      "30 year"
+    )
+  ]
   expect_identical(actual, expected)
 })
 
@@ -69,7 +90,10 @@ test_that("clean_bill_rates works", {
     "52 weeks"
   )
   expected <- data.table(
-    date = date, type = type, maturity = maturity, value = rate
+    date = date,
+    type = type,
+    maturity = maturity,
+    value = rate
   )
   expect_identical(actual, expected)
 })
@@ -92,8 +116,8 @@ test_that("clean_real_yield_curves works", {
   data <- data.table(date = date, maturity = maturity, rate = rate)
   actual <- clean_real_yield_curves(data)
   expected <- copy(data)
-  expected[, maturity := rep(
-    c("5 year", "7 year", "10 year", "20 year", "30 year"), 2L
-  )]
+  expected[,
+    maturity := rep(c("5 year", "7 year", "10 year", "20 year", "30 year"), 2L)
+  ]
   expect_identical(actual, expected)
 })
