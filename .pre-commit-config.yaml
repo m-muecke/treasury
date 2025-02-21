@@ -23,6 +23,5 @@ repos:
       - id: no-browser-statement
       - id: no-debug-statement
       - id: parsable-R
-      - id: style-files
       - id: readme-rmd-rendered
       - id: use-tidy-description
