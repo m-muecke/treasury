@@ -4,7 +4,8 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, include = FALSE}
+```{r}
+#| include: false
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -28,13 +29,15 @@ The goal of treasury is to provide a simple and modern interface to the [US trea
 
 You can install the released version of **treasury** from [CRAN](https://CRAN.R-project.org) with:
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
 install.packages("treasury")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
 # install.packages("pak")
 pak::pak("m-muecke/treasury")
 ```
@@ -43,14 +46,21 @@ pak::pak("m-muecke/treasury")
 
 treasury functions are prefixed with `tr_` and follow the naming convention of the XML feed.
 
-```{r usage, message = FALSE, dpi = 300}
+```{r}
+#| label: usage
+#| message: false
+#| dpi: 300
 library(treasury)
 
 yield_curve <- tr_yield_curve(2023)
 head(yield_curve)
 ```
 
-```{r plot, message = FALSE, echo = FALSE, dpi = 300}
+```{r}
+#| label: plot
+#| message: false
+#| echo: false
+#| dpi: 300
 library(ggplot2)
 
 subset(yield_curve, maturity == "10 year") |>
