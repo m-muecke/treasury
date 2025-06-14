@@ -1,5 +1,5 @@
 linters: all_linters(
-    line_length_linter = line_length_linter(88L),
+    line_length_linter = line_length_linter(100L),
     object_usage_linter = NULL,
     todo_comment_linter = NULL,
     strings_as_factors_linter = NULL,

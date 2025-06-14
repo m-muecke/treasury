@@ -94,10 +94,7 @@ tr_curve_rate <- function(
 
 #' @rdname tr_curve_rate
 #' @export
-tr_par_yields <- function(
-  x = c("hqm", "tnc", "trc"),
-  type = c("monthly", "end-of-month")
-) {
+tr_par_yields <- function(x = c("hqm", "tnc", "trc"), type = c("monthly", "end-of-month")) {
   if (requireNamespace("readxl", quietly = TRUE)) {
     stop("Please install the readxl package to use this function.", call. = FALSE)
   }
@@ -132,10 +129,7 @@ tr_par_yields <- function(
 
 #' @rdname tr_curve_rate
 #' @export
-tr_forward_rate <- function(
-  x = c("tnc", "trc", "tbi"),
-  type = c("monthly", "end-of-month")
-) {
+tr_forward_rate <- function(x = c("tnc", "trc", "tbi"), type = c("monthly", "end-of-month")) {
   if (requireNamespace("readxl", quietly = TRUE)) {
     stop("Please install the readxl package to use this function.", call. = FALSE)
   }
@@ -168,11 +162,6 @@ download_data <- function(x, col_names, skip, names_to, values_to) {
   dt <- readxl::read_excel(tf, col_names = col_names, skip = skip)
   dt <- setDT(dt)
   dt[, 2L := NULL]
-  dt <- melt(
-    dt,
-    id.vars = "yearmonth",
-    variable.name = names_to,
-    value.name = values_to
-  )
+  dt <- melt(dt, id.vars = "yearmonth", variable.name = names_to, value.name = values_to)
   dt[, yearmonth := as.Date(paste("01", yearmonth), format = "%d %B %Y")][]
 }

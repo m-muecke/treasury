@@ -247,10 +247,7 @@ tr_make_request <- function(data, date) {
   if (!is.null(date)) {
     date <- as.character(date)
     if (length(date) != 1L || !grepl("^\\d{4,6}$", date)) {
-      stop(
-        "`date` must be a single value in format yyyy or yyyymm",
-        call. = FALSE
-      )
+      stop("`date` must be a single value in format yyyy or yyyymm", call. = FALSE)
     }
   } else {
     date <- "all"
