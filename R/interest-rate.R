@@ -25,8 +25,7 @@ tr_yield_curve <- function(date = NULL) {
   if (is.null(dt)) {
     return()
   }
-  dt <- clean_yield_curve(dt)
-  dt
+  clean_yield_curve(dt)
 }
 
 parse_yield_curve <- function(x) {
@@ -82,8 +81,7 @@ tr_bill_rates <- function(date = NULL) {
   if (is.null(dt)) {
     return()
   }
-  dt <- clean_bill_rates(dt)
-  dt
+  clean_bill_rates(dt)
 }
 
 parse_bill_rates <- function(x) {
@@ -103,8 +101,8 @@ clean_bill_rates <- function(dt) {
   dt[, type := gsub("round_b1_", "", tolower(type), fixed = TRUE)]
   dt[, type := gsub("_2$", "", type)]
   dt[, maturity := strsplit(type, "_", fixed = TRUE)]
-  dt[, type := vapply(maturity, `[[`, NA_character_, 1L)]
-  dt[, maturity := vapply(maturity, `[[`, NA_character_, 2L)]
+  dt[, type := vapply(maturity, `[[`, "", 1L)]
+  dt[, maturity := vapply(maturity, `[[`, "", 2L)]
   dt[, maturity := gsub("wk", " weeks", maturity, fixed = TRUE)]
   dt[, c("date", "type", "maturity", "value")]
 }
@@ -134,8 +132,7 @@ tr_long_term_rate <- function(date = NULL) {
   if (is.null(dt)) {
     return()
   }
-  dt <- clean_long_term_rate(dt)
-  dt
+  clean_long_term_rate(dt)
 }
 
 parse_long_term_rate <- function(x) {
@@ -176,16 +173,15 @@ clean_long_term_rate <- function(dt) {
 #' \donttest{
 #' # get data for a single month
 #' tr_real_yield_curve("202201")
-#' # or for the entire year
 #' tr_real_yield_curve(2022)
+#' # or for the entire year
 #' }
 tr_real_yield_curve <- function(date = NULL) {
   dt <- treasury("daily_treasury_real_yield_curve", date, parse_real_yield_curve)
   if (is.null(dt)) {
     return()
   }
-  dt <- clean_real_yield_curves(dt)
-  dt
+  clean_real_yield_curves(dt)
 }
 
 parse_real_yield_curve <- function(x) {

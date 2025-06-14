@@ -43,7 +43,7 @@ tr_curve_rate <- function(
   type <- match.arg(type)
   start_year <- switch(x, hqm = 1984L, tnc = 1978L, trc = 2003L, tbi = 2003L)
   x <- if (type == "monthly") x else paste0(x, "eom")
-  years <- seq.int(start_year, 2027L, by = 5L)
+  years <- seq(start_year, 2027L, by = 5L)
   if (!is.null(year)) {
     years <- years[findInterval(year, years)]
   }
@@ -58,7 +58,7 @@ tr_curve_rate <- function(
         if (year >= 2023L && !startsWith(x, "hqm")) "xlsx" else "xls"
       )
     },
-    NA_character_
+    ""
   )
   if (x == "hqmeom") {
     urls <- sub("88\\.xls$", "88_0.xls", urls)
@@ -75,8 +75,8 @@ tr_curve_rate <- function(
       nms <- paste(months, years, sep = "-")
       nms <- c("maturity", "tmp", nms)
       nms
-    }) |>
-      setDT()
+    })
+    dt <- setDT(dt)
     dt[, 2L := NULL]
     dt[, names(.SD) := lapply(.SD, as.numeric), .SDcols = is.logical]
     dt <- melt(
@@ -165,8 +165,8 @@ download_data <- function(x, col_names, skip, names_to, values_to) {
   tf <- tempfile()
   on.exit(unlink(tf), add = TRUE)
   utils::download.file(url, destfile = tf, quiet = TRUE, mode = "wb")
-  dt <- readxl::read_excel(tf, col_names = col_names, skip = skip) |>
-    setDT()
+  dt <- readxl::read_excel(tf, col_names = col_names, skip = skip)
+  dt <- setDT(dt)
   dt[, 2L := NULL]
   dt <- melt(
     dt,
