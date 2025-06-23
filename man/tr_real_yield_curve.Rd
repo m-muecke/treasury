@@ -29,8 +29,8 @@ At that time Treasury released 1 year of historical data.
 \donttest{
 # get data for a single month
 tr_real_yield_curve("202201")
-# or for the entire year
 tr_real_yield_curve(2022)
+# or for the entire year
 }
 }
 \seealso{
