@@ -173,8 +173,8 @@ clean_long_term_rate <- function(dt) {
 #' \donttest{
 #' # get data for a single month
 #' tr_real_yield_curve("202201")
-#' tr_real_yield_curve(2022)
 #' # or for the entire year
+#' tr_real_yield_curve(2022)
 #' }
 tr_real_yield_curve <- function(date = NULL) {
   dt <- treasury("daily_treasury_real_yield_curve", date, parse_real_yield_curve)
