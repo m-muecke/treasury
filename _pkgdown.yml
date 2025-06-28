@@ -7,12 +7,12 @@ template:
 reference:
   - subtitle: Interest Rates
     contents:
-    - tr_yield_curve
-    - tr_bill_rates
-    - tr_long_term_rate
-    - tr_real_yield_curve
-    - tr_real_long_term
+      - tr_yield_curve
+      - tr_bill_rates
+      - tr_long_term_rate
+      - tr_real_yield_curve
+      - tr_real_long_term
 
   - subtitle: Treasury Coupon Issues and Corporate Bond Yield Curve
     contents:
-    - tr_curve_rate
+      - tr_curve_rate
