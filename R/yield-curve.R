@@ -38,7 +38,7 @@ tr_curve_rate <- function(
   if (requireNamespace("readxl", quietly = TRUE)) {
     stop("Please install the readxl package to use this function.", call. = FALSE)
   }
-  stopifnot(is_count_or_null(year))
+  stopifnot(is_count(year, null_ok = TRUE))
   x <- match.arg(x)
   type <- match.arg(type)
   start_year <- switch(x, hqm = 1984L, tnc = 1978L, trc = 2003L, tbi = 2003L)
