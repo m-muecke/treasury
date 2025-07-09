@@ -27,7 +27,7 @@ which Treasury did not issue the 30-year bonds.
 \examples{
 \donttest{
 # get data for a single month
-tr_long_term_rate("202201")
+tr_long_term_rate("202212")
 # or for the entire year
 tr_long_term_rate(2022)
 }

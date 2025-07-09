@@ -104,7 +104,7 @@ clean_bill_rates <- function(dt) {
   dt[, type := vapply(maturity, `[[`, "", 1L)]
   dt[, maturity := vapply(maturity, `[[`, "", 2L)]
   dt[, maturity := gsub("wk", " weeks", maturity, fixed = TRUE)]
-  dt[, c("date", "type", "maturity", "value")]
+  dt[, c("date", "type", "maturity", "value")][]
 }
 
 #' Daily treasury long-term rates
@@ -123,7 +123,7 @@ clean_bill_rates <- function(dt) {
 #' @examples
 #' \donttest{
 #' # get data for a single month
-#' tr_long_term_rate("202201")
+#' tr_long_term_rate("202212")
 #' # or for the entire year
 #' tr_long_term_rate(2022)
 #' }
