@@ -22,7 +22,7 @@ on all outstanding TIPS with remaining maturities of more than 10 years and
 is intended as a proxy for long-term real rates.
 }
 \examples{
-\donttest{
+\dontrun{
 # get data for a single month
 tr_real_long_term("202201")
 # or for the entire year

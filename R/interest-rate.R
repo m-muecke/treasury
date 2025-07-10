@@ -213,18 +213,14 @@ clean_real_yield_curves <- function(dt) {
 #' @family interest rate
 #' @export
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' # get data for a single month
 #' tr_real_long_term("202201")
 #' # or for the entire year
 #' tr_real_long_term(2022)
 #' }
 tr_real_long_term <- function(date = NULL) {
-  dt <- treasury("daily_treasury_real_long_term", date, parse_real_long_term)
-  if (is.null(dt)) {
-    return()
-  }
-  dt
+  treasury("daily_treasury_real_long_term", date, parse_real_long_term)
 }
 
 parse_real_long_term <- function(x) {

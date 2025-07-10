@@ -64,7 +64,7 @@ tr_curve_rate <- function(
     urls <- sub("88\\.xls$", "88_0.xls", urls)
   }
 
-  months <- rep.int(month.name, 5L)
+  months <- rep(month.name, 5L)
   res <- lapply(seq_along(urls), function(i) {
     tf <- tempfile()
     on.exit(unlink(tf), add = TRUE)
