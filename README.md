@@ -10,6 +10,8 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![R-CMD-check](https://github.com/m-muecke/treasury/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/m-muecke/treasury/actions/workflows/R-CMD-check.yaml)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/treasury)](https://CRAN.R-project.org/package=treasury)
+[![R-universe
+version](https://m-muecke.r-universe.dev/treasury/badges/version)](https://m-muecke.r-universe.dev/treasury)
 <!-- badges: end -->
 
 ## Overview
