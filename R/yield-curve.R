@@ -43,7 +43,7 @@ tr_curve_rate <- function(
   type <- match.arg(type)
   start_year <- switch(x, hqm = 1984L, tnc = 1978L, trc = 2003L, tbi = 2003L)
   x <- if (type == "monthly") x else paste0(x, "eom")
-  years <- seq(start_year, 2027L, by = 5L)
+  years <- seq.int(start_year, 2027L, by = 5L)
   if (!is.null(year)) {
     years <- years[findInterval(year, years)]
   }
