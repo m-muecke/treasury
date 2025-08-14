@@ -4,7 +4,8 @@ linters: all_linters(
     todo_comment_linter = NULL,
     strings_as_factors_linter = NULL,
     implicit_integer_linter(allow_colon = TRUE),
-    nonportable_path_linter = NULL
+    nonportable_path_linter = NULL,
+    object_overwrite_linter = NULL
   )
 exclusions: list(
     "tests/testthat.R"
