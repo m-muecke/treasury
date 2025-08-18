@@ -10,8 +10,8 @@
 tr_yield_curve(date = NULL)
 }
 \arguments{
-\item{date}{(\code{character(1)} | \code{numeric(1)}) date in format yyyy or yyyymm.
-If \code{NULL}, all data is returned. Default \code{NULL}.}
+\item{date}{(\code{character(1)} | \code{numeric(1)})\cr
+Date in format yyyy or yyyymm. If \code{NULL}, all data is returned. Default \code{NULL}.}
 }
 \value{
 A \code{\link[data.table:data.table]{data.table::data.table()}} containing the rates or \code{NULL} when no entries were found.
