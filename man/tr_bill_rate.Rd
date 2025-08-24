@@ -2,7 +2,7 @@
 % Please edit documentation in R/interest-rate.R
 \name{tr_bill_rate}
 \alias{tr_bill_rate}
-\title{Daily treasury bill rate}
+\title{Daily treasury bill rates}
 \source{
 \url{https://home.treasury.gov/treasury-daily-interest-rate-xml-feed}
 }

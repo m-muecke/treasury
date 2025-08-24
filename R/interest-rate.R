@@ -47,7 +47,7 @@ clean_yield_curve <- function(dt) {
   dt[, maturity := gsub("(\\d+)(\\w+)", "\\1 \\2", maturity)][]
 }
 
-#' Daily treasury bill rate
+#' Daily treasury bill rates
 #'
 #' @description
 #' These rates are the daily secondary market quotations on the most recently
