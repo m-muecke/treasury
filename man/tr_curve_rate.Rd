@@ -35,7 +35,7 @@ One of the following options:
 \item{type}{(\code{character(1)})\cr
 Either \code{"monthly"} or \code{"end-of-month"}. Default is \code{"monthly"}.}
 
-\item{year}{(\code{integer(1)})\cr
+\item{year}{(\code{NULL} | \code{integer(1)})\cr
 Year to download. Default is \code{NULL}. If \code{NULL}, then all available years are downloaded.}
 }
 \value{

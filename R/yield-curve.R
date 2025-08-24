@@ -15,7 +15,7 @@
 #'   * `"tbi"`: The Treasury Breakeven Inflation (TBI) Curve.
 #' @param type (`character(1)`)\cr
 #'   Either `"monthly"` or `"end-of-month"`. Default is `"monthly"`.
-#' @param year (`integer(1)`)\cr
+#' @param year (`NULL` | `integer(1)`)\cr
 #'   Year to download. Default is `NULL`. If `NULL`, then all available years are downloaded.
 #' @returns A [data.table::data.table()] containing the treasury rates.
 #' @family yield curve

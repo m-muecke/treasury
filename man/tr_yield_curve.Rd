@@ -10,7 +10,7 @@
 tr_yield_curve(date = NULL)
 }
 \arguments{
-\item{date}{(\code{character(1)} | \code{numeric(1)})\cr
+\item{date}{(\code{NULL} | \code{character(1)} | \code{numeric(1)})\cr
 Date in format yyyy or yyyymm. If \code{NULL}, all data is returned. Default \code{NULL}.}
 }
 \value{

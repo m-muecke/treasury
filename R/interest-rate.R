@@ -7,7 +7,7 @@
 #' input market prices, which are indicative quotations obtained by the Federal Reserve
 #' Bank of New York at approximately 3:30 PM each business day.
 #'
-#' @param date (`character(1)` | `numeric(1)`)\cr
+#' @param date (`NULL` | `character(1)` | `numeric(1)`)\cr
 #'   Date in format yyyy or yyyymm. If `NULL`, all data is returned. Default `NULL`.
 #' @returns A [data.table::data.table()] containing the rates or `NULL` when no entries were found.
 #' @source <https://home.treasury.gov/treasury-daily-interest-rate-xml-feed>
