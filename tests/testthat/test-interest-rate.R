@@ -1,7 +1,7 @@
 test_that("input validation works", {
   fns <- list(
     tr_yield_curve,
-    tr_bill_rates,
+    tr_bill_rate,
     tr_long_term_rate,
     tr_real_yield_curve,
     tr_real_long_term
@@ -75,7 +75,7 @@ test_that("clean_bill_rates works", {
     "ROUND_B1_YIELD_52WK_2"
   )
   data <- data.table(date = date, type = type, value = rate)
-  actual <- clean_bill_rates(data)
+  actual <- clean_bill_rate(data)
   type <- rep(c("close", "yield"), 5L)
   maturity <- c(
     "4 weeks",

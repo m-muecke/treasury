@@ -47,7 +47,7 @@ clean_yield_curve <- function(dt) {
   dt[, maturity := gsub("(\\d+)(\\w+)", "\\1 \\2", maturity)][]
 }
 
-#' Daily treasury bill rates
+#' Daily treasury bill rate
 #'
 #' @description
 #' These rates are the daily secondary market quotations on the most recently
@@ -72,19 +72,19 @@ clean_yield_curve <- function(dt) {
 #' @examples
 #' \donttest{
 #' # get data for a single month
-#' tr_bill_rates("202201")
+#' tr_bill_rate("202201")
 #' # or for the entire year
-#' tr_bill_rates(2022)
+#' tr_bill_rate(2022)
 #' }
-tr_bill_rates <- function(date = NULL) {
-  dt <- treasury("daily_treasury_bill_rates", date, parse_bill_rates)
+tr_bill_rate <- function(date = NULL) {
+  dt <- treasury("daily_treasury_bill_rates", date, parse_bill_rate)
   if (is.null(dt)) {
     return()
   }
-  clean_bill_rates(dt)
+  clean_bill_rate(dt)
 }
 
-parse_bill_rates <- function(x) {
+parse_bill_rate <- function(x) {
   date <- x |>
     xml2::xml_find_all(".//d:INDEX_DATE") |>
     xml2::xml_text() |>
@@ -97,7 +97,7 @@ parse_bill_rates <- function(x) {
   )
 }
 
-clean_bill_rates <- function(dt) {
+clean_bill_rate <- function(dt) {
   dt[, type := gsub("round_b1_", "", tolower(type), fixed = TRUE)]
   dt[, type := gsub("_2$", "", type)]
   dt[, maturity := strsplit(type, "_", fixed = TRUE)]

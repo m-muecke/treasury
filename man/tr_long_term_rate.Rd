@@ -34,7 +34,7 @@ tr_long_term_rate(2022)
 }
 \seealso{
 Other interest rate: 
-\code{\link{tr_bill_rates}()},
+\code{\link{tr_bill_rate}()},
 \code{\link{tr_real_long_term}()},
 \code{\link{tr_real_yield_curve}()},
 \code{\link{tr_yield_curve}()}

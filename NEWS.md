@@ -1,5 +1,8 @@
 # treasury (development version)
 
+* Better documentation.
+* Rename `tr_bill_rates()` to `tr_bill_rate()` to match rest of function names.
+
 # treasury 0.3.0
 
 * Migration to data.table package. Internal data manipulation is now done using
