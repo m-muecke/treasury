@@ -128,9 +128,9 @@ tr_par_yield <- function(x = c("hqm", "tnc", "trc"), type = c("monthly", "end-of
 }
 
 #' @export
-tr_par_yields <- function(...) {
+tr_par_yields <- function(x = c("hqm", "tnc", "trc"), type = c("monthly", "end-of-month")) {
   lifecycle::deprecate_warn("0.4.0", "tr_par_yields()", "tr_par_yield()")
-  tr_par_yield(...)
+  tr_par_yield(x, type)
 }
 
 #' @rdname tr_curve_rate
