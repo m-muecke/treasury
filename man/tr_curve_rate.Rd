@@ -2,7 +2,7 @@
 % Please edit documentation in R/yield-curve.R
 \name{tr_curve_rate}
 \alias{tr_curve_rate}
-\alias{tr_par_yields}
+\alias{tr_par_yield}
 \alias{tr_forward_rate}
 \title{Download Treasury Coupon Issues and Corporate Bond Yield Curves}
 \source{
@@ -15,7 +15,7 @@ tr_curve_rate(
   year = NULL
 )
 
-tr_par_yields(x = c("hqm", "tnc", "trc"), type = c("monthly", "end-of-month"))
+tr_par_yield(x = c("hqm", "tnc", "trc"), type = c("monthly", "end-of-month"))
 
 tr_forward_rate(
   x = c("tnc", "trc", "tbi"),

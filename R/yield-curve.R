@@ -95,7 +95,7 @@ tr_curve_rate <- function(
 
 #' @rdname tr_curve_rate
 #' @export
-tr_par_yields <- function(x = c("hqm", "tnc", "trc"), type = c("monthly", "end-of-month")) {
+tr_par_yield <- function(x = c("hqm", "tnc", "trc"), type = c("monthly", "end-of-month")) {
   if (requireNamespace("readxl", quietly = TRUE)) {
     stop("Please install the readxl package to use this function.", call. = FALSE)
   }
@@ -124,8 +124,13 @@ tr_par_yields <- function(x = c("hqm", "tnc", "trc"), type = c("monthly", "end-o
     sfx <- "eom_qh_pars"
   }
   x <- paste0(x, sfx)
-
   download_data(x, nms, 6L, "maturity", "par_yield")
+}
+
+#' @export
+tr_par_yields <- function(...) {
+  lifecycle::deprecate_warn("0.4.0", "tr_par_yields()", "tr_par_yield()")
+  tr_par_yield(...)
 }
 
 #' @rdname tr_curve_rate

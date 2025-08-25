@@ -16,3 +16,5 @@ reference:
   - subtitle: Treasury Coupon Issues and Corporate Bond Yield Curve
     contents:
       - tr_curve_rate
+      - tr_par_yield
+      - tr_forward_rate

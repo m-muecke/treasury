@@ -19,6 +19,7 @@ Depends:
 Imports:
     data.table (>= 1.16.0),
     httr2 (>= 1.0.0),
+    lifecycle,
     xml2
 Suggests:
     ggplot2,

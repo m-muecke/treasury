@@ -84,6 +84,12 @@ tr_bill_rate <- function(date = NULL) {
   clean_bill_rate(dt)
 }
 
+#' @export
+tr_bill_rates <- function(...) {
+  lifecycle::deprecate_warn("0.4.0", "tr_bill_rates()", "tr_bill_rate()")
+  tr_bill_rate(...)
+}
+
 parse_bill_rate <- function(x) {
   date <- x |>
     xml2::xml_find_all(".//d:INDEX_DATE") |>

@@ -1,7 +1,7 @@
 # treasury (development version)
 
 * Better documentation.
-* Rename `tr_bill_rates()` to `tr_bill_rate()` to match rest of function names.
+* Rename `tr_bill_rates()` to `tr_bill_rate()` and `tr_par_yields()` to `tr_par_yield()` match rest of function names.
 
 # treasury 0.3.0
 
