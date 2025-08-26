@@ -2,12 +2,15 @@
 % Please edit documentation in R/interest-rate.R
 \name{tr_bill_rate}
 \alias{tr_bill_rate}
+\alias{tr_bill_rates}
 \title{Daily treasury bill rates}
 \source{
 \url{https://home.treasury.gov/treasury-daily-interest-rate-xml-feed}
 }
 \usage{
 tr_bill_rate(date = NULL)
+
+tr_bill_rates(date = NULL)
 }
 \arguments{
 \item{date}{(\code{NULL} | \code{character(1)} | \code{numeric(1)})\cr
@@ -33,6 +36,12 @@ Coupon Equivalent can be used to compare the yield on a discount bill to the
 yield on a nominal coupon security that pays semiannual interest with the
 same maturity date.
 }
+\section{Deprecated functions}{
+
+\code{\link[=tr_bill_rates]{tr_bill_rates()}} has been deprecated and will be removed in a future version. Please use
+\code{\link[=tr_bill_rate]{tr_bill_rate()}} instead.
+}
+
 \examples{
 \donttest{
 # get data for a single month

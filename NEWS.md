@@ -1,7 +1,10 @@
 # treasury (development version)
 
-* Better documentation.
-* Rename `tr_bill_rates()` to `tr_bill_rate()` and `tr_par_yields()` to `tr_par_yield()` match rest of function names.
+* Fixed bug in checking for {readxl} installation.
+* Improved documentation.
+* Renamed functions for consistency:
+  * `tr_bill_rates()` to `tr_bill_rate()`
+  * `tr_par_yields()` to `tr_par_yield()`
 
 # treasury 0.3.0
 
@@ -10,11 +13,11 @@
 
 # treasury 0.2.0
 
-* Better docs
-* Support for Treasury High Quality Market (HQM) Corporate Bond Yield Curve data
-* Support for Treasury Nominal Coupon-Issue (TNC) Yield Curve data
-* Support for Treasury Real Coupon-Issue (TRC) Yield Curve data
-* Support for Treasury Breakeven Inflation Curve (TBI curve) data
+* Better documentation.
+* Support for Treasury High Quality Market (HQM) Corporate Bond Yield Curve data.
+* Support for Treasury Nominal Coupon-Issue (TNC) Yield Curve data.
+* Support for Treasury Real Coupon-Issue (TRC) Yield Curve data.
+* Support for Treasury Breakeven Inflation Curve (TBI curve) data.
 
 # treasury 0.1.0
 

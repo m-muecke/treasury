@@ -66,6 +66,10 @@ clean_yield_curve <- function(dt) {
 #' yield on a nominal coupon security that pays semiannual interest with the
 #' same maturity date.
 #'
+#' @section Deprecated functions:
+#' [tr_bill_rates()] has been deprecated and will be removed in a future version. Please use
+#' [tr_bill_rate()] instead.
+#'
 #' @inherit tr_yield_curve
 #' @family interest rate
 #' @export
@@ -84,6 +88,7 @@ tr_bill_rate <- function(date = NULL) {
   clean_bill_rate(dt)
 }
 
+#' @rdname tr_bill_rate
 #' @export
 tr_bill_rates <- function(date = NULL) {
   .Deprecated("tr_bill_rate")

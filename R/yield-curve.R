@@ -7,6 +7,10 @@
 #' The Treasury Breakeven Inflation Curve (TBI curve) is derived from the TNC and TRC
 #' yield curves combined.
 #'
+#' @section Deprecated functions:
+#' [tr_par_yields()] has been deprecated and will be removed in a future version. Please use
+#' [tr_par_yield()] instead.
+#'
 #' @param x (`character(1)`)\cr
 #'   One of the following options:
 #'   * `"hqm"`: The Treasury High Quality Market (HQM) Corporate Bond Yield Curve.
@@ -27,7 +31,7 @@
 #' tr_curve_rate("tbi")
 #' tr_curve_rate("trc", "end-of-month", 2024L)
 #' # TRC Treasury Yield Curve Par Yields, Monthly Average
-#' tr_par_yields("trc")
+#' tr_par_yield("trc")
 #' # TNC Treasury Yield Curve Forward Rates, End of Month
 #' tr_forward_rate("tnc", "end-of-month")
 #' }
@@ -70,14 +74,13 @@ tr_curve_rate <- function(
     tf <- tempfile()
     on.exit(unlink(tf), add = TRUE)
     curl::curl_download(urls[[i]], tf)
-    dt <- readxl::read_excel(tf, skip = 4L, .name_repair = function(nms) {
+    dt <- setDT(readxl::read_excel(tf, skip = 4L, .name_repair = function(nms) {
       year <- years[[i]]
       years <- rep(year:(year + 4L), each = 12L)
       nms <- paste(months, years, sep = "-")
       nms <- c("maturity", "tmp", nms)
       nms
-    })
-    dt <- setDT(dt)
+    }))
     dt[, 2L := NULL]
     dt[, names(.SD) := lapply(.SD, as.numeric), .SDcols = is.logical]
     dt <- melt(
@@ -127,6 +130,7 @@ tr_par_yield <- function(x = c("hqm", "tnc", "trc"), type = c("monthly", "end-of
   download_data(x, nms, 6L, "maturity", "par_yield")
 }
 
+#' @rdname tr_curve_rate
 #' @export
 tr_par_yields <- function(x = c("hqm", "tnc", "trc"), type = c("monthly", "end-of-month")) {
   .Deprecated("tr_par_yield")
@@ -165,8 +169,7 @@ download_data <- function(x, col_names, skip, names_to, values_to) {
   tf <- tempfile()
   on.exit(unlink(tf), add = TRUE)
   curl::curl_download(url, tf)
-  dt <- readxl::read_excel(tf, col_names = col_names, skip = skip)
-  dt <- setDT(dt)
+  dt <- setDT(readxl::read_excel(tf, col_names = col_names, skip = skip))
   dt[, 2L := NULL]
   dt <- melt(dt, id.vars = "yearmonth", variable.name = names_to, value.name = values_to)
   dt[, yearmonth := as.Date(paste("01", yearmonth), format = "%d %B %Y")][]
