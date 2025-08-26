@@ -17,9 +17,9 @@ BugReports: https://github.com/m-muecke/treasury/issues
 Depends:
     R (>= 4.1.0)
 Imports:
+    curl,
     data.table (>= 1.16.0),
     httr2 (>= 1.0.0),
-    lifecycle,
     xml2
 Suggests:
     ggplot2,

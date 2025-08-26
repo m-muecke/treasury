@@ -36,7 +36,7 @@ tr_curve_rate <- function(
   type = c("monthly", "end-of-month"),
   year = NULL
 ) {
-  if (requireNamespace("readxl", quietly = TRUE)) {
+  if (!requireNamespace("readxl", quietly = TRUE)) {
     stop("Please install the readxl package to use this function.", call. = FALSE)
   }
   stopifnot(is_count(year, null_ok = TRUE))
@@ -69,7 +69,7 @@ tr_curve_rate <- function(
   res <- lapply(seq_along(urls), function(i) {
     tf <- tempfile()
     on.exit(unlink(tf), add = TRUE)
-    utils::download.file(urls[[i]], destfile = tf, quiet = TRUE, mode = "wb")
+    curl::curl_download(urls[[i]], tf)
     dt <- readxl::read_excel(tf, skip = 4L, .name_repair = function(nms) {
       year <- years[[i]]
       years <- rep(year:(year + 4L), each = 12L)
@@ -96,7 +96,7 @@ tr_curve_rate <- function(
 #' @rdname tr_curve_rate
 #' @export
 tr_par_yield <- function(x = c("hqm", "tnc", "trc"), type = c("monthly", "end-of-month")) {
-  if (requireNamespace("readxl", quietly = TRUE)) {
+  if (!requireNamespace("readxl", quietly = TRUE)) {
     stop("Please install the readxl package to use this function.", call. = FALSE)
   }
   x <- match.arg(x)
@@ -129,14 +129,14 @@ tr_par_yield <- function(x = c("hqm", "tnc", "trc"), type = c("monthly", "end-of
 
 #' @export
 tr_par_yields <- function(x = c("hqm", "tnc", "trc"), type = c("monthly", "end-of-month")) {
-  lifecycle::deprecate_warn("0.4.0", "tr_par_yields()", "tr_par_yield()")
+  .Deprecated("tr_par_yield")
   tr_par_yield(x, type)
 }
 
 #' @rdname tr_curve_rate
 #' @export
 tr_forward_rate <- function(x = c("tnc", "trc", "tbi"), type = c("monthly", "end-of-month")) {
-  if (requireNamespace("readxl", quietly = TRUE)) {
+  if (!requireNamespace("readxl", quietly = TRUE)) {
     stop("Please install the readxl package to use this function.", call. = FALSE)
   }
   x <- match.arg(x)
@@ -164,7 +164,7 @@ download_data <- function(x, col_names, skip, names_to, values_to) {
   url <- sprintf("https://home.treasury.gov/system/files/226/%s.xls", x)
   tf <- tempfile()
   on.exit(unlink(tf), add = TRUE)
-  utils::download.file(url, destfile = tf, quiet = TRUE, mode = "wb")
+  curl::curl_download(url, tf)
   dt <- readxl::read_excel(tf, col_names = col_names, skip = skip)
   dt <- setDT(dt)
   dt[, 2L := NULL]

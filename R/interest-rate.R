@@ -86,7 +86,7 @@ tr_bill_rate <- function(date = NULL) {
 
 #' @export
 tr_bill_rates <- function(date = NULL) {
-  lifecycle::deprecate_warn("0.4.0", "tr_bill_rates()", "tr_bill_rate()")
+  .Deprecated("tr_bill_rate")
   tr_bill_rate(date)
 }
 
