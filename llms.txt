@@ -1,0 +1,78 @@
+# treasury
+
+## Overview
+
+The goal of treasury is to provide a simple and modern interface to the
+[US treasury XML
+feed](https://home.treasury.gov/treasury-daily-interest-rate-xml-feed)
+for daily interest rates.
+
+## Installation
+
+You can install the released version of **treasury** from
+[CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("treasury")
+```
+
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("pak")
+pak::pak("m-muecke/treasury")
+```
+
+## Usage
+
+treasury functions are prefixed with `tr_` and follow the naming
+convention of the XML feed.
+
+``` r
+library(treasury)
+
+yield_curve <- tr_yield_curve(2023)
+head(yield_curve)
+#>          date maturity  rate
+#>        <Date>   <char> <num>
+#> 1: 2023-01-03  1 month  4.17
+#> 2: 2023-01-03  2 month  4.42
+#> 3: 2023-01-03  3 month  4.53
+#> 4: 2023-01-03  4 month  4.70
+#> 5: 2023-01-03  6 month  4.77
+#> 6: 2023-01-03   1 year  4.72
+```
+
+![](reference/figures/README-plot-1.png)
+
+## Related work
+
+- [ustyc](https://github.com/mrbcuda/ustyc) - R package to download and
+  parse the US Treasury yield curve data
+- [ustfd](https://github.com/groditi/ustfd) - R client for US Treasury
+  Fiscal Data API
+
+# Package index
+
+### Interest Rates
+
+- [`tr_bill_rate()`](https://m-muecke.github.io/treasury/reference/tr_bill_rate.md)
+  [`tr_bill_rates()`](https://m-muecke.github.io/treasury/reference/tr_bill_rate.md)
+  : Daily treasury bill rates
+- [`tr_long_term_rate()`](https://m-muecke.github.io/treasury/reference/tr_long_term_rate.md)
+  : Daily treasury long-term rates
+- [`tr_real_long_term()`](https://m-muecke.github.io/treasury/reference/tr_real_long_term.md)
+  : Daily treasury real long-term rate averages
+- [`tr_real_yield_curve()`](https://m-muecke.github.io/treasury/reference/tr_real_yield_curve.md)
+  : Daily treasury par real yield curve rates
+- [`tr_yield_curve()`](https://m-muecke.github.io/treasury/reference/tr_yield_curve.md)
+  : Daily treasury par yield curve rates
+
+### Treasury Coupon Issues and Corporate Bond Yield Curve
+
+- [`tr_curve_rate()`](https://m-muecke.github.io/treasury/reference/tr_curve_rate.md)
+  [`tr_par_yield()`](https://m-muecke.github.io/treasury/reference/tr_curve_rate.md)
+  [`tr_par_yields()`](https://m-muecke.github.io/treasury/reference/tr_curve_rate.md)
+  [`tr_forward_rate()`](https://m-muecke.github.io/treasury/reference/tr_curve_rate.md)
+  : Download Treasury Coupon Issues and Corporate Bond Yield Curves
+
