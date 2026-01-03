@@ -112,8 +112,8 @@ clean_bill_rate <- function(dt) {
   dt[, type := gsub("round_b1_", "", tolower(type), fixed = TRUE)]
   dt[, type := gsub("_2$", "", type)]
   dt[, maturity := strsplit(type, "_", fixed = TRUE)]
-  dt[, type := vapply(maturity, `[[`, "", 1L)]
-  dt[, maturity := vapply(maturity, `[[`, "", 2L)]
+  dt[, type := vapply(maturity, \(x) x[[1L]], "")]
+  dt[, maturity := vapply(maturity, \(x) x[[2L]], "")]
   dt[, maturity := gsub("wk", " weeks", maturity, fixed = TRUE)]
   dt[, c("date", "type", "maturity", "value")][]
 }
