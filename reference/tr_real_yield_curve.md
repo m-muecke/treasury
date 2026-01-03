@@ -150,6 +150,7 @@ tr_real_yield_curve("202201")
 #>  99: 2022-01-31  20 year -0.29
 #> 100: 2022-01-31  30 year -0.12
 #>            date maturity  rate
+#>          <Date>   <char> <num>
 # or for the entire year
 tr_real_yield_curve(2022)
 #>             date maturity  rate

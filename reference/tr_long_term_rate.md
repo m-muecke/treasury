@@ -111,6 +111,7 @@ tr_long_term_rate("202212")
 #> 62: 2022-12-30 over 10 years  4.11
 #> 63: 2022-12-30     real rate  1.78
 #>           date     rate_type  rate
+#>         <Date>        <char> <num>
 # or for the entire year
 tr_long_term_rate(2022)
 #>            date     rate_type  rate

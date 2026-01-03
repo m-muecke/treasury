@@ -10,14 +10,14 @@
 Source:
 [`DESCRIPTION`](https://github.com/m-muecke/treasury/blob/main/DESCRIPTION)
 
-Mücke M (2025). *treasury: Client for US Treasury XML Feed and Published
+Mücke M (2026). *treasury: Client for US Treasury XML Feed and Published
 Data*. R package version 0.4.0.9000,
 <https://m-muecke.github.io/treasury/>.
 
     @Manual{,
       title = {treasury: Client for US Treasury XML Feed and Published Data},
       author = {Maximilian Mücke},
-      year = {2025},
+      year = {2026},
       note = {R package version 0.4.0.9000},
       url = {https://m-muecke.github.io/treasury/},
     }
