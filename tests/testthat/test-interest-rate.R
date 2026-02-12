@@ -59,7 +59,7 @@ test_that("clean_yield_curve works", {
   expect_identical(actual, expected)
 })
 
-test_that("clean_bill_rates works", {
+test_that("clean_bill_rate works", {
   date <- rep("2020-02-03", 10L)
   rate <- 1:10
   type <- c(
@@ -109,12 +109,12 @@ test_that("clean_long_term_rate works", {
   expect_identical(actual, expected)
 })
 
-test_that("clean_real_yield_curves works", {
+test_that("clean_real_yield_curve works", {
   date <- rep("2020-02-03", 10L)
   maturity <- rep(c("TC_5YEAR", "TC_7YEAR", "TC_10YEAR", "TC_20YEAR", "TC_30YEAR"), 2L)
   rate <- 1:10
   data <- data.table(date = date, maturity = maturity, rate = rate)
-  actual <- clean_real_yield_curves(data)
+  actual <- clean_real_yield_curve(data)
   expected <- copy(data)
   expected[,
     maturity := rep(c("5 year", "7 year", "10 year", "20 year", "30 year"), 2L)

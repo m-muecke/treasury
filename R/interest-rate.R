@@ -192,7 +192,7 @@ tr_real_yield_curve <- function(date = NULL) {
   if (is.null(dt)) {
     return()
   }
-  clean_real_yield_curves(dt)
+  clean_real_yield_curve(dt)
 }
 
 parse_real_yield_curve <- function(x) {
@@ -208,7 +208,7 @@ parse_real_yield_curve <- function(x) {
   )
 }
 
-clean_real_yield_curves <- function(dt) {
+clean_real_yield_curve <- function(dt) {
   dt[, maturity := gsub("tc_", "", tolower(maturity), fixed = TRUE)]
   dt[, maturity := gsub("(\\d+)(\\w+)", "\\1 \\2", maturity)][]
 }

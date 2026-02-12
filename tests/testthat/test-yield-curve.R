@@ -27,14 +27,14 @@ test_that("tr_forward_rate works", {
   expect_error(tr_forward_rate("tnc", c("monthly", "monthly")))
 })
 
-test_that("tr_par_yields works", {
-  expect_error(tr_par_yields(NA))
-  expect_error(tr_par_yields(1L))
-  expect_error(tr_par_yields("hxm"))
-  expect_error(tr_par_yields(c("tnc", "tnc")))
+test_that("tr_par_yield works", {
+  expect_error(tr_par_yield(NA))
+  expect_error(tr_par_yield(1L))
+  expect_error(tr_par_yield("hxm"))
+  expect_error(tr_par_yield(c("tnc", "tnc")))
 
-  expect_error(tr_par_yields("tnc", 1L))
-  expect_error(tr_par_yields("tnc", NA))
-  expect_error(tr_par_yields("tnc", "yearly"))
-  expect_error(tr_par_yields("tnc", c("monthly", "monthly")))
+  expect_error(tr_par_yield("tnc", 1L))
+  expect_error(tr_par_yield("tnc", NA))
+  expect_error(tr_par_yield("tnc", "yearly"))
+  expect_error(tr_par_yield("tnc", c("monthly", "monthly")))
 })
