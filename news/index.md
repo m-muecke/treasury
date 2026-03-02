@@ -4,6 +4,8 @@
 
 ## treasury 0.4.0
 
+CRAN release: 2025-08-26
+
 - Fixed bug in checking for {readxl} installation.
 - Improved documentation.
 - Renamed functions for consistency:
@@ -16,10 +18,14 @@
 
 ## treasury 0.3.0
 
+CRAN release: 2025-07-10
+
 - Migration to data.table package. Internal data manipulation is now
   done using data.table and all functions return data.table objects.
 
 ## treasury 0.2.0
+
+CRAN release: 2024-07-05
 
 - Better documentation.
 - Support for Treasury High Quality Market (HQM) Corporate Bond Yield
@@ -29,5 +35,7 @@
 - Support for Treasury Breakeven Inflation Curve (TBI curve) data.
 
 ## treasury 0.1.0
+
+CRAN release: 2024-03-22
 
 - Initial CRAN submission.
