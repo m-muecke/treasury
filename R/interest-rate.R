@@ -267,7 +267,7 @@ tr_make_request <- function(data, date) {
   req <- request(
     "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml" # nolint
   ) |>
-    req_user_agent("treasury (https://m-muecke.github.io/treasury)") |>
+    req_user_agent(treasury_user_agent()) |>
     req_url_query(data = data, "{nm}" := date) # nolint
 
   if (date == "all") {
