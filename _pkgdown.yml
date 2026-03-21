@@ -13,6 +13,10 @@ reference:
       - tr_real_yield_curve
       - tr_yield_curve
 
+  - subtitle: Cache management
+    contents:
+      - tr_cache_dir
+
   - subtitle: Treasury Coupon Issues and Corporate Bond Yield Curve
     contents:
       - tr_curve_rate

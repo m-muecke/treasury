@@ -268,7 +268,9 @@ tr_make_request <- function(data, date) {
     "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml" # nolint
   ) |>
     req_user_agent(treasury_user_agent()) |>
-    req_url_query(data = data, "{nm}" := date) # nolint
+    req_url_query(data = data, "{nm}" := date) |> # nolint
+    req_retry(max_tries = 3L) |>
+    req_tr_cache()
 
   if (date == "all") {
     req_perform_iterative(
