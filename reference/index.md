@@ -14,6 +14,12 @@
 - [`tr_yield_curve()`](https://m-muecke.github.io/treasury/reference/tr_yield_curve.md)
   : Daily treasury par yield curve rates
 
+### Cache management
+
+- [`tr_cache_dir()`](https://m-muecke.github.io/treasury/reference/tr_cache_dir.md)
+  [`tr_cache_clear()`](https://m-muecke.github.io/treasury/reference/tr_cache_dir.md)
+  : Get or manage the treasury API cache
+
 ### Treasury Coupon Issues and Corporate Bond Yield Curve
 
 - [`tr_curve_rate()`](https://m-muecke.github.io/treasury/reference/tr_curve_rate.md)

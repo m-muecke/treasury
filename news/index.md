@@ -2,6 +2,15 @@
 
 ## treasury (development version)
 
+- Add optional caching of API responses via
+  `options(treasury.cache = TRUE)`. Cached responses are stored for 1
+  day by default and can be customized with
+  `options(treasury.cache_max_age = seconds)`. Use
+  [`tr_cache_dir()`](https://m-muecke.github.io/treasury/reference/tr_cache_dir.md)
+  to find the cache location and
+  [`tr_cache_clear()`](https://m-muecke.github.io/treasury/reference/tr_cache_dir.md)
+  to clear it.
+
 ## treasury 0.4.0
 
 CRAN release: 2025-08-26
