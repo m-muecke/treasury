@@ -43,16 +43,16 @@ convention of the XML feed.
 ``` r
 library(treasury)
 
-yield_curve <- tr_yield_curve(2023)
+yield_curve <- tr_yield_curve(2025)
 head(yield_curve)
 #>          date maturity  rate
 #>        <Date>   <char> <num>
-#> 1: 2023-01-03  1 month  4.17
-#> 2: 2023-01-03  2 month  4.42
-#> 3: 2023-01-03  3 month  4.53
-#> 4: 2023-01-03  4 month  4.70
-#> 5: 2023-01-03  6 month  4.77
-#> 6: 2023-01-03   1 year  4.72
+#> 1: 2025-01-02  1 month  4.45
+#> 2: 2025-01-02  2 month  4.36
+#> 3: 2025-01-02  3 month  4.36
+#> 4: 2025-01-02  4 month  4.31
+#> 5: 2025-01-02  6 month  4.25
+#> 6: 2025-01-02   1 year  4.17
 ```
 
 <img src="man/figures/README-plot-1.png" alt="" width="100%" />
