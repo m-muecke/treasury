@@ -1,6 +1,8 @@
 # Changelog
 
-## treasury (development version)
+## treasury 0.5.0
+
+CRAN release: 2026-03-21
 
 - Add optional caching of API responses via
   `options(treasury.cache = TRUE)`. Cached responses are stored for 1
