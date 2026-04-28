@@ -162,7 +162,7 @@ parse_long_term_rate <- function(x) {
 
 clean_long_term_rate <- function(dt) {
   dt[, rate_type := gsub("^bc_", "", tolower(rate_type))]
-  dt[, rate_type := gsub("_", " ", rate_type, fixed = TRUE)]
+  dt[, rate_type := chartr("_", " ", rate_type)]
   dt[, rate_type := gsub("(\\d+)(year?)", "\\1 \\2", rate_type)][]
 }
 
