@@ -13,12 +13,14 @@ You can install the released version of **treasury** from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
+
 install.packages("treasury")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
 
 ``` r
+
 # install.packages("pak")
 pak::pak("m-muecke/treasury")
 ```
@@ -29,6 +31,7 @@ treasury functions are prefixed with `tr_` and follow the naming
 convention of the XML feed.
 
 ``` r
+
 library(treasury)
 
 yield_curve <- tr_yield_curve(2025)
