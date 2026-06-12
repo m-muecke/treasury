@@ -14,7 +14,3 @@
 "_PACKAGE"
 
 utils::globalVariables(c("maturity", "yearmonth", "rate_type", "type"))
-
-treasury_user_agent <- function() {
-  sprintf("treasury/%s", utils::packageVersion("treasury"))
-}
