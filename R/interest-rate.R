@@ -220,13 +220,6 @@ parse_real_long_term <- function(x) {
   data.table(date = xml_date(x, ".//d:QUOTE_DATE"), rate = rate)
 }
 
-xml_date <- function(x, xpath) {
-  x |>
-    xml2::xml_find_all(xpath) |>
-    xml2::xml_text() |>
-    as.Date()
-}
-
 clean_maturity <- function(dt, prefix) {
   dt[, maturity := gsub(prefix, "", tolower(maturity), fixed = TRUE)]
   dt[, maturity := gsub("(\\d+)(\\w+)", "\\1 \\2", maturity)][]
