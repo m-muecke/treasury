@@ -29,22 +29,16 @@ tr_yield_curve <- function(date = NULL) {
 }
 
 parse_yield_curve <- function(x) {
-  date <- x |>
-    xml2::xml_find_all(".//d:NEW_DATE") |>
-    xml2::xml_text() |>
-    as.Date()
   values <- xml2::xml_find_all(x, "./*[starts-with(name(), 'd:BC_')]")
   data.table(
-    date = date,
+    date = xml_date(x, ".//d:NEW_DATE"),
     maturity = xml2::xml_name(values),
     rate = xml2::xml_double(values)
   )
 }
 
 clean_yield_curve <- function(dt) {
-  dt <- dt[maturity != "BC_30YEARDISPLAY"]
-  dt[, maturity := gsub("bc_", "", tolower(maturity), fixed = TRUE)]
-  dt[, maturity := gsub("(\\d+)(\\w+)", "\\1 \\2", maturity)][]
+  clean_maturity(dt[maturity != "BC_30YEARDISPLAY"], "bc_")
 }
 
 #' Daily treasury bill rates
@@ -96,13 +90,9 @@ tr_bill_rates <- function(date = NULL) {
 }
 
 parse_bill_rate <- function(x) {
-  date <- x |>
-    xml2::xml_find_all(".//d:INDEX_DATE") |>
-    xml2::xml_text() |>
-    as.Date()
   values <- xml2::xml_find_all(x, "./*[starts-with(name(), 'd:ROUND_B1_')]")
   data.table(
-    date = date,
+    date = xml_date(x, ".//d:INDEX_DATE"),
     type = xml2::xml_name(values),
     value = xml2::xml_double(values)
   )
@@ -111,9 +101,7 @@ parse_bill_rate <- function(x) {
 clean_bill_rate <- function(dt) {
   dt[, type := gsub("round_b1_", "", tolower(type), fixed = TRUE)]
   dt[, type := gsub("_2$", "", type)]
-  dt[, maturity := strsplit(type, "_", fixed = TRUE)]
-  dt[, type := vapply(maturity, \(x) x[[1L]], "")]
-  dt[, maturity := vapply(maturity, \(x) x[[2L]], "")]
+  dt[, c("type", "maturity") := tstrsplit(type, "_", fixed = TRUE, keep = 1:2)]
   dt[, maturity := gsub("wk", " weeks", maturity, fixed = TRUE)]
   dt[, c("date", "type", "maturity", "value")][]
 }
@@ -147,17 +135,13 @@ tr_long_term_rate <- function(date = NULL) {
 }
 
 parse_long_term_rate <- function(x) {
-  date <- x |>
-    xml2::xml_find_all(".//d:QUOTE_DATE") |>
-    xml2::xml_text() |>
-    as.Date()
   rate_type <- x |>
     xml2::xml_find_all(".//d:RATE_TYPE") |>
     xml2::xml_text()
   rate <- x |>
     xml2::xml_find_all(".//d:RATE") |>
     xml2::xml_double()
-  data.table(date = date, rate_type = rate_type, rate = rate)
+  data.table(date = xml_date(x, ".//d:QUOTE_DATE"), rate_type = rate_type, rate = rate)
 }
 
 clean_long_term_rate <- function(dt) {
@@ -196,21 +180,16 @@ tr_real_yield_curve <- function(date = NULL) {
 }
 
 parse_real_yield_curve <- function(x) {
-  date <- x |>
-    xml2::xml_find_all(".//d:NEW_DATE") |>
-    xml2::xml_text() |>
-    as.Date()
   values <- xml2::xml_find_all(x, "./*[starts-with(name(), 'd:TC_')]")
   data.table(
-    date = date,
+    date = xml_date(x, ".//d:NEW_DATE"),
     maturity = xml2::xml_name(values),
     rate = xml2::xml_double(values)
   )
 }
 
 clean_real_yield_curve <- function(dt) {
-  dt[, maturity := gsub("tc_", "", tolower(maturity), fixed = TRUE)]
-  dt[, maturity := gsub("(\\d+)(\\w+)", "\\1 \\2", maturity)][]
+  clean_maturity(dt, "tc_")
 }
 
 #' Daily treasury real long-term rate averages
@@ -235,14 +214,22 @@ tr_real_long_term <- function(date = NULL) {
 }
 
 parse_real_long_term <- function(x) {
-  date <- x |>
-    xml2::xml_find_all(".//d:QUOTE_DATE") |>
-    xml2::xml_text() |>
-    as.Date()
   rate <- x |>
     xml2::xml_find_all(".//d:RATE") |>
     xml2::xml_double()
-  data.table(date = date, rate = rate)
+  data.table(date = xml_date(x, ".//d:QUOTE_DATE"), rate = rate)
+}
+
+xml_date <- function(x, xpath) {
+  x |>
+    xml2::xml_find_all(xpath) |>
+    xml2::xml_text() |>
+    as.Date()
+}
+
+clean_maturity <- function(dt, prefix) {
+  dt[, maturity := gsub(prefix, "", tolower(maturity), fixed = TRUE)]
+  dt[, maturity := gsub("(\\d+)(\\w+)", "\\1 \\2", maturity)][]
 }
 
 treasury <- function(data, date, fn) {
@@ -293,17 +280,18 @@ tr_process_response <- function(resps, fn) {
   }
 }
 
-is_complete <- function(resp) {
-  entries <- resp |>
+tr_entries <- function(resp) {
+  resp |>
     resp_body_xml() |>
     xml2::xml_find_all(".//m:properties")
-  length(entries) == 0L
+}
+
+is_complete <- function(resp) {
+  length(tr_entries(resp)) == 0L
 }
 
 tr_parse_response <- function(resp, fn) {
-  entries <- resp |>
-    resp_body_xml() |>
-    xml2::xml_find_all(".//m:properties")
+  entries <- tr_entries(resp)
   if (length(entries) == 0L) {
     return()
   }

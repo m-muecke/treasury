@@ -1,3 +1,9 @@
+require_readxl <- function() {
+  if (!requireNamespace("readxl", quietly = TRUE)) {
+    stop("Please install the readxl package to use this function.", call. = FALSE)
+  }
+}
+
 is_count <- function(x, null_ok = FALSE) {
   if (null_ok && is.null(x)) {
     return(TRUE)

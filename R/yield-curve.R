@@ -40,9 +40,7 @@ tr_curve_rate <- function(
   type = c("monthly", "end-of-month"),
   year = NULL
 ) {
-  if (!requireNamespace("readxl", quietly = TRUE)) {
-    stop("Please install the readxl package to use this function.", call. = FALSE)
-  }
+  require_readxl()
   stopifnot(is_count(year, null_ok = TRUE))
   x <- match.arg(x)
   type <- match.arg(type)
@@ -99,9 +97,7 @@ tr_curve_rate <- function(
 #' @rdname tr_curve_rate
 #' @export
 tr_par_yield <- function(x = c("hqm", "tnc", "trc"), type = c("monthly", "end-of-month")) {
-  if (!requireNamespace("readxl", quietly = TRUE)) {
-    stop("Please install the readxl package to use this function.", call. = FALSE)
-  }
+  require_readxl()
   x <- match.arg(x)
   type <- match.arg(type)
 
@@ -140,9 +136,7 @@ tr_par_yields <- function(x = c("hqm", "tnc", "trc"), type = c("monthly", "end-o
 #' @rdname tr_curve_rate
 #' @export
 tr_forward_rate <- function(x = c("tnc", "trc", "tbi"), type = c("monthly", "end-of-month")) {
-  if (!requireNamespace("readxl", quietly = TRUE)) {
-    stop("Please install the readxl package to use this function.", call. = FALSE)
-  }
+  require_readxl()
   x <- match.arg(x)
   type <- match.arg(type)
 
