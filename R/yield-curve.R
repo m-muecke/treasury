@@ -40,7 +40,7 @@ tr_curve_rate <- function(
   type = c("monthly", "end-of-month"),
   year = NULL
 ) {
-  require_readxl()
+  require_namespace("readxl")
   stopifnot(is_count(year, null_ok = TRUE))
   x <- match.arg(x)
   type <- match.arg(type)
@@ -97,7 +97,7 @@ tr_curve_rate <- function(
 #' @rdname tr_curve_rate
 #' @export
 tr_par_yield <- function(x = c("hqm", "tnc", "trc"), type = c("monthly", "end-of-month")) {
-  require_readxl()
+  require_namespace("readxl")
   x <- match.arg(x)
   type <- match.arg(type)
 
@@ -136,7 +136,7 @@ tr_par_yields <- function(x = c("hqm", "tnc", "trc"), type = c("monthly", "end-o
 #' @rdname tr_curve_rate
 #' @export
 tr_forward_rate <- function(x = c("tnc", "trc", "tbi"), type = c("monthly", "end-of-month")) {
-  require_readxl()
+  require_namespace("readxl")
   x <- match.arg(x)
   type <- match.arg(type)
 

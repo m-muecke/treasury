@@ -1,6 +1,9 @@
-require_readxl <- function() {
-  if (!requireNamespace("readxl", quietly = TRUE)) {
-    stop("Please install the readxl package to use this function.", call. = FALSE)
+require_namespace <- function(pkg) {
+  if (!requireNamespace(pkg, quietly = TRUE)) {
+    stop(
+      sprintf("Please install the %s package to use this function.", pkg),
+      call. = FALSE
+    )
   }
 }
 
