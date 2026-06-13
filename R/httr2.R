@@ -2,7 +2,8 @@ treasury_user_agent <- function() {
   sprintf("treasury/%s", utils::packageVersion("treasury"))
 }
 
-treasury <- function(data, date, fn) { resps <- tr_make_request(data, date)
+treasury <- function(data, date, fn) {
+  resps <- tr_make_request(data, date)
   tr_process_response(resps, fn)
 }
 
