@@ -20,9 +20,10 @@ test_that("input validation works", {
 
 test_that("clean_yield_curve works", {
   data <- data.table(
-    date = rep("2020-02-03", 13L),
+    date = rep("2020-02-03", 14L),
     maturity = c(
       "BC_1MONTH",
+      "BC_1_5MONTH",
       "BC_2MONTH",
       "BC_3MONTH",
       "BC_6MONTH",
@@ -36,13 +37,14 @@ test_that("clean_yield_curve works", {
       "BC_30YEAR",
       "BC_30YEARDISPLAY"
     ),
-    rate = rnorm(13L)
+    rate = rnorm(14L)
   )
   actual <- clean_yield_curve(data)
-  expected <- copy(data[1:12])
+  expected <- copy(data[1:13])
   expected[,
     maturity := c(
       "1 month",
+      "1.5 month",
       "2 month",
       "3 month",
       "6 month",
@@ -60,11 +62,13 @@ test_that("clean_yield_curve works", {
 })
 
 test_that("clean_bill_rate works", {
-  date <- rep("2020-02-03", 10L)
-  rate <- 1:10
+  date <- rep("2020-02-03", 12L)
+  rate <- 1:12
   type <- c(
     "ROUND_B1_CLOSE_4WK_2",
     "ROUND_B1_YIELD_4WK_2",
+    "ROUND_B1_CLOSE_6WK_2",
+    "ROUND_B1_YIELD_6WK_2",
     "ROUND_B1_CLOSE_8WK_2",
     "ROUND_B1_YIELD_8WK_2",
     "ROUND_B1_CLOSE_13WK_2",
@@ -76,10 +80,12 @@ test_that("clean_bill_rate works", {
   )
   data <- data.table(date = date, type = type, value = rate)
   actual <- clean_bill_rate(data)
-  type <- rep(c("close", "yield"), 5L)
+  type <- rep(c("close", "yield"), 6L)
   maturity <- c(
     "4 weeks",
     "4 weeks",
+    "6 weeks",
+    "6 weeks",
     "8 weeks",
     "8 weeks",
     "13 weeks",

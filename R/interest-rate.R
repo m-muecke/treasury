@@ -222,5 +222,6 @@ parse_real_long_term <- function(x) {
 
 clean_maturity <- function(dt, prefix) {
   dt[, maturity := gsub(prefix, "", tolower(maturity), fixed = TRUE)]
+  dt[, maturity := gsub("(\\d)_(\\d)", "\\1.\\2", maturity)]
   dt[, maturity := gsub("(\\d+)(\\w+)", "\\1 \\2", maturity)][]
 }
