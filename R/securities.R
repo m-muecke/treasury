@@ -49,9 +49,7 @@ tr_upcoming = function(type = NULL) {
 }
 
 securities = function(endpoint, type, days) {
-  if (!is.null(type)) {
-    type = match.arg(type, c("Bill", "Note", "Bond", "CMB", "TIPS", "FRN"))
-  }
+  type = type %&&% match.arg(type, c("Bill", "Note", "Bond", "CMB", "TIPS", "FRN"))
   stopifnot(is_count(days, null_ok = TRUE))
   dt = securities_request(endpoint, type, days)
   if (is.null(dt)) {

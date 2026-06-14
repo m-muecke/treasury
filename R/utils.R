@@ -1,3 +1,7 @@
+`%&&%` = function(lhs, rhs) {
+  if (is.null(lhs)) lhs else rhs
+}
+
 is_count = function(x, null_ok = FALSE) {
   if (null_ok && is.null(x)) {
     return(TRUE)
