@@ -21,6 +21,13 @@ xml_date = function(x, xpath) {
     as.Date()
 }
 
+xml_updated = function(doc) {
+  doc |>
+    xml2::xml_find_first("/*[local-name()='feed']/*[local-name()='updated']") |>
+    xml2::xml_text() |>
+    as.POSIXct(format = "%Y-%m-%dT%H:%M:%SZ", tz = "UTC")
+}
+
 to_snake_case = function(x) {
   tolower(gsub("((?<=[a-z0-9])[A-Z]|(?!^)[A-Z](?=[a-z]))", "_\\1", x, perl = TRUE))
 }

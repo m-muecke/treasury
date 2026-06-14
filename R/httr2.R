@@ -2,9 +2,20 @@ treasury_user_agent = function() {
   sprintf("treasury/%s", utils::packageVersion("treasury"))
 }
 
-treasury = function(data, date, fn) {
+treasury = function(data, date, parse, clean = identity) {
   resps = tr_make_request(data, date)
-  tr_process_response(resps, fn)
+  dt = tr_process_response(resps, parse)
+  if (is.null(dt)) {
+    return()
+  }
+  dt = clean(dt)
+  setattr(dt, "updated_at", tr_updated(resps))
+  dt[]
+}
+
+tr_updated = function(resps) {
+  resp = if (inherits(resps, "list")) resps_successes(resps)[[1L]] else resps
+  xml_updated(resp_body_xml(resp))
 }
 
 tr_make_request = function(data, date) {

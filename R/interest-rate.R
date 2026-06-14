@@ -10,6 +10,8 @@
 #' @param date (`NULL` | `character(1)` | `numeric(1)`)\cr
 #'   Date in format yyyy or yyyymm. If `NULL`, all data is returned. Default `NULL`.
 #' @returns A [data.table::data.table()] containing the rates or `NULL` when no entries were found.
+#'   The table carries an `updated_at` attribute with the feed's last update time as a [POSIXct],
+#'   accessible via `attr(x, "updated_at")`.
 #' @source <https://home.treasury.gov/treasury-daily-interest-rate-xml-feed>
 #' @family interest rate
 #' @export
@@ -21,11 +23,7 @@
 #' tr_yield_curve(2022)
 #' }
 tr_yield_curve = function(date = NULL) {
-  dt = treasury("daily_treasury_yield_curve", date, parse_yield_curve)
-  if (is.null(dt)) {
-    return()
-  }
-  clean_yield_curve(dt)
+  treasury("daily_treasury_yield_curve", date, parse_yield_curve, clean_yield_curve)
 }
 
 parse_yield_curve = function(x) {
@@ -75,11 +73,7 @@ clean_yield_curve = function(dt) {
 #' tr_bill_rate(2022)
 #' }
 tr_bill_rate = function(date = NULL) {
-  dt = treasury("daily_treasury_bill_rates", date, parse_bill_rate)
-  if (is.null(dt)) {
-    return()
-  }
-  clean_bill_rate(dt)
+  treasury("daily_treasury_bill_rates", date, parse_bill_rate, clean_bill_rate)
 }
 
 #' @rdname tr_bill_rate
@@ -127,11 +121,7 @@ clean_bill_rate = function(dt) {
 #' tr_long_term_rate(2022)
 #' }
 tr_long_term_rate = function(date = NULL) {
-  dt = treasury("daily_treasury_long_term_rate", date, parse_long_term_rate)
-  if (is.null(dt)) {
-    return()
-  }
-  clean_long_term_rate(dt)
+  treasury("daily_treasury_long_term_rate", date, parse_long_term_rate, clean_long_term_rate)
 }
 
 parse_long_term_rate = function(x) {
@@ -172,11 +162,12 @@ clean_long_term_rate = function(dt) {
 #' tr_real_yield_curve(2022)
 #' }
 tr_real_yield_curve = function(date = NULL) {
-  dt = treasury("daily_treasury_real_yield_curve", date, parse_real_yield_curve)
-  if (is.null(dt)) {
-    return()
-  }
-  clean_real_yield_curve(dt)
+  treasury(
+    "daily_treasury_real_yield_curve",
+    date,
+    parse_real_yield_curve,
+    clean_real_yield_curve
+  )
 }
 
 parse_real_yield_curve = function(x) {
