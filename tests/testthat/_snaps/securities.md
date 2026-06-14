@@ -29,4 +29,3 @@
     Condition
       Error in `match.arg()`:
       ! 'arg' should be one of "Bill", "Note", "Bond", "CMB", "TIPS", "FRN"
-
