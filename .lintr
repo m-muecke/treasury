@@ -1,4 +1,5 @@
 linters: all_linters(
+    assignment_linter = NULL, # do not force using <- for assignments
     line_length_linter(100L),
     object_usage_linter = NULL,
     todo_comment_linter = NULL,

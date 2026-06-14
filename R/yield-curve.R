@@ -35,22 +35,22 @@
 #' # TNC Treasury Yield Curve Forward Rates, End of Month
 #' tr_forward_rate("tnc", "end-of-month")
 #' }
-tr_curve_rate <- function(
+tr_curve_rate = function(
   x = c("hqm", "tnc", "trc", "tbi"),
   type = c("monthly", "end-of-month"),
   year = NULL
 ) {
   require_namespace("readxl")
   stopifnot(is_count(year, null_ok = TRUE))
-  x <- match.arg(x)
-  type <- match.arg(type)
-  start_year <- switch(x, hqm = 1984L, tnc = 1978L, trc = 2003L, tbi = 2003L)
-  x <- if (type == "monthly") x else paste0(x, "eom")
-  years <- seq.int(start_year, 2027L, by = 5L)
+  x = match.arg(x)
+  type = match.arg(type)
+  start_year = switch(x, hqm = 1984L, tnc = 1978L, trc = 2003L, tbi = 2003L)
+  x = if (type == "monthly") x else paste0(x, "eom")
+  years = seq.int(start_year, 2027L, by = 5L)
   if (!is.null(year)) {
-    years <- years[findInterval(year, years)]
+    years = years[findInterval(year, years)]
   }
-  urls <- vapply(
+  urls = vapply(
     years,
     function(year) {
       sprintf(
@@ -64,24 +64,24 @@ tr_curve_rate <- function(
     ""
   )
   if (x == "hqmeom") {
-    urls <- sub("88\\.xls$", "88_0.xls", urls)
+    urls = sub("88\\.xls$", "88_0.xls", urls)
   }
 
-  months <- rep(month.name, 5L)
-  res <- lapply(seq_along(urls), function(i) {
-    tf <- tempfile()
+  months = rep(month.name, 5L)
+  res = lapply(seq_along(urls), function(i) {
+    tf = tempfile()
     on.exit(unlink(tf), add = TRUE)
     curl::curl_download(urls[[i]], tf)
-    dt <- setDT(readxl::read_excel(tf, skip = 4L, .name_repair = function(nms) {
-      year <- years[[i]]
-      years <- rep(year:(year + 4L), each = 12L)
-      nms <- paste(months, years, sep = "-")
-      nms <- c("maturity", "tmp", nms)
+    dt = setDT(readxl::read_excel(tf, skip = 4L, .name_repair = function(nms) {
+      year = years[[i]]
+      years = rep(year:(year + 4L), each = 12L)
+      nms = paste(months, years, sep = "-")
+      nms = c("maturity", "tmp", nms)
       nms
     }))
     dt[, 2L := NULL]
     dt[, names(.SD) := lapply(.SD, as.numeric), .SDcols = is.logical]
-    dt <- melt(
+    dt = melt(
       dt,
       id.vars = "maturity",
       variable.name = "yearmonth",
@@ -96,15 +96,15 @@ tr_curve_rate <- function(
 
 #' @rdname tr_curve_rate
 #' @export
-tr_par_yield <- function(x = c("hqm", "tnc", "trc"), type = c("monthly", "end-of-month")) {
+tr_par_yield = function(x = c("hqm", "tnc", "trc"), type = c("monthly", "end-of-month")) {
   require_namespace("readxl")
-  x <- match.arg(x)
-  type <- match.arg(type)
+  x = match.arg(x)
+  type = match.arg(type)
 
   if (x == "hqm") {
-    nms <- c("yearmonth", "tmp", "2 years", "5 years", "10 years", "30 years")
+    nms = c("yearmonth", "tmp", "2 years", "5 years", "10 years", "30 years")
   } else {
-    nms <- c(
+    nms = c(
       "yearmonth",
       "tmp",
       "2 years",
@@ -118,36 +118,36 @@ tr_par_yield <- function(x = c("hqm", "tnc", "trc"), type = c("monthly", "end-of
   }
 
   if (type == "monthly") {
-    sfx <- if (x == "tnc") "_qh_pars_1" else "_qh_pars"
+    sfx = if (x == "tnc") "_qh_pars_1" else "_qh_pars"
   } else {
-    sfx <- "eom_qh_pars"
+    sfx = "eom_qh_pars"
   }
-  x <- paste0(x, sfx)
+  x = paste0(x, sfx)
   download_data(x, nms, 6L, "maturity", "par_yield")
 }
 
 #' @rdname tr_curve_rate
 #' @export
-tr_par_yields <- function(x = c("hqm", "tnc", "trc"), type = c("monthly", "end-of-month")) {
+tr_par_yields = function(x = c("hqm", "tnc", "trc"), type = c("monthly", "end-of-month")) {
   .Deprecated("tr_par_yield")
   tr_par_yield(x, type)
 }
 
 #' @rdname tr_curve_rate
 #' @export
-tr_forward_rate <- function(x = c("tnc", "trc", "tbi"), type = c("monthly", "end-of-month")) {
+tr_forward_rate = function(x = c("tnc", "trc", "tbi"), type = c("monthly", "end-of-month")) {
   require_namespace("readxl")
-  x <- match.arg(x)
-  type <- match.arg(type)
+  x = match.arg(x)
+  type = match.arg(type)
 
   if (type == "monthly") {
-    sfx <- if (x == "tnc") "_qh_forwards_0" else "_qh_forwards"
+    sfx = if (x == "tnc") "_qh_forwards_0" else "_qh_forwards"
   } else {
-    sfx <- "eom_qh_forwards"
+    sfx = "eom_qh_forwards"
   }
-  x <- paste0(x, sfx)
+  x = paste0(x, sfx)
 
-  nms <- c(
+  nms = c(
     "yearmonth",
     "tmp",
     "2-year forward rate 2 years hence",
@@ -158,13 +158,13 @@ tr_forward_rate <- function(x = c("tnc", "trc", "tbi"), type = c("monthly", "end
   download_data(x, nms, 6L, "type", "forward_rate")
 }
 
-download_data <- function(x, col_names, skip, names_to, values_to) {
-  url <- sprintf("https://home.treasury.gov/system/files/226/%s.xls", x)
-  tf <- tempfile()
+download_data = function(x, col_names, skip, names_to, values_to) {
+  url = sprintf("https://home.treasury.gov/system/files/226/%s.xls", x)
+  tf = tempfile()
   on.exit(unlink(tf), add = TRUE)
   curl::curl_download(url, tf)
-  dt <- setDT(readxl::read_excel(tf, col_names = col_names, skip = skip))
+  dt = setDT(readxl::read_excel(tf, col_names = col_names, skip = skip))
   dt[, 2L := NULL]
-  dt <- melt(dt, id.vars = "yearmonth", variable.name = names_to, value.name = values_to)
+  dt = melt(dt, id.vars = "yearmonth", variable.name = names_to, value.name = values_to)
   dt[, yearmonth := as.Date(paste("01", yearmonth), format = "%d %B %Y")][]
 }

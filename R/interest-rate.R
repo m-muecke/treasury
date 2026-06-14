@@ -20,16 +20,16 @@
 #' # or for the entire year
 #' tr_yield_curve(2022)
 #' }
-tr_yield_curve <- function(date = NULL) {
-  dt <- treasury("daily_treasury_yield_curve", date, parse_yield_curve)
+tr_yield_curve = function(date = NULL) {
+  dt = treasury("daily_treasury_yield_curve", date, parse_yield_curve)
   if (is.null(dt)) {
     return()
   }
   clean_yield_curve(dt)
 }
 
-parse_yield_curve <- function(x) {
-  values <- xml2::xml_find_all(x, "./*[starts-with(name(), 'd:BC_')]")
+parse_yield_curve = function(x) {
+  values = xml2::xml_find_all(x, "./*[starts-with(name(), 'd:BC_')]")
   data.table(
     date = xml_date(x, ".//d:NEW_DATE"),
     maturity = xml2::xml_name(values),
@@ -37,7 +37,7 @@ parse_yield_curve <- function(x) {
   )
 }
 
-clean_yield_curve <- function(dt) {
+clean_yield_curve = function(dt) {
   clean_maturity(dt[maturity != "BC_30YEARDISPLAY"], "bc_")
 }
 
@@ -74,8 +74,8 @@ clean_yield_curve <- function(dt) {
 #' # or for the entire year
 #' tr_bill_rate(2022)
 #' }
-tr_bill_rate <- function(date = NULL) {
-  dt <- treasury("daily_treasury_bill_rates", date, parse_bill_rate)
+tr_bill_rate = function(date = NULL) {
+  dt = treasury("daily_treasury_bill_rates", date, parse_bill_rate)
   if (is.null(dt)) {
     return()
   }
@@ -84,13 +84,13 @@ tr_bill_rate <- function(date = NULL) {
 
 #' @rdname tr_bill_rate
 #' @export
-tr_bill_rates <- function(date = NULL) {
+tr_bill_rates = function(date = NULL) {
   .Deprecated("tr_bill_rate")
   tr_bill_rate(date)
 }
 
-parse_bill_rate <- function(x) {
-  values <- xml2::xml_find_all(x, "./*[starts-with(name(), 'd:ROUND_B1_')]")
+parse_bill_rate = function(x) {
+  values = xml2::xml_find_all(x, "./*[starts-with(name(), 'd:ROUND_B1_')]")
   data.table(
     date = xml_date(x, ".//d:INDEX_DATE"),
     type = xml2::xml_name(values),
@@ -98,7 +98,7 @@ parse_bill_rate <- function(x) {
   )
 }
 
-clean_bill_rate <- function(dt) {
+clean_bill_rate = function(dt) {
   dt[, type := gsub("round_b1_", "", tolower(type), fixed = TRUE)]
   dt[, type := gsub("_2$", "", type)]
   dt[, c("type", "maturity") := tstrsplit(type, "_", fixed = TRUE, keep = 1:2)]
@@ -126,25 +126,25 @@ clean_bill_rate <- function(dt) {
 #' # or for the entire year
 #' tr_long_term_rate(2022)
 #' }
-tr_long_term_rate <- function(date = NULL) {
-  dt <- treasury("daily_treasury_long_term_rate", date, parse_long_term_rate)
+tr_long_term_rate = function(date = NULL) {
+  dt = treasury("daily_treasury_long_term_rate", date, parse_long_term_rate)
   if (is.null(dt)) {
     return()
   }
   clean_long_term_rate(dt)
 }
 
-parse_long_term_rate <- function(x) {
-  rate_type <- x |>
+parse_long_term_rate = function(x) {
+  rate_type = x |>
     xml2::xml_find_all(".//d:RATE_TYPE") |>
     xml2::xml_text()
-  rate <- x |>
+  rate = x |>
     xml2::xml_find_all(".//d:RATE") |>
     xml2::xml_double()
   data.table(date = xml_date(x, ".//d:QUOTE_DATE"), rate_type = rate_type, rate = rate)
 }
 
-clean_long_term_rate <- function(dt) {
+clean_long_term_rate = function(dt) {
   dt[, rate_type := gsub("^bc_", "", tolower(rate_type))]
   dt[, rate_type := chartr("_", " ", rate_type)]
   dt[, rate_type := gsub("(\\d+)(year?)", "\\1 \\2", rate_type)][]
@@ -171,16 +171,16 @@ clean_long_term_rate <- function(dt) {
 #' # or for the entire year
 #' tr_real_yield_curve(2022)
 #' }
-tr_real_yield_curve <- function(date = NULL) {
-  dt <- treasury("daily_treasury_real_yield_curve", date, parse_real_yield_curve)
+tr_real_yield_curve = function(date = NULL) {
+  dt = treasury("daily_treasury_real_yield_curve", date, parse_real_yield_curve)
   if (is.null(dt)) {
     return()
   }
   clean_real_yield_curve(dt)
 }
 
-parse_real_yield_curve <- function(x) {
-  values <- xml2::xml_find_all(x, "./*[starts-with(name(), 'd:TC_')]")
+parse_real_yield_curve = function(x) {
+  values = xml2::xml_find_all(x, "./*[starts-with(name(), 'd:TC_')]")
   data.table(
     date = xml_date(x, ".//d:NEW_DATE"),
     maturity = xml2::xml_name(values),
@@ -188,7 +188,7 @@ parse_real_yield_curve <- function(x) {
   )
 }
 
-clean_real_yield_curve <- function(dt) {
+clean_real_yield_curve = function(dt) {
   clean_maturity(dt, "tc_")
 }
 
@@ -209,18 +209,18 @@ clean_real_yield_curve <- function(dt) {
 #' # or for the entire year
 #' tr_real_long_term(2022)
 #' }
-tr_real_long_term <- function(date = NULL) {
+tr_real_long_term = function(date = NULL) {
   treasury("daily_treasury_real_long_term", date, parse_real_long_term)
 }
 
-parse_real_long_term <- function(x) {
-  rate <- x |>
+parse_real_long_term = function(x) {
+  rate = x |>
     xml2::xml_find_all(".//d:RATE") |>
     xml2::xml_double()
   data.table(date = xml_date(x, ".//d:QUOTE_DATE"), rate = rate)
 }
 
-clean_maturity <- function(dt, prefix) {
+clean_maturity = function(dt, prefix) {
   dt[, maturity := gsub(prefix, "", tolower(maturity), fixed = TRUE)]
   dt[, maturity := gsub("(\\d)_(\\d)", "\\1.\\2", maturity)]
   dt[, maturity := gsub("(\\d+)(\\w+)", "\\1 \\2", maturity)][]

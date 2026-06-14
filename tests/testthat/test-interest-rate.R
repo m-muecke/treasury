@@ -1,5 +1,5 @@
 test_that("input validation works", {
-  fns <- list(
+  fns = list(
     tr_yield_curve,
     tr_bill_rate,
     tr_long_term_rate,
@@ -19,7 +19,7 @@ test_that("input validation works", {
 })
 
 test_that("clean_yield_curve works", {
-  data <- data.table(
+  data = data.table(
     date = rep("2020-02-03", 14L),
     maturity = c(
       "BC_1MONTH",
@@ -39,8 +39,8 @@ test_that("clean_yield_curve works", {
     ),
     rate = rnorm(14L)
   )
-  actual <- clean_yield_curve(data)
-  expected <- copy(data[1:13])
+  actual = clean_yield_curve(data)
+  expected = copy(data[1:13])
   expected[,
     maturity := c(
       "1 month",
@@ -62,9 +62,9 @@ test_that("clean_yield_curve works", {
 })
 
 test_that("clean_bill_rate works", {
-  date <- rep("2020-02-03", 12L)
-  rate <- 1:12
-  type <- c(
+  date = rep("2020-02-03", 12L)
+  rate = 1:12
+  type = c(
     "ROUND_B1_CLOSE_4WK_2",
     "ROUND_B1_YIELD_4WK_2",
     "ROUND_B1_CLOSE_6WK_2",
@@ -78,10 +78,10 @@ test_that("clean_bill_rate works", {
     "ROUND_B1_CLOSE_52WK_2",
     "ROUND_B1_YIELD_52WK_2"
   )
-  data <- data.table(date = date, type = type, value = rate)
-  actual <- clean_bill_rate(data)
-  type <- rep(c("close", "yield"), 6L)
-  maturity <- c(
+  data = data.table(date = date, type = type, value = rate)
+  actual = clean_bill_rate(data)
+  type = rep(c("close", "yield"), 6L)
+  maturity = c(
     "4 weeks",
     "4 weeks",
     "6 weeks",
@@ -95,7 +95,7 @@ test_that("clean_bill_rate works", {
     "52 weeks",
     "52 weeks"
   )
-  expected <- data.table(
+  expected = data.table(
     date = date,
     type = type,
     maturity = maturity,
@@ -105,23 +105,23 @@ test_that("clean_bill_rate works", {
 })
 
 test_that("clean_long_term_rate works", {
-  date <- rep("2020-02-03", 10L)
-  rate_type <- rep(c("BC_20year", "Over_10_years", "Real_Rate"), 10L)
-  rate <- 1:10
-  data <- data.table(date = date, rate_type = rate_type, rate = rate)
-  actual <- clean_long_term_rate(data)
-  expected <- copy(actual)
+  date = rep("2020-02-03", 10L)
+  rate_type = rep(c("BC_20year", "Over_10_years", "Real_Rate"), 10L)
+  rate = 1:10
+  data = data.table(date = date, rate_type = rate_type, rate = rate)
+  actual = clean_long_term_rate(data)
+  expected = copy(actual)
   expected[, rate_type := rep(c("20 year", "over 10 years", "real rate"), 10L)]
   expect_identical(actual, expected)
 })
 
 test_that("clean_real_yield_curve works", {
-  date <- rep("2020-02-03", 10L)
-  maturity <- rep(c("TC_5YEAR", "TC_7YEAR", "TC_10YEAR", "TC_20YEAR", "TC_30YEAR"), 2L)
-  rate <- 1:10
-  data <- data.table(date = date, maturity = maturity, rate = rate)
-  actual <- clean_real_yield_curve(data)
-  expected <- copy(data)
+  date = rep("2020-02-03", 10L)
+  maturity = rep(c("TC_5YEAR", "TC_7YEAR", "TC_10YEAR", "TC_20YEAR", "TC_30YEAR"), 2L)
+  rate = 1:10
+  data = data.table(date = date, maturity = maturity, rate = rate)
+  actual = clean_real_yield_curve(data)
+  expected = copy(data)
   expected[,
     maturity := rep(c("5 year", "7 year", "10 year", "20 year", "30 year"), 2L)
   ]
