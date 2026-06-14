@@ -71,6 +71,13 @@ head(yield_curve)
 - [`tr_yield_curve()`](https://m-muecke.github.io/treasury/reference/tr_yield_curve.md)
   : Daily treasury par yield curve rates
 
+### Auctions
+
+- [`tr_auctions()`](https://m-muecke.github.io/treasury/reference/tr_auctions.md)
+  [`tr_announcements()`](https://m-muecke.github.io/treasury/reference/tr_auctions.md)
+  [`tr_upcoming()`](https://m-muecke.github.io/treasury/reference/tr_auctions.md)
+  : US Treasury marketable securities and auction results
+
 ### Cache management
 
 - [`tr_cache_dir()`](https://m-muecke.github.io/treasury/reference/tr_cache_dir.md)

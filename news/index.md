@@ -2,6 +2,12 @@
 
 ## treasury (development version)
 
+- [`tr_auctions()`](https://m-muecke.github.io/treasury/reference/tr_auctions.md),
+  [`tr_announcements()`](https://m-muecke.github.io/treasury/reference/tr_auctions.md),
+  and
+  [`tr_upcoming()`](https://m-muecke.github.io/treasury/reference/tr_auctions.md)
+  were added to retrieve US Treasury marketable securities and auction
+  results from the TreasuryDirect API.
 - [`tr_yield_curve()`](https://m-muecke.github.io/treasury/reference/tr_yield_curve.md)
   now correctly labels the 1.5-month maturity added to the Treasury feed
   in February 2025 (previously shown as `1 _5month`).
