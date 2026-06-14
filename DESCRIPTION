@@ -23,9 +23,11 @@ Imports:
     xml2
 Suggests:
     ggplot2,
+    knitr,
     readxl,
     scales,
     testthat (>= 3.0.0)
+Config/Needs/website: knitr, rmarkdown
 Config/roxygen2/markdown: TRUE
 Config/roxygen2/version: 8.0.0
 Config/testthat/edition: 3

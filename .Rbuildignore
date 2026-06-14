@@ -33,3 +33,4 @@
 ^paper$
 ^pkgdown$
 ^revdep$
+^vignettes/articles$
