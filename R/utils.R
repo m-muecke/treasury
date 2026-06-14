@@ -20,3 +20,13 @@ xml_date = function(x, xpath) {
     xml2::xml_text() |>
     as.Date()
 }
+
+to_snake_case = function(x) {
+  tolower(gsub("((?<=[a-z0-9])[A-Z]|(?!^)[A-Z](?=[a-z]))", "_\\1", x, perl = TRUE))
+}
+
+as_numeric_safe = function(x) {
+  x[!nzchar(x)] = NA_character_
+  num = suppressWarnings(as.numeric(x))
+  if (anyNA(num[!is.na(x)])) x else num
+}

@@ -1,5 +1,6 @@
 # treasury (development version)
 
+* `tr_auctions()`, `tr_announcements()`, and `tr_upcoming()` were added to retrieve US Treasury marketable securities and auction results from the TreasuryDirect API.
 * `tr_yield_curve()` now correctly labels the 1.5-month maturity added to the Treasury feed in February 2025 (previously shown as `1 _5month`).
 
 # treasury 0.5.0
