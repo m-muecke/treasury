@@ -46,6 +46,7 @@
 <h2 class="pkg-version" data-toc-text="development version" id="treasury-development-version">treasury (development version)<a class="anchor" aria-label="anchor" href="#treasury-development-version"></a></h2>
 <ul><li>
 <code><a href="../reference/tr_auctions.html">tr_auctions()</a></code>, <code><a href="../reference/tr_auctions.html">tr_announcements()</a></code>, and <code><a href="../reference/tr_auctions.html">tr_upcoming()</a></code> were added to retrieve US Treasury marketable securities and auction results from the TreasuryDirect API.</li>
+<li>The daily interest rate functions (<code><a href="../reference/tr_yield_curve.html">tr_yield_curve()</a></code>, <code><a href="../reference/tr_bill_rate.html">tr_bill_rate()</a></code>, <code><a href="../reference/tr_long_term_rate.html">tr_long_term_rate()</a></code>, <code><a href="../reference/tr_real_yield_curve.html">tr_real_yield_curve()</a></code>, and <code><a href="../reference/tr_real_long_term.html">tr_real_long_term()</a></code>) now attach an <code>updated_at</code> attribute to the returned table with the feed’s last update time.</li>
 <li>
 <code><a href="../reference/tr_yield_curve.html">tr_yield_curve()</a></code> now correctly labels the 1.5-month maturity added to the Treasury feed in February 2025 (previously shown as <code>1 _5month</code>).</li>
 </ul></div>

@@ -8,6 +8,15 @@
   [`tr_upcoming()`](https://m-muecke.github.io/treasury/reference/tr_auctions.md)
   were added to retrieve US Treasury marketable securities and auction
   results from the TreasuryDirect API.
+- The daily interest rate functions
+  ([`tr_yield_curve()`](https://m-muecke.github.io/treasury/reference/tr_yield_curve.md),
+  [`tr_bill_rate()`](https://m-muecke.github.io/treasury/reference/tr_bill_rate.md),
+  [`tr_long_term_rate()`](https://m-muecke.github.io/treasury/reference/tr_long_term_rate.md),
+  [`tr_real_yield_curve()`](https://m-muecke.github.io/treasury/reference/tr_real_yield_curve.md),
+  and
+  [`tr_real_long_term()`](https://m-muecke.github.io/treasury/reference/tr_real_long_term.md))
+  now attach an `updated_at` attribute to the returned table with the
+  feed’s last update time.
 - [`tr_yield_curve()`](https://m-muecke.github.io/treasury/reference/tr_yield_curve.md)
   now correctly labels the 1.5-month maturity added to the Treasury feed
   in February 2025 (previously shown as `1 _5month`).
