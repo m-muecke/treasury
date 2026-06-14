@@ -34,7 +34,7 @@ convention of the XML feed.
 
 library(treasury)
 
-yield_curve <- tr_yield_curve(2025)
+yield_curve = tr_yield_curve(2025)
 head(yield_curve)
 #>          date maturity  rate
 #>        <Date>   <char> <num>

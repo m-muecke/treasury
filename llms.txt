@@ -34,7 +34,7 @@ convention of the XML feed.
 
 library(treasury)
 
-yield_curve <- tr_yield_curve(2025)
+yield_curve = tr_yield_curve(2025)
 head(yield_curve)
 #>          date maturity  rate
 #>        <Date>   <char> <num>
@@ -85,3 +85,9 @@ head(yield_curve)
   [`tr_forward_rate()`](https://m-muecke.github.io/treasury/reference/tr_curve_rate.md)
   : Download Treasury Coupon Issues and Corporate Bond Yield Curves
 
+# Articles
+
+### All vignettes
+
+- [Getting started with
+  treasury](https://m-muecke.github.io/treasury/articles/getting-started.md):

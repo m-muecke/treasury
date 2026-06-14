@@ -2,6 +2,10 @@
 
 ## treasury (development version)
 
+- [`tr_yield_curve()`](https://m-muecke.github.io/treasury/reference/tr_yield_curve.md)
+  now correctly labels the 1.5-month maturity added to the Treasury feed
+  in February 2025 (previously shown as `1 _5month`).
+
 ## treasury 0.5.0
 
 CRAN release: 2026-03-21
