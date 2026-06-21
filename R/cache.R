@@ -9,8 +9,10 @@
 #' `options(treasury.cache_max_age = seconds)`.
 #'
 #' @returns
-#' * `tr_cache_dir()`: A string with the path to the cache directory.
-#' * `tr_cache_clear()`: No return value, called for side effects.
+#' `tr_cache_dir()` returns a string with the path to the cache directory.
+#'
+#' `tr_cache_clear()` is called for its side effect of clearing the cached
+#' responses and returns `NULL` invisibly.
 #' @export
 #' @examples
 #' tr_cache_dir()

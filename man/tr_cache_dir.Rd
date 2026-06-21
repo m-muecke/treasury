@@ -10,10 +10,10 @@ tr_cache_dir()
 tr_cache_clear()
 }
 \value{
-\itemize{
-\item \code{tr_cache_dir()}: A string with the path to the cache directory.
-\item \code{tr_cache_clear()}: No return value, called for side effects.
-}
+\code{tr_cache_dir()} returns a string with the path to the cache directory.
+
+\code{tr_cache_clear()} is called for its side effect of clearing the cached
+responses and returns \code{NULL} invisibly.
 }
 \description{
 \code{tr_cache_dir()} returns the path where cached API responses are stored.
