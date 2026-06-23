@@ -633,8 +633,8 @@ tr_announcements("Bill")
 #>      adjusted_accrued_interest_per1000 adjusted_price allocation_percentage
 #>                                  <num>          <num>                 <num>
 #>   1:                                NA             NA                    NA
-#>   2:                                NA             NA                    NA
-#>   3:                                NA             NA                    NA
+#>   2:                                NA             NA                 87.55
+#>   3:                                NA             NA                 97.87
 #>   4:                                NA             NA                 64.65
 #>   5:                                NA             NA                 31.85
 #>  ---                                                                       
@@ -659,8 +659,8 @@ tr_announcements("Bill")
 #>      average_median_discount_rate average_median_investment_rate
 #>                             <num>                          <num>
 #>   1:                           NA                             NA
-#>   2:                           NA                             NA
-#>   3:                           NA                             NA
+#>   2:                        3.650                             NA
+#>   3:                        3.805                             NA
 #>   4:                        3.550                             NA
 #>   5:                        3.590                             NA
 #>  ---                                                            
@@ -685,8 +685,8 @@ tr_announcements("Bill")
 #>      back_dated back_dated_date bid_to_cover_ratio call_date callable
 #>           <num>           <num>              <num>     <num>    <num>
 #>   1:         NA              NA                 NA        NA       NA
-#>   2:         NA              NA                 NA        NA       NA
-#>   3:         NA              NA                 NA        NA       NA
+#>   2:         NA              NA               2.68        NA       NA
+#>   3:         NA              NA               2.51        NA       NA
 #>   4:         NA              NA               2.99        NA       NA
 #>   5:         NA              NA               2.57        NA       NA
 #>  ---                                                                 
@@ -711,8 +711,8 @@ tr_announcements("Bill")
 #>      closing_time_noncompetitive competitive_accepted competitive_bid_decimals
 #>                           <char>                <num>                    <num>
 #>   1:                    11:00 AM                   NA                        3
-#>   2:                    11:00 AM                   NA                        3
-#>   3:                    11:00 AM                   NA                        3
+#>   2:                    11:00 AM          87167597200                        3
+#>   3:                    11:00 AM          75553221000                        3
 #>   4:                    11:00 AM          62129655000                        3
 #>   5:                    11:00 AM          72750295000                        3
 #>  ---                                                                          
@@ -724,8 +724,8 @@ tr_announcements("Bill")
 #>      competitive_tendered competitive_tenders_accepted corpus_cusip
 #>                     <num>                       <char>        <num>
 #>   1:                   NA                          Yes           NA
-#>   2:                   NA                          Yes           NA
-#>   3:                   NA                          Yes           NA
+#>   2:         236816047200                          Yes           NA
+#>   3:         191769576000                          Yes           NA
 #>   4:         201702080000                          Yes           NA
 #>   5:         190674820000                          Yes           NA
 #>  ---                                                               
@@ -737,8 +737,8 @@ tr_announcements("Bill")
 #>      cpi_base_reference_period currently_outstanding direct_bidder_accepted
 #>                          <num>                 <num>                  <num>
 #>   1:                        NA           2.27914e+11                     NA
-#>   2:                        NA           8.08100e+10                     NA
-#>   3:                        NA           5.22850e+10                     NA
+#>   2:                        NA           8.08100e+10             4237550000
+#>   3:                        NA           5.22850e+10             3000000000
 #>   4:                        NA           1.68182e+11             2014650000
 #>   5:                        NA           6.95030e+10             2875000000
 #>  ---                                                                       
@@ -750,8 +750,8 @@ tr_announcements("Bill")
 #>      direct_bidder_tendered
 #>                       <num>
 #>   1:                     NA
-#>   2:                     NA
-#>   3:                     NA
+#>   2:             8.0500e+09
+#>   3:             6.1750e+09
 #>   4:             5.0000e+09
 #>   5:             5.5750e+09
 #>  ---                       
@@ -776,16 +776,16 @@ tr_announcements("Bill")
 #>      fima_included fima_noncompetitive_accepted fima_noncompetitive_tendered
 #>             <char>                        <num>                        <num>
 #>   1:           Yes                           NA                           NA
-#>   2:           Yes                           NA                           NA
-#>   3:           Yes                           NA                           NA
-#>   4:           Yes                      2.0e+09                      2.0e+09
-#>   5:           Yes                      1.0e+09                      1.0e+09
+#>   2:           Yes                     1.00e+08                     1.00e+08
+#>   3:           Yes                     2.84e+07                     2.84e+07
+#>   4:           Yes                     2.00e+09                     2.00e+09
+#>   5:           Yes                     1.00e+09                     1.00e+09
 #>  ---                                                                        
-#> 246:           Yes                      7.5e+07                      7.5e+07
-#> 247:           Yes                      0.0e+00                      0.0e+00
-#> 248:           Yes                      0.0e+00                      0.0e+00
-#> 249:           Yes                      0.0e+00                      0.0e+00
-#> 250:           Yes                      0.0e+00                      0.0e+00
+#> 246:           Yes                     7.50e+07                     7.50e+07
+#> 247:           Yes                     0.00e+00                     0.00e+00
+#> 248:           Yes                     0.00e+00                     0.00e+00
+#> 249:           Yes                     0.00e+00                     0.00e+00
+#> 250:           Yes                     0.00e+00                     0.00e+00
 #>      first_interest_period first_interest_payment_date floating_rate
 #>                      <num>                       <num>        <char>
 #>   1:                    NA                          NA            No
@@ -815,8 +815,8 @@ tr_announcements("Bill")
 #>      high_discount_rate high_investment_rate high_price high_discount_margin
 #>                   <num>                <num>      <num>                <num>
 #>   1:                 NA                   NA         NA                   NA
-#>   2:                 NA                   NA         NA                   NA
-#>   3:                 NA                   NA         NA                   NA
+#>   2:              3.695                3.782   99.06599                   NA
+#>   3:              3.840                3.970   98.05867                   NA
 #>   4:              3.580                3.640   99.72156                   NA
 #>   5:              3.640                3.712   99.43378                   NA
 #>  ---                                                                        
@@ -828,8 +828,8 @@ tr_announcements("Bill")
 #>      high_yield index_ratio_on_issue_date indirect_bidder_accepted
 #>           <num>                     <num>                    <num>
 #>   1:         NA                        NA                       NA
-#>   2:         NA                        NA                       NA
-#>   3:         NA                        NA                       NA
+#>   2:         NA                        NA              52087422200
+#>   3:         NA                        NA              40072576000
 #>   4:         NA                        NA              44917130000
 #>   5:         NA                        NA              37459070000
 #>  ---                                                              
@@ -841,16 +841,16 @@ tr_announcements("Bill")
 #>      indirect_bidder_tendered interest_payment_frequency low_discount_rate
 #>                         <num>                     <char>             <num>
 #>   1:                       NA                       None                NA
-#>   2:                       NA                       None                NA
-#>   3:                       NA                       None                NA
-#>   4:              57882080000                       None              3.49
-#>   5:              45359820000                       None              3.51
+#>   2:              63042047200                       None             3.595
+#>   3:              43322576000                       None             3.720
+#>   4:              57882080000                       None             3.490
+#>   5:              45359820000                       None             3.510
 #>  ---                                                                      
-#> 246:              96808748600                       None              3.78
-#> 247:              59068642000                       None              3.62
-#> 248:              69894455500                       None              3.93
-#> 249:              62466894000                       None              3.85
-#> 250:              55846680000                       None              3.71
+#> 246:              96808748600                       None             3.780
+#> 247:              59068642000                       None             3.620
+#> 248:              69894455500                       None             3.930
+#> 249:              62466894000                       None             3.850
+#> 250:              55846680000                       None             3.710
 #>      low_investment_rate low_price low_discount_margin low_yield maturing_date
 #>                    <num>     <num>               <num>     <num>        <Date>
 #>   1:                  NA        NA                  NA        NA    2026-06-25
@@ -906,8 +906,8 @@ tr_announcements("Bill")
 #>      noncompetitive_accepted noncompetitive_tenders_accepted offering_amount
 #>                        <num>                          <char>           <num>
 #>   1:                      NA                             Yes         6.5e+10
-#>   2:                      NA                             Yes         8.9e+10
-#>   3:                      NA                             Yes         7.7e+10
+#>   2:              1732663700                             Yes         8.9e+10
+#>   3:              1418582200                             Yes         7.7e+10
 #>   4:              5870628400                             Yes         7.0e+10
 #>   5:              1250072800                             Yes         7.5e+10
 #>  ---                                                                        
@@ -945,8 +945,8 @@ tr_announcements("Bill")
 #>      pdf_filename_competitive_results pdf_filename_noncompetitive_results
 #>                                <char>                              <char>
 #>   1:                             <NA>                                <NA>
-#>   2:                             <NA>                                <NA>
-#>   3:                             <NA>                                <NA>
+#>   2:                 R_20260622_2.pdf                  NCR_20260622_2.pdf
+#>   3:                 R_20260622_1.pdf                  NCR_20260622_1.pdf
 #>   4:                 R_20260618_2.pdf                  NCR_20260618_2.pdf
 #>   5:                 R_20260618_1.pdf                  NCR_20260618_1.pdf
 #>  ---                                                                     
@@ -958,8 +958,8 @@ tr_announcements("Bill")
 #>      pdf_filename_special_announcement price_per100 primary_dealer_accepted
 #>                                 <char>        <num>                   <num>
 #>   1:                              <NA>           NA                      NA
-#>   2:                              <NA>           NA                      NA
-#>   3:                              <NA>           NA                      NA
+#>   2:                              <NA>     99.06599             30842625000
+#>   3:                              <NA>     98.05867             32480645000
 #>   4:                              <NA>     99.72156             15197875000
 #>   5:                              <NA>     99.43378             32416225000
 #>  ---                                                                       
@@ -971,8 +971,8 @@ tr_announcements("Bill")
 #>      primary_dealer_tendered reopening security_term_day_month
 #>                        <num>    <char>                  <char>
 #>   1:                      NA       Yes                  42-Day
-#>   2:                      NA       Yes                  91-Day
-#>   3:                      NA       Yes                 182-Day
+#>   2:             1.65724e+11       Yes                  91-Day
+#>   3:             1.42272e+11       Yes                 182-Day
 #>   4:             1.38820e+11       Yes                  28-Day
 #>   5:             1.39740e+11       Yes                  56-Day
 #>  ---                                                          
@@ -984,8 +984,8 @@ tr_announcements("Bill")
 #>      security_term_week_year series soma_accepted soma_holdings soma_included
 #>                       <char>  <num>         <num>         <num>        <char>
 #>   1:                  6-Week     NA            NA    1.5863e+10            No
-#>   2:                 13-Week     NA            NA    1.5863e+10            No
-#>   3:                 26-Week     NA            NA    1.5863e+10            No
+#>   2:                 13-Week     NA    6111619200    1.5863e+10            No
+#>   3:                 26-Week     NA    5287580700    1.5863e+10            No
 #>   4:                  4-Week     NA    4332892700    1.3246e+10            No
 #>   5:                  8-Week     NA    4642384900    1.3246e+10            No
 #>  ---                                                                         
@@ -997,8 +997,8 @@ tr_announcements("Bill")
 #>      soma_tendered spread standard_interest_payment_per1000 strippable    term
 #>              <num>  <num>                             <num>      <num>  <char>
 #>   1:            NA     NA                                NA         NA  6-Week
-#>   2:            NA     NA                                NA         NA 13-Week
-#>   3:            NA     NA                                NA         NA 26-Week
+#>   2:    6111619200     NA                                NA         NA 13-Week
+#>   3:    5287580700     NA                                NA         NA 26-Week
 #>   4:    4332892700     NA                                NA         NA  4-Week
 #>   5:    4642384900     NA                                NA         NA  8-Week
 #>  ---                                                                          
@@ -1010,8 +1010,8 @@ tr_announcements("Bill")
 #>      tiin_conversion_factor_per1000   tips total_accepted total_tendered
 #>                               <num> <char>          <num>          <num>
 #>   1:                             NA     No             NA             NA
-#>   2:                             NA     No             NA             NA
-#>   3:                             NA     No             NA             NA
+#>   2:                             NA     No    95111880100   244760330100
+#>   3:                             NA     No    82287783900   198504138900
 #>   4:                             NA     No    74333176100   213905601100
 #>   5:                             NA     No    79642752700   197567277700
 #>  ---                                                                    
@@ -1023,8 +1023,8 @@ tr_announcements("Bill")
 #>      treasury_retail_accepted treasury_retail_tenders_accepted   type
 #>                         <num>                           <char> <char>
 #>   1:                       NA                              Yes   Bill
-#>   2:                       NA                              Yes   Bill
-#>   3:                       NA                              Yes   Bill
+#>   2:               1013461700                              Yes   Bill
+#>   3:                723284400                              Yes   Bill
 #>   4:               4699054900                              Yes   Bill
 #>   5:                810738000                              Yes   Bill
 #>  ---                                                                 
@@ -1036,8 +1036,8 @@ tr_announcements("Bill")
 #>      unadjusted_accrued_interest_per1000 unadjusted_price   updated_timestamp
 #>                                    <num>            <num>              <char>
 #>   1:                                  NA               NA 2026-06-18T11:02:34
-#>   2:                                  NA               NA 2026-06-18T11:02:25
-#>   3:                                  NA               NA 2026-06-18T11:02:31
+#>   2:                                  NA               NA 2026-06-22T11:33:07
+#>   3:                                  NA               NA 2026-06-22T11:33:06
 #>   4:                                  NA               NA 2026-06-18T11:34:03
 #>   5:                                  NA               NA 2026-06-18T11:34:04
 #>  ---                                                                         
@@ -1049,8 +1049,8 @@ tr_announcements("Bill")
 #>      xml_filename_announcement xml_filename_competitive_results
 #>                         <char>                           <char>
 #>   1:          A_20260618_1.xml                             <NA>
-#>   2:          A_20260618_7.xml                             <NA>
-#>   3:          A_20260618_3.xml                             <NA>
+#>   2:          A_20260618_7.xml                 R_20260622_2.xml
+#>   3:          A_20260618_3.xml                 R_20260622_1.xml
 #>   4:          A_20260616_2.xml                 R_20260618_2.xml
 #>   5:          A_20260616_3.xml                 R_20260618_1.xml
 #>  ---                                                           
@@ -1089,19 +1089,17 @@ tr_announcements("Bill")
 tr_upcoming()
 #>         cusip issue_date security_type   security_term maturity_date
 #>        <char>     <Date>        <char>          <char>        <Date>
-#>  1: 912797UH8 2026-06-25          Bill         13-Week    2026-09-24
-#>  2: 912797TC1 2026-06-25          Bill         26-Week    2026-12-24
-#>  3: 912797RG4 2026-06-25          Bill          6-Week    2026-08-06
-#>  4: 91282CQY0 2026-06-30          Note          2-Year    2028-06-30
-#>  5: 91282CQM6 2026-06-26          Note 1-Year 10-Month    2028-04-30
-#>  6: 91282CQX2 2026-06-30          Note          5-Year    2031-06-30
-#>  7: 91282CQW4 2026-06-30          Note          7-Year    2033-06-30
-#>  8: 912797VN4 2026-06-30          Bill         17-Week          <NA>
-#>  9: 912797UR6 2026-06-30          Bill          4-Week          <NA>
-#> 10: 912797UV7 2026-06-30          Bill          8-Week          <NA>
-#> 11: 912797SA6 2026-07-02          Bill         13-Week          <NA>
-#> 12: 912797VJ3 2026-07-02          Bill         26-Week          <NA>
-#> 13: 912797TW7 2026-07-02          Bill          6-Week          <NA>
+#>  1: 912797RG4 2026-06-25          Bill          6-Week    2026-08-06
+#>  2: 91282CQY0 2026-06-30          Note          2-Year    2028-06-30
+#>  3: 91282CQM6 2026-06-26          Note 1-Year 10-Month    2028-04-30
+#>  4: 91282CQX2 2026-06-30          Note          5-Year    2031-06-30
+#>  5: 91282CQW4 2026-06-30          Note          7-Year    2033-06-30
+#>  6: 912797VN4 2026-06-30          Bill         17-Week          <NA>
+#>  7: 912797UR6 2026-06-30          Bill          4-Week          <NA>
+#>  8: 912797UV7 2026-06-30          Bill          8-Week          <NA>
+#>  9: 912797SA6 2026-07-02          Bill         13-Week          <NA>
+#> 10: 912797VJ3 2026-07-02          Bill         26-Week          <NA>
+#> 11: 912797TW7 2026-07-02          Bill          6-Week          <NA>
 #>     interest_rate ref_cpi_on_issue_date ref_cpi_on_dated_date announcement_date
 #>             <num>                 <num>                 <num>            <Date>
 #>  1:            NA                    NA                    NA        2026-06-18
@@ -1109,29 +1107,25 @@ tr_upcoming()
 #>  3:            NA                    NA                    NA        2026-06-18
 #>  4:            NA                    NA                    NA        2026-06-18
 #>  5:            NA                    NA                    NA        2026-06-18
-#>  6:            NA                    NA                    NA        2026-06-18
-#>  7:            NA                    NA                    NA        2026-06-18
+#>  6:            NA                    NA                    NA        2026-06-23
+#>  7:            NA                    NA                    NA        2026-06-23
 #>  8:            NA                    NA                    NA        2026-06-23
-#>  9:            NA                    NA                    NA        2026-06-23
-#> 10:            NA                    NA                    NA        2026-06-23
+#>  9:            NA                    NA                    NA        2026-06-25
+#> 10:            NA                    NA                    NA        2026-06-25
 #> 11:            NA                    NA                    NA        2026-06-25
-#> 12:            NA                    NA                    NA        2026-06-25
-#> 13:            NA                    NA                    NA        2026-06-25
 #>     auction_date auction_date_year dated_date accrued_interest_per1000
 #>           <Date>             <num>     <Date>                    <num>
-#>  1:   2026-06-22              2026       <NA>                       NA
-#>  2:   2026-06-22              2026       <NA>                       NA
-#>  3:   2026-06-23              2026       <NA>                       NA
-#>  4:   2026-06-23              2026 2026-06-30                       NA
-#>  5:   2026-06-24              2026 2026-04-30                       NA
-#>  6:   2026-06-24              2026 2026-06-30                       NA
-#>  7:   2026-06-25              2026 2026-06-30                       NA
-#>  8:   2026-06-24              2026       <NA>                       NA
-#>  9:   2026-06-25              2026       <NA>                       NA
-#> 10:   2026-06-25              2026       <NA>                       NA
-#> 11:   2026-06-29              2026       <NA>                       NA
-#> 12:   2026-06-29              2026       <NA>                       NA
-#> 13:   2026-06-30              2026       <NA>                       NA
+#>  1:   2026-06-23              2026       <NA>                       NA
+#>  2:   2026-06-23              2026 2026-06-30                       NA
+#>  3:   2026-06-24              2026 2026-04-30                       NA
+#>  4:   2026-06-24              2026 2026-06-30                       NA
+#>  5:   2026-06-25              2026 2026-06-30                       NA
+#>  6:   2026-06-24              2026       <NA>                       NA
+#>  7:   2026-06-25              2026       <NA>                       NA
+#>  8:   2026-06-25              2026       <NA>                       NA
+#>  9:   2026-06-29              2026       <NA>                       NA
+#> 10:   2026-06-29              2026       <NA>                       NA
+#> 11:   2026-06-30              2026       <NA>                       NA
 #>     accrued_interest_per100 adjusted_accrued_interest_per1000 adjusted_price
 #>                       <num>                             <num>          <num>
 #>  1:                      NA                                NA             NA
@@ -1145,8 +1139,6 @@ tr_upcoming()
 #>  9:                      NA                                NA             NA
 #> 10:                      NA                                NA             NA
 #> 11:                      NA                                NA             NA
-#> 12:                      NA                                NA             NA
-#> 13:                      NA                                NA             NA
 #>     allocation_percentage allocation_percentage_decimals announced_cusip
 #>                     <num>                          <num>           <num>
 #>  1:                    NA                              2              NA
@@ -1154,14 +1146,12 @@ tr_upcoming()
 #>  3:                    NA                              2              NA
 #>  4:                    NA                              2              NA
 #>  5:                    NA                              2              NA
-#>  6:                    NA                              2              NA
-#>  7:                    NA                              2              NA
+#>  6:                    NA                             NA              NA
+#>  7:                    NA                             NA              NA
 #>  8:                    NA                             NA              NA
 #>  9:                    NA                             NA              NA
 #> 10:                    NA                             NA              NA
 #> 11:                    NA                             NA              NA
-#> 12:                    NA                             NA              NA
-#> 13:                    NA                             NA              NA
 #>     auction_format average_median_discount_rate average_median_investment_rate
 #>             <char>                        <num>                          <num>
 #>  1:   Single-Price                           NA                             NA
@@ -1169,14 +1159,12 @@ tr_upcoming()
 #>  3:   Single-Price                           NA                             NA
 #>  4:   Single-Price                           NA                             NA
 #>  5:   Single-Price                           NA                             NA
-#>  6:   Single-Price                           NA                             NA
-#>  7:   Single-Price                           NA                             NA
+#>  6:           <NA>                           NA                             NA
+#>  7:           <NA>                           NA                             NA
 #>  8:           <NA>                           NA                             NA
 #>  9:           <NA>                           NA                             NA
 #> 10:           <NA>                           NA                             NA
 #> 11:           <NA>                           NA                             NA
-#> 12:           <NA>                           NA                             NA
-#> 13:           <NA>                           NA                             NA
 #>     average_median_price average_median_discount_margin average_median_yield
 #>                    <num>                          <num>                <num>
 #>  1:                   NA                             NA                   NA
@@ -1190,83 +1178,71 @@ tr_upcoming()
 #>  9:                   NA                             NA                   NA
 #> 10:                   NA                             NA                   NA
 #> 11:                   NA                             NA                   NA
-#> 12:                   NA                             NA                   NA
-#> 13:                   NA                             NA                   NA
 #>     back_dated back_dated_date bid_to_cover_ratio call_date callable
 #>         <char>          <Date>              <num>     <num>   <char>
 #>  1:       <NA>            <NA>                 NA        NA     <NA>
-#>  2:       <NA>            <NA>                 NA        NA     <NA>
-#>  3:       <NA>            <NA>                 NA        NA     <NA>
+#>  2:         No            <NA>                 NA        NA       No
+#>  3:        Yes      2026-04-30                 NA        NA       No
 #>  4:         No            <NA>                 NA        NA       No
-#>  5:        Yes      2026-04-30                 NA        NA       No
-#>  6:         No            <NA>                 NA        NA       No
-#>  7:         No            <NA>                 NA        NA       No
+#>  5:         No            <NA>                 NA        NA       No
+#>  6:       <NA>            <NA>                 NA        NA     <NA>
+#>  7:       <NA>            <NA>                 NA        NA     <NA>
 #>  8:       <NA>            <NA>                 NA        NA     <NA>
 #>  9:       <NA>            <NA>                 NA        NA     <NA>
 #> 10:       <NA>            <NA>                 NA        NA     <NA>
 #> 11:       <NA>            <NA>                 NA        NA     <NA>
-#> 12:       <NA>            <NA>                 NA        NA     <NA>
-#> 13:       <NA>            <NA>                 NA        NA     <NA>
 #>     called_date cash_management_bill_cmb closing_time_competitive
 #>           <num>                   <char>                   <char>
 #>  1:          NA                       No                 11:30 AM
-#>  2:          NA                       No                 11:30 AM
+#>  2:          NA                       No                 01:00 PM
 #>  3:          NA                       No                 11:30 AM
 #>  4:          NA                       No                 01:00 PM
-#>  5:          NA                       No                 11:30 AM
-#>  6:          NA                       No                 01:00 PM
-#>  7:          NA                       No                 01:00 PM
+#>  5:          NA                       No                 01:00 PM
+#>  6:          NA                       No                     <NA>
+#>  7:          NA                       No                     <NA>
 #>  8:          NA                       No                     <NA>
 #>  9:          NA                       No                     <NA>
 #> 10:          NA                       No                     <NA>
 #> 11:          NA                       No                     <NA>
-#> 12:          NA                       No                     <NA>
-#> 13:          NA                       No                     <NA>
 #>     closing_time_noncompetitive competitive_accepted competitive_bid_decimals
 #>                          <char>                <num>                    <num>
 #>  1:                    11:00 AM                   NA                        3
-#>  2:                    11:00 AM                   NA                        3
+#>  2:                    12:00 PM                   NA                        3
 #>  3:                    11:00 AM                   NA                        3
 #>  4:                    12:00 PM                   NA                        3
-#>  5:                    11:00 AM                   NA                        3
-#>  6:                    12:00 PM                   NA                        3
-#>  7:                    12:00 PM                   NA                        3
+#>  5:                    12:00 PM                   NA                        3
+#>  6:                        <NA>                   NA                       NA
+#>  7:                        <NA>                   NA                       NA
 #>  8:                        <NA>                   NA                       NA
 #>  9:                        <NA>                   NA                       NA
 #> 10:                        <NA>                   NA                       NA
 #> 11:                        <NA>                   NA                       NA
-#> 12:                        <NA>                   NA                       NA
-#> 13:                        <NA>                   NA                       NA
 #>     competitive_tendered competitive_tenders_accepted corpus_cusip
 #>                    <num>                       <char>       <char>
 #>  1:                   NA                          Yes         <NA>
-#>  2:                   NA                          Yes         <NA>
+#>  2:                   NA                          Yes    912821UQ6
 #>  3:                   NA                          Yes         <NA>
-#>  4:                   NA                          Yes    912821UQ6
-#>  5:                   NA                          Yes         <NA>
-#>  6:                   NA                          Yes    912821UR4
-#>  7:                   NA                          Yes    912821US2
+#>  4:                   NA                          Yes    912821UR4
+#>  5:                   NA                          Yes    912821US2
+#>  6:                   NA                         <NA>         <NA>
+#>  7:                   NA                         <NA>         <NA>
 #>  8:                   NA                         <NA>         <NA>
 #>  9:                   NA                         <NA>         <NA>
 #> 10:                   NA                         <NA>         <NA>
 #> 11:                   NA                         <NA>         <NA>
-#> 12:                   NA                         <NA>         <NA>
-#> 13:                   NA                         <NA>         <NA>
 #>     cpi_base_reference_period currently_outstanding direct_bidder_accepted
 #>                         <num>                 <num>                  <num>
-#>  1:                        NA           8.08100e+10                     NA
-#>  2:                        NA           5.22850e+10                     NA
-#>  3:                        NA           2.27914e+11                     NA
+#>  1:                        NA           2.27914e+11                     NA
+#>  2:                        NA                    NA                     NA
+#>  3:                        NA           6.17710e+10                     NA
 #>  4:                        NA                    NA                     NA
-#>  5:                        NA           6.17710e+10                     NA
+#>  5:                        NA                    NA                     NA
 #>  6:                        NA                    NA                     NA
 #>  7:                        NA                    NA                     NA
 #>  8:                        NA                    NA                     NA
 #>  9:                        NA                    NA                     NA
 #> 10:                        NA                    NA                     NA
 #> 11:                        NA                    NA                     NA
-#> 12:                        NA                    NA                     NA
-#> 13:                        NA                    NA                     NA
 #>     direct_bidder_tendered
 #>                      <num>
 #>  1:                     NA
@@ -1280,23 +1256,19 @@ tr_upcoming()
 #>  9:                     NA
 #> 10:                     NA
 #> 11:                     NA
-#> 12:                     NA
-#> 13:                     NA
 #>     estimated_amount_of_publicly_held_maturing_securities_by_type fima_included
 #>                                                             <num>        <char>
 #>  1:                                                   2.43102e+11           Yes
-#>  2:                                                   2.43102e+11           Yes
-#>  3:                                                   2.43102e+11           Yes
+#>  2:                                                   1.42819e+11           Yes
+#>  3:                                                   0.00000e+00           Yes
 #>  4:                                                   1.42819e+11           Yes
-#>  5:                                                   0.00000e+00           Yes
-#>  6:                                                   1.42819e+11           Yes
-#>  7:                                                   1.42819e+11           Yes
+#>  5:                                                   1.42819e+11           Yes
+#>  6:                                                            NA          <NA>
+#>  7:                                                            NA          <NA>
 #>  8:                                                            NA          <NA>
 #>  9:                                                            NA          <NA>
 #> 10:                                                            NA          <NA>
 #> 11:                                                            NA          <NA>
-#> 12:                                                            NA          <NA>
-#> 13:                                                            NA          <NA>
 #>     fima_noncompetitive_accepted fima_noncompetitive_tendered
 #>                            <num>                        <num>
 #>  1:                           NA                           NA
@@ -1310,23 +1282,19 @@ tr_upcoming()
 #>  9:                           NA                           NA
 #> 10:                           NA                           NA
 #> 11:                           NA                           NA
-#> 12:                           NA                           NA
-#> 13:                           NA                           NA
 #>     first_interest_period first_interest_payment_date floating_rate
 #>                    <char>                      <Date>        <char>
 #>  1:                  <NA>                        <NA>            No
-#>  2:                  <NA>                        <NA>            No
-#>  3:                  <NA>                        <NA>            No
+#>  2:                Normal                  2026-12-31            No
+#>  3:                Normal                  2026-07-31           Yes
 #>  4:                Normal                  2026-12-31            No
-#>  5:                Normal                  2026-07-31           Yes
-#>  6:                Normal                  2026-12-31            No
-#>  7:                Normal                  2026-12-31            No
+#>  5:                Normal                  2026-12-31            No
+#>  6:                  <NA>                        <NA>            No
+#>  7:                  <NA>                        <NA>            No
 #>  8:                  <NA>                        <NA>            No
 #>  9:                  <NA>                        <NA>            No
 #> 10:                  <NA>                        <NA>            No
 #> 11:                  <NA>                        <NA>            No
-#> 12:                  <NA>                        <NA>            No
-#> 13:                  <NA>                        <NA>            No
 #>     frn_index_determination_date frn_index_determination_rate
 #>                            <num>                        <num>
 #>  1:                           NA                           NA
@@ -1340,8 +1308,6 @@ tr_upcoming()
 #>  9:                           NA                           NA
 #> 10:                           NA                           NA
 #> 11:                           NA                           NA
-#> 12:                           NA                           NA
-#> 13:                           NA                           NA
 #>     high_discount_rate high_investment_rate high_price high_discount_margin
 #>                  <num>                <num>      <num>                <num>
 #>  1:                 NA                   NA         NA                   NA
@@ -1355,8 +1321,6 @@ tr_upcoming()
 #>  9:                 NA                   NA         NA                   NA
 #> 10:                 NA                   NA         NA                   NA
 #> 11:                 NA                   NA         NA                   NA
-#> 12:                 NA                   NA         NA                   NA
-#> 13:                 NA                   NA         NA                   NA
 #>     high_yield index_ratio_on_issue_date indirect_bidder_accepted
 #>          <num>                     <num>                    <num>
 #>  1:         NA                        NA                       NA
@@ -1370,128 +1334,110 @@ tr_upcoming()
 #>  9:         NA                        NA                       NA
 #> 10:         NA                        NA                       NA
 #> 11:         NA                        NA                       NA
-#> 12:         NA                        NA                       NA
-#> 13:         NA                        NA                       NA
 #>     indirect_bidder_tendered interest_payment_frequency low_discount_rate
 #>                        <num>                     <char>             <num>
 #>  1:                       NA                       None                NA
-#>  2:                       NA                       None                NA
-#>  3:                       NA                       None                NA
+#>  2:                       NA                Semi-Annual                NA
+#>  3:                       NA                  Quarterly                NA
 #>  4:                       NA                Semi-Annual                NA
-#>  5:                       NA                  Quarterly                NA
-#>  6:                       NA                Semi-Annual                NA
-#>  7:                       NA                Semi-Annual                NA
+#>  5:                       NA                Semi-Annual                NA
+#>  6:                       NA                       <NA>                NA
+#>  7:                       NA                       <NA>                NA
 #>  8:                       NA                       <NA>                NA
 #>  9:                       NA                       <NA>                NA
 #> 10:                       NA                       <NA>                NA
 #> 11:                       NA                       <NA>                NA
-#> 12:                       NA                       <NA>                NA
-#> 13:                       NA                       <NA>                NA
 #>     low_investment_rate low_price low_discount_margin low_yield maturing_date
 #>                   <num>     <num>               <num>     <num>        <Date>
 #>  1:                  NA        NA                  NA        NA    2026-06-25
-#>  2:                  NA        NA                  NA        NA    2026-06-25
-#>  3:                  NA        NA                  NA        NA    2026-06-25
+#>  2:                  NA        NA                  NA        NA    2026-06-30
+#>  3:                  NA        NA                  NA        NA    2026-06-26
 #>  4:                  NA        NA                  NA        NA    2026-06-30
-#>  5:                  NA        NA                  NA        NA    2026-06-26
-#>  6:                  NA        NA                  NA        NA    2026-06-30
-#>  7:                  NA        NA                  NA        NA    2026-06-30
+#>  5:                  NA        NA                  NA        NA    2026-06-30
+#>  6:                  NA        NA                  NA        NA          <NA>
+#>  7:                  NA        NA                  NA        NA          <NA>
 #>  8:                  NA        NA                  NA        NA          <NA>
 #>  9:                  NA        NA                  NA        NA          <NA>
 #> 10:                  NA        NA                  NA        NA          <NA>
 #> 11:                  NA        NA                  NA        NA          <NA>
-#> 12:                  NA        NA                  NA        NA          <NA>
-#> 13:                  NA        NA                  NA        NA          <NA>
 #>     maximum_competitive_award maximum_noncompetitive_award maximum_single_bid
 #>                         <num>                        <num>              <num>
-#>  1:                 3.115e+10                        1e+07          3.115e+10
-#>  2:                 2.695e+10                        1e+07          2.695e+10
-#>  3:                 2.275e+10                        1e+07          2.275e+10
-#>  4:                 2.415e+10                        1e+07          2.415e+10
-#>  5:                 9.800e+09                        1e+07          9.800e+09
-#>  6:                 2.450e+10                        1e+07          2.450e+10
-#>  7:                 1.540e+10                        1e+07          1.540e+10
+#>  1:                 2.275e+10                        1e+07          2.275e+10
+#>  2:                 2.415e+10                        1e+07          2.415e+10
+#>  3:                 9.800e+09                        1e+07          9.800e+09
+#>  4:                 2.450e+10                        1e+07          2.450e+10
+#>  5:                 1.540e+10                        1e+07          1.540e+10
+#>  6:                        NA                           NA                 NA
+#>  7:                        NA                           NA                 NA
 #>  8:                        NA                           NA                 NA
 #>  9:                        NA                           NA                 NA
 #> 10:                        NA                           NA                 NA
 #> 11:                        NA                           NA                 NA
-#> 12:                        NA                           NA                 NA
-#> 13:                        NA                           NA                 NA
 #>     minimum_bid_amount minimum_strip_amount minimum_to_issue multiples_to_bid
 #>                  <num>                <num>            <num>            <num>
 #>  1:                100                   NA              100              100
-#>  2:                100                   NA              100              100
+#>  2:                100                  100              100              100
 #>  3:                100                   NA              100              100
 #>  4:                100                  100              100              100
-#>  5:                100                   NA              100              100
-#>  6:                100                  100              100              100
-#>  7:                100                  100              100              100
+#>  5:                100                  100              100              100
+#>  6:                 NA                   NA               NA               NA
+#>  7:                 NA                   NA               NA               NA
 #>  8:                 NA                   NA               NA               NA
 #>  9:                 NA                   NA               NA               NA
 #> 10:                 NA                   NA               NA               NA
 #> 11:                 NA                   NA               NA               NA
-#> 12:                 NA                   NA               NA               NA
-#> 13:                 NA                   NA               NA               NA
 #>     multiples_to_issue nlp_exclusion_amount nlp_reporting_threshold
 #>                  <num>                <num>                   <num>
-#>  1:                100             2.67e+10               3.115e+10
-#>  2:                100             1.61e+10               2.695e+10
-#>  3:                100             7.26e+10               2.275e+10
-#>  4:                100             0.00e+00               2.415e+10
-#>  5:                100             2.03e+10               9.800e+09
-#>  6:                100             0.00e+00               2.450e+10
-#>  7:                100             0.00e+00               1.540e+10
+#>  1:                100             7.26e+10               2.275e+10
+#>  2:                100             0.00e+00               2.415e+10
+#>  3:                100             2.03e+10               9.800e+09
+#>  4:                100             0.00e+00               2.450e+10
+#>  5:                100             0.00e+00               1.540e+10
+#>  6:                 NA                   NA                      NA
+#>  7:                 NA                   NA                      NA
 #>  8:                 NA                   NA                      NA
 #>  9:                 NA                   NA                      NA
 #> 10:                 NA                   NA                      NA
 #> 11:                 NA                   NA                      NA
-#> 12:                 NA                   NA                      NA
-#> 13:                 NA                   NA                      NA
 #>     noncompetitive_accepted noncompetitive_tenders_accepted offering_amount
 #>                       <num>                          <char>           <num>
-#>  1:                      NA                             Yes         8.9e+10
-#>  2:                      NA                             Yes         7.7e+10
-#>  3:                      NA                             Yes         6.5e+10
-#>  4:                      NA                             Yes         6.9e+10
-#>  5:                      NA                             Yes         2.8e+10
-#>  6:                      NA                             Yes         7.0e+10
-#>  7:                      NA                             Yes         4.4e+10
+#>  1:                      NA                             Yes         6.5e+10
+#>  2:                      NA                             Yes         6.9e+10
+#>  3:                      NA                             Yes         2.8e+10
+#>  4:                      NA                             Yes         7.0e+10
+#>  5:                      NA                             Yes         4.4e+10
+#>  6:                      NA                            <NA>              NA
+#>  7:                      NA                            <NA>              NA
 #>  8:                      NA                            <NA>              NA
 #>  9:                      NA                            <NA>              NA
 #> 10:                      NA                            <NA>              NA
 #> 11:                      NA                            <NA>              NA
-#> 12:                      NA                            <NA>              NA
-#> 13:                      NA                            <NA>              NA
 #>     original_cusip original_dated_date original_issue_date
 #>              <num>              <Date>              <Date>
-#>  1:             NA                <NA>          2026-03-26
-#>  2:             NA                <NA>          2025-12-26
-#>  3:             NA                <NA>          2025-08-07
+#>  1:             NA                <NA>          2025-08-07
+#>  2:             NA                <NA>                <NA>
+#>  3:             NA          2026-04-30          2026-04-30
 #>  4:             NA                <NA>                <NA>
-#>  5:             NA          2026-04-30          2026-04-30
+#>  5:             NA                <NA>                <NA>
 #>  6:             NA                <NA>                <NA>
 #>  7:             NA                <NA>                <NA>
 #>  8:             NA                <NA>                <NA>
 #>  9:             NA                <NA>                <NA>
 #> 10:             NA                <NA>                <NA>
 #> 11:             NA                <NA>                <NA>
-#> 12:             NA                <NA>                <NA>
-#> 13:             NA                <NA>                <NA>
 #>     original_security_term pdf_filename_announcement
 #>                     <char>                    <char>
-#>  1:                26-Week          A_20260618_7.pdf
-#>  2:                52-Week          A_20260618_3.pdf
-#>  3:                52-Week          A_20260618_1.pdf
-#>  4:                 2-Year          A_20260618_5.pdf
-#>  5:                 2-Year          A_20260618_4.pdf
-#>  6:                 5-Year          A_20260618_2.pdf
-#>  7:                 7-Year          A_20260618_6.pdf
+#>  1:                52-Week          A_20260618_1.pdf
+#>  2:                 2-Year          A_20260618_5.pdf
+#>  3:                 2-Year          A_20260618_4.pdf
+#>  4:                 5-Year          A_20260618_2.pdf
+#>  5:                 7-Year          A_20260618_6.pdf
+#>  6:                17-Week                      <NA>
+#>  7:                17-Week                      <NA>
 #>  8:                17-Week                      <NA>
-#>  9:                17-Week                      <NA>
-#> 10:                17-Week                      <NA>
-#> 11:                52-Week                      <NA>
-#> 12:                26-Week                      <NA>
-#> 13:                26-Week                      <NA>
+#>  9:                52-Week                      <NA>
+#> 10:                26-Week                      <NA>
+#> 11:                26-Week                      <NA>
 #>     pdf_filename_competitive_results pdf_filename_noncompetitive_results
 #>                                <num>                               <num>
 #>  1:                               NA                                  NA
@@ -1505,68 +1451,58 @@ tr_upcoming()
 #>  9:                               NA                                  NA
 #> 10:                               NA                                  NA
 #> 11:                               NA                                  NA
-#> 12:                               NA                                  NA
-#> 13:                               NA                                  NA
 #>     pdf_filename_special_announcement price_per100 primary_dealer_accepted
 #>                                <char>        <num>                   <num>
 #>  1:                              <NA>           NA                      NA
-#>  2:                              <NA>           NA                      NA
+#>  2:                SPL_20260618_1.pdf           NA                      NA
 #>  3:                              <NA>           NA                      NA
-#>  4:                SPL_20260618_1.pdf           NA                      NA
+#>  4:                SPL_20260618_2.pdf           NA                      NA
 #>  5:                              <NA>           NA                      NA
-#>  6:                SPL_20260618_2.pdf           NA                      NA
+#>  6:                              <NA>           NA                      NA
 #>  7:                              <NA>           NA                      NA
 #>  8:                              <NA>           NA                      NA
 #>  9:                              <NA>           NA                      NA
 #> 10:                              <NA>           NA                      NA
 #> 11:                              <NA>           NA                      NA
-#> 12:                              <NA>           NA                      NA
-#> 13:                              <NA>           NA                      NA
 #>     primary_dealer_tendered reopening security_term_day_month
 #>                       <num>    <char>                  <char>
-#>  1:                      NA       Yes                  91-Day
-#>  2:                      NA       Yes                 182-Day
-#>  3:                      NA       Yes                  42-Day
+#>  1:                      NA       Yes                  42-Day
+#>  2:                      NA        No                 0-Month
+#>  3:                      NA       Yes                10-Month
 #>  4:                      NA        No                 0-Month
-#>  5:                      NA       Yes                10-Month
-#>  6:                      NA        No                 0-Month
-#>  7:                      NA        No                 0-Month
-#>  8:                      NA        No                 119-Day
-#>  9:                      NA       Yes                  28-Day
-#> 10:                      NA       Yes                  56-Day
-#> 11:                      NA       Yes                  91-Day
-#> 12:                      NA        No                 182-Day
-#> 13:                      NA       Yes                  42-Day
+#>  5:                      NA        No                 0-Month
+#>  6:                      NA        No                 119-Day
+#>  7:                      NA       Yes                  28-Day
+#>  8:                      NA       Yes                  56-Day
+#>  9:                      NA       Yes                  91-Day
+#> 10:                      NA        No                 182-Day
+#> 11:                      NA       Yes                  42-Day
 #>     security_term_week_year  series soma_accepted soma_holdings soma_included
 #>                      <char>  <char>         <num>         <num>        <char>
-#>  1:                 13-Week    <NA>            NA    1.5863e+10            No
-#>  2:                 26-Week    <NA>            NA    1.5863e+10            No
-#>  3:                  6-Week    <NA>            NA    1.5863e+10            No
-#>  4:                  2-Year BD-2028            NA    3.0986e+10            No
-#>  5:                  1-Year BB-2028            NA    0.0000e+00            No
-#>  6:                  5-Year AA-2031            NA    3.0986e+10            No
-#>  7:                  7-Year  M-2033            NA    3.0986e+10            No
-#>  8:                 17-Week    <NA>            NA            NA          <NA>
-#>  9:                  4-Week    <NA>            NA            NA          <NA>
-#> 10:                  8-Week    <NA>            NA            NA          <NA>
-#> 11:                 13-Week    <NA>            NA            NA          <NA>
-#> 12:                 26-Week    <NA>            NA            NA          <NA>
-#> 13:                  6-Week    <NA>            NA            NA          <NA>
+#>  1:                  6-Week    <NA>            NA    1.5863e+10            No
+#>  2:                  2-Year BD-2028            NA    3.0986e+10            No
+#>  3:                  1-Year BB-2028            NA    0.0000e+00            No
+#>  4:                  5-Year AA-2031            NA    3.0986e+10            No
+#>  5:                  7-Year  M-2033            NA    3.0986e+10            No
+#>  6:                 17-Week    <NA>            NA            NA          <NA>
+#>  7:                  4-Week    <NA>            NA            NA          <NA>
+#>  8:                  8-Week    <NA>            NA            NA          <NA>
+#>  9:                 13-Week    <NA>            NA            NA          <NA>
+#> 10:                 26-Week    <NA>            NA            NA          <NA>
+#> 11:                  6-Week    <NA>            NA            NA          <NA>
 #>     soma_tendered spread standard_interest_payment_per1000 strippable    term
 #>             <num>  <num>                             <num>     <char>  <char>
-#>  1:            NA     NA                                NA       <NA> 13-Week
-#>  2:            NA     NA                                NA       <NA> 26-Week
-#>  3:            NA     NA                                NA       <NA>  6-Week
-#>  4:            NA     NA                                NA        Yes  2-Year
-#>  5:            NA  0.103                                NA         No  2-Year
-#>  6:            NA     NA                                NA        Yes  5-Year
-#>  7:            NA     NA                                NA        Yes  7-Year
-#>  8:            NA     NA                                NA       <NA> 17-Week
-#>  9:            NA     NA                                NA       <NA>  4-Week
-#> 10:            NA     NA                                NA       <NA>  8-Week
-#> 11:            NA     NA                                NA       <NA> 13-Week
-#> 12:            NA     NA                                NA       <NA> 26-Week
-#> 13:            NA     NA                                NA       <NA>  6-Week
+#>  1:            NA     NA                                NA       <NA>  6-Week
+#>  2:            NA     NA                                NA        Yes  2-Year
+#>  3:            NA  0.103                                NA         No  2-Year
+#>  4:            NA     NA                                NA        Yes  5-Year
+#>  5:            NA     NA                                NA        Yes  7-Year
+#>  6:            NA     NA                                NA       <NA> 17-Week
+#>  7:            NA     NA                                NA       <NA>  4-Week
+#>  8:            NA     NA                                NA       <NA>  8-Week
+#>  9:            NA     NA                                NA       <NA> 13-Week
+#> 10:            NA     NA                                NA       <NA> 26-Week
+#> 11:            NA     NA                                NA       <NA>  6-Week
 #>     tiin_conversion_factor_per1000   tips total_accepted total_tendered
 #>                              <num> <char>          <num>          <num>
 #>  1:                             NA     No             NA             NA
@@ -1580,82 +1516,70 @@ tr_upcoming()
 #>  9:                             NA     No             NA             NA
 #> 10:                             NA     No             NA             NA
 #> 11:                             NA     No             NA             NA
-#> 12:                             NA     No             NA             NA
-#> 13:                             NA     No             NA             NA
 #>     treasury_retail_accepted treasury_retail_tenders_accepted   type
 #>                        <num>                           <char> <char>
 #>  1:                       NA                              Yes   Bill
-#>  2:                       NA                              Yes   Bill
-#>  3:                       NA                              Yes   Bill
+#>  2:                       NA                              Yes   Note
+#>  3:                       NA                              Yes    FRN
 #>  4:                       NA                              Yes   Note
-#>  5:                       NA                              Yes    FRN
-#>  6:                       NA                              Yes   Note
-#>  7:                       NA                              Yes   Note
+#>  5:                       NA                              Yes   Note
+#>  6:                       NA                             <NA>   Bill
+#>  7:                       NA                             <NA>   Bill
 #>  8:                       NA                             <NA>   Bill
 #>  9:                       NA                             <NA>   Bill
 #> 10:                       NA                             <NA>   Bill
 #> 11:                       NA                             <NA>   Bill
-#> 12:                       NA                             <NA>   Bill
-#> 13:                       NA                             <NA>   Bill
 #>     unadjusted_accrued_interest_per1000 unadjusted_price   updated_timestamp
 #>                                   <num>            <num>              <char>
-#>  1:                                  NA               NA 2026-06-18T11:02:25
-#>  2:                                  NA               NA 2026-06-18T11:02:31
-#>  3:                                  NA               NA 2026-06-18T11:02:34
-#>  4:                                  NA               NA 2026-06-18T11:04:51
-#>  5:                                  NA               NA 2026-06-18T11:02:19
-#>  6:                                  NA               NA 2026-06-18T11:06:59
-#>  7:                                  NA               NA 2026-06-18T11:02:16
-#>  8:                                  NA               NA 2026-06-18T10:17:36
-#>  9:                                  NA               NA 2026-06-18T10:17:38
-#> 10:                                  NA               NA 2026-06-18T10:17:37
-#> 11:                                  NA               NA 2026-06-18T10:17:34
-#> 12:                                  NA               NA 2026-06-18T10:17:33
-#> 13:                                  NA               NA 2026-06-18T10:17:35
+#>  1:                                  NA               NA 2026-06-18T11:02:34
+#>  2:                                  NA               NA 2026-06-18T11:04:51
+#>  3:                                  NA               NA 2026-06-18T11:02:19
+#>  4:                                  NA               NA 2026-06-18T11:06:59
+#>  5:                                  NA               NA 2026-06-18T11:02:16
+#>  6:                                  NA               NA 2026-06-18T10:17:36
+#>  7:                                  NA               NA 2026-06-18T10:17:38
+#>  8:                                  NA               NA 2026-06-18T10:17:37
+#>  9:                                  NA               NA 2026-06-18T10:17:34
+#> 10:                                  NA               NA 2026-06-18T10:17:33
+#> 11:                                  NA               NA 2026-06-18T10:17:35
 #>     xml_filename_announcement xml_filename_competitive_results
 #>                        <char>                            <num>
-#>  1:          A_20260618_7.xml                               NA
-#>  2:          A_20260618_3.xml                               NA
-#>  3:          A_20260618_1.xml                               NA
-#>  4:          A_20260618_5.xml                               NA
-#>  5:          A_20260618_4.xml                               NA
-#>  6:          A_20260618_2.xml                               NA
-#>  7:          A_20260618_6.xml                               NA
+#>  1:          A_20260618_1.xml                               NA
+#>  2:          A_20260618_5.xml                               NA
+#>  3:          A_20260618_4.xml                               NA
+#>  4:          A_20260618_2.xml                               NA
+#>  5:          A_20260618_6.xml                               NA
+#>  6:                      <NA>                               NA
+#>  7:                      <NA>                               NA
 #>  8:                      <NA>                               NA
 #>  9:                      <NA>                               NA
 #> 10:                      <NA>                               NA
 #> 11:                      <NA>                               NA
-#> 12:                      <NA>                               NA
-#> 13:                      <NA>                               NA
 #>     xml_filename_special_announcement tint_cusip1 tint_cusip2
 #>                                 <num>      <char>       <num>
 #>  1:                                NA        <NA>          NA
 #>  2:                                NA        <NA>          NA
 #>  3:                                NA        <NA>          NA
 #>  4:                                NA        <NA>          NA
-#>  5:                                NA        <NA>          NA
+#>  5:                                NA   912834K80          NA
 #>  6:                                NA        <NA>          NA
-#>  7:                                NA   912834K80          NA
+#>  7:                                NA        <NA>          NA
 #>  8:                                NA        <NA>          NA
 #>  9:                                NA        <NA>          NA
 #> 10:                                NA        <NA>          NA
 #> 11:                                NA        <NA>          NA
-#> 12:                                NA        <NA>          NA
-#> 13:                                NA        <NA>          NA
 #>     tint_cusip1_due_date tint_cusip2_due_date
 #>                   <Date>                <num>
 #>  1:                 <NA>                   NA
 #>  2:                 <NA>                   NA
 #>  3:                 <NA>                   NA
 #>  4:                 <NA>                   NA
-#>  5:                 <NA>                   NA
+#>  5:           2033-06-30                   NA
 #>  6:                 <NA>                   NA
-#>  7:           2033-06-30                   NA
+#>  7:                 <NA>                   NA
 #>  8:                 <NA>                   NA
 #>  9:                 <NA>                   NA
 #> 10:                 <NA>                   NA
 #> 11:                 <NA>                   NA
-#> 12:                 <NA>                   NA
-#> 13:                 <NA>                   NA
 # }
 ```
