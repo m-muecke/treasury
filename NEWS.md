@@ -1,4 +1,4 @@
-# treasury (development version)
+# treasury 0.6.0
 
 * `tr_auctions()`, `tr_announcements()`, and `tr_upcoming()` retrieve US Treasury marketable securities and auction results from the TreasuryDirect API.
 * The daily interest rate functions now attach an `updated_at` attribute with the feed's last update time.
