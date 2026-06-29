@@ -1,13 +1,7 @@
 # Changelog
 
-## treasury 0.6.0
+## treasury 0.5.1
 
-- [`tr_auctions()`](https://m-muecke.github.io/treasury/reference/tr_auctions.md),
-  [`tr_announcements()`](https://m-muecke.github.io/treasury/reference/tr_auctions.md),
-  and
-  [`tr_upcoming()`](https://m-muecke.github.io/treasury/reference/tr_auctions.md)
-  retrieve US Treasury marketable securities and auction results from
-  the TreasuryDirect API.
 - The daily interest rate functions now include an `updated_at` column
   with the feed’s last update time.
 - [`tr_yield_curve()`](https://m-muecke.github.io/treasury/reference/tr_yield_curve.md)
