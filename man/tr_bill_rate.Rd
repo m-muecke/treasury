@@ -35,6 +35,9 @@ yield based on the purchase price, discount, and a 365- or 366-day year. The
 Coupon Equivalent can be used to compare the yield on a discount bill to the
 yield on a nominal coupon security that pays semiannual interest with the
 same maturity date.
+
+The \code{maturity_date} and \code{cusip} columns give the maturity date and CUSIP of the specific
+bill quoted for each maturity tranche.
 }
 \section{Deprecated functions}{
 

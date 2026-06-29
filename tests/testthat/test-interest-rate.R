@@ -78,7 +78,15 @@ test_that("clean_bill_rate works", {
     "ROUND_B1_CLOSE_52WK_2",
     "ROUND_B1_YIELD_52WK_2"
   )
-  data = data.table(date = date, type = type, value = rate)
+  maturity_date = as.Date("2020-03-01") + rep(1:6, each = 2L)
+  cusip = rep(sprintf("CUSIP%d", 1:6), each = 2L)
+  data = data.table(
+    date = date,
+    type = type,
+    value = rate,
+    maturity_date = maturity_date,
+    cusip = cusip
+  )
   actual = clean_bill_rate(data)
   type = rep(c("close", "yield"), 6L)
   maturity = c(
@@ -99,9 +107,46 @@ test_that("clean_bill_rate works", {
     date = date,
     type = type,
     maturity = maturity,
+    maturity_date = maturity_date,
+    cusip = cusip,
     value = rate
   )
   expect_identical(actual, expected)
+})
+
+test_that("parse_bill_rate attaches maturity date and cusip per tranche", {
+  doc = xml2::read_xml(
+    '<feed xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+           xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+       <m:properties>
+         <d:INDEX_DATE>2023-01-03T00:00:00</d:INDEX_DATE>
+         <d:ROUND_B1_CLOSE_4WK_2>4.1</d:ROUND_B1_CLOSE_4WK_2>
+         <d:ROUND_B1_YIELD_4WK_2>4.2</d:ROUND_B1_YIELD_4WK_2>
+         <d:ROUND_B1_CLOSE_13WK_2>4.5</d:ROUND_B1_CLOSE_13WK_2>
+         <d:ROUND_B1_YIELD_13WK_2>4.6</d:ROUND_B1_YIELD_13WK_2>
+         <d:MATURITY_DATE_4WK>2023-01-31T00:00:00</d:MATURITY_DATE_4WK>
+         <d:MATURITY_DATE_13WK>2023-04-04T00:00:00</d:MATURITY_DATE_13WK>
+         <d:CUSIP_4WK>912796ABC</d:CUSIP_4WK>
+         <d:CUSIP_13WK>912796XYZ</d:CUSIP_13WK>
+       </m:properties>
+     </feed>'
+  )
+  node = xml2::xml_find_first(doc, ".//m:properties")
+  expect_identical(
+    parse_bill_rate(node),
+    data.table(
+      date = rep(as.Date("2023-01-03"), 4L),
+      type = c(
+        "ROUND_B1_CLOSE_4WK_2",
+        "ROUND_B1_YIELD_4WK_2",
+        "ROUND_B1_CLOSE_13WK_2",
+        "ROUND_B1_YIELD_13WK_2"
+      ),
+      value = c(4.1, 4.2, 4.5, 4.6),
+      maturity_date = as.Date(c("2023-01-31", "2023-01-31", "2023-04-04", "2023-04-04")),
+      cusip = c("912796ABC", "912796ABC", "912796XYZ", "912796XYZ")
+    )
+  )
 })
 
 test_that("clean_long_term_rate works", {

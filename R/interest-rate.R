@@ -56,6 +56,9 @@ clean_yield_curve = function(dt) {
 #' yield on a nominal coupon security that pays semiannual interest with the
 #' same maturity date.
 #'
+#' The `maturity_date` and `cusip` columns give the maturity date and CUSIP of the specific
+#' bill quoted for each maturity tranche.
+#'
 #' @section Deprecated functions:
 #' [tr_bill_rates()] has been deprecated and will be removed in a future version. Please use
 #' [tr_bill_rate()] instead.
@@ -83,11 +86,22 @@ tr_bill_rates = function(date = NULL) {
 
 parse_bill_rate = function(x) {
   values = xml2::xml_find_all(x, "./*[starts-with(name(), 'd:ROUND_B1_')]")
+  mats = xml2::xml_find_all(x, "./*[starts-with(name(), 'd:MATURITY_DATE_')]")
+  cusips = xml2::xml_find_all(x, "./*[starts-with(name(), 'd:CUSIP_')]")
+  tranche = bill_tranche(xml2::xml_name(values))
+  i = match(tranche, bill_tranche(xml2::xml_name(mats)))
+  j = match(tranche, bill_tranche(xml2::xml_name(cusips)))
   data.table(
     date = xml_date(x, ".//d:INDEX_DATE"),
     type = xml2::xml_name(values),
-    value = xml2::xml_double(values)
+    value = xml2::xml_double(values),
+    maturity_date = as.Date(xml2::xml_text(mats))[i],
+    cusip = xml2::xml_text(cusips)[j]
   )
+}
+
+bill_tranche = function(nm) {
+  sub(".*_(\\d+WK).*", "\\1", nm)
 }
 
 clean_bill_rate = function(dt) {
@@ -95,7 +109,7 @@ clean_bill_rate = function(dt) {
   dt[, type := gsub("_2$", "", type)]
   dt[, c("type", "maturity") := tstrsplit(type, "_", fixed = TRUE, keep = 1:2)]
   dt[, maturity := gsub("wk", " weeks", maturity, fixed = TRUE)]
-  dt[, c("date", "type", "maturity", "value")][]
+  dt[, c("date", "type", "maturity", "maturity_date", "cusip", "value")][]
 }
 
 #' Daily treasury long-term rates
