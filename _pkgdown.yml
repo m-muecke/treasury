@@ -13,10 +13,6 @@ reference:
       - tr_real_yield_curve
       - tr_yield_curve
 
-  - subtitle: Auctions
-    contents:
-      - tr_auctions
-
   - subtitle: Cache management
     contents:
       - tr_cache_dir

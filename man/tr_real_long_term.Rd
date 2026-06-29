@@ -15,8 +15,6 @@ Date in format yyyy or yyyymm. If \code{NULL}, all data is returned. Default \co
 }
 \value{
 A \code{\link[data.table:data.table]{data.table::data.table()}} containing the rates or \code{NULL} when no entries were found.
-The table carries an \code{updated_at} attribute with the feed's last update time as a \link{POSIXct},
-accessible via \code{attr(x, "updated_at")}.
 }
 \description{
 The Long-Term Real Rate Average is the unweighted average of bid real yields

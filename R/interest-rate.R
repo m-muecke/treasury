@@ -10,8 +10,6 @@
 #' @param date (`NULL` | `character(1)` | `numeric(1)`)\cr
 #'   Date in format yyyy or yyyymm. If `NULL`, all data is returned. Default `NULL`.
 #' @returns A [data.table::data.table()] containing the rates or `NULL` when no entries were found.
-#'   The table carries an `updated_at` attribute with the feed's last update time as a [POSIXct],
-#'   accessible via `attr(x, "updated_at")`.
 #' @source <https://home.treasury.gov/treasury-daily-interest-rate-xml-feed>
 #' @family interest rate
 #' @export

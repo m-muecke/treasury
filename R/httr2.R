@@ -9,7 +9,7 @@ treasury = function(data, date, parse, clean = identity) {
     return()
   }
   dt = clean(dt)
-  setattr(dt, "updated_at", tr_updated(resps))
+  dt[, updated_at := tr_updated(resps)]
   dt[]
 }
 

@@ -1,7 +1,3 @@
-`%&&%` = function(lhs, rhs) {
-  if (is.null(lhs)) lhs else rhs
-}
-
 is_count = function(x, null_ok = FALSE) {
   if (null_ok && is.null(x)) {
     return(TRUE)
@@ -30,14 +26,4 @@ xml_updated = function(doc) {
     xml2::xml_find_first("/*[local-name()='feed']/*[local-name()='updated']") |>
     xml2::xml_text() |>
     as.POSIXct(format = "%Y-%m-%dT%H:%M:%SZ", tz = "UTC")
-}
-
-to_snake_case = function(x) {
-  tolower(gsub("((?<=[a-z0-9])[A-Z]|(?!^)[A-Z](?=[a-z]))", "_\\1", x, perl = TRUE))
-}
-
-as_numeric_safe = function(x) {
-  x[!nzchar(x)] = NA_character_
-  num = suppressWarnings(as.numeric(x))
-  if (anyNA(num[!is.na(x)])) x else num
 }

@@ -1,7 +1,6 @@
-# treasury 0.6.0
+# treasury 0.5.1
 
-* `tr_auctions()`, `tr_announcements()`, and `tr_upcoming()` retrieve US Treasury marketable securities and auction results from the TreasuryDirect API.
-* The daily interest rate functions now attach an `updated_at` attribute with the feed's last update time.
+* The daily interest rate functions now include an `updated_at` column with the feed's last update time.
 * `tr_yield_curve()` now correctly labels the 1.5-month maturity (previously shown as `1 _5month`).
 
 # treasury 0.5.0
