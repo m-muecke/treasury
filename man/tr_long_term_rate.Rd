@@ -20,9 +20,10 @@ A \code{\link[data.table:data.table]{data.table::data.table()}} containing the r
 Treasury ceased publication of the 30-year constant maturity series on
 February 18, 2002 and resumed that series on February 9, 2006.
 To estimate a 30-year rate during that time frame, this series includes the
-Treasury 20-year Constant Maturity rate and an "adjustment factor," which may be
+Treasury 20-year Constant Maturity rate and an "adjustment factor", which may be
 added to the 20-year rate to estimate a 30-year rate during the period of time in
-which Treasury did not issue the 30-year bonds.
+which Treasury did not issue the 30-year bonds. The adjustment factor is returned in the
+\code{extrapolation_factor} column and is \code{NA} outside of that period.
 }
 \examples{
 \donttest{

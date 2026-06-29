@@ -104,9 +104,10 @@ clean_bill_rate = function(dt) {
 #' Treasury ceased publication of the 30-year constant maturity series on
 #' February 18, 2002 and resumed that series on February 9, 2006.
 #' To estimate a 30-year rate during that time frame, this series includes the
-#' Treasury 20-year Constant Maturity rate and an "adjustment factor," which may be
+#' Treasury 20-year Constant Maturity rate and an "adjustment factor", which may be
 #' added to the 20-year rate to estimate a 30-year rate during the period of time in
-#' which Treasury did not issue the 30-year bonds.
+#' which Treasury did not issue the 30-year bonds. The adjustment factor is returned in the
+#' `extrapolation_factor` column and is `NA` outside of that period.
 #'
 #' @inherit tr_yield_curve
 #' @family interest rate
@@ -129,7 +130,16 @@ parse_long_term_rate = function(x) {
   rate = x |>
     xml2::xml_find_all(".//d:RATE") |>
     xml2::xml_double()
-  data.table(date = xml_date(x, ".//d:QUOTE_DATE"), rate_type = rate_type, rate = rate)
+  fctr = x |>
+    xml2::xml_find_all(".//d:EXTRAPOLATION_FACTOR") |>
+    xml2::xml_text()
+  fctr[fctr == "N/A"] = NA
+  data.table(
+    date = xml_date(x, ".//d:QUOTE_DATE"),
+    rate_type = rate_type,
+    rate = rate,
+    extrapolation_factor = as.numeric(fctr)
+  )
 }
 
 clean_long_term_rate = function(dt) {

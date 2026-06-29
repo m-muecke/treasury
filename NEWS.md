@@ -1,6 +1,7 @@
 # treasury 0.5.1
 
 * The daily interest rate functions now include an `updated_at` column with the feed's last update time.
+* `tr_long_term_rate()` now includes an `extrapolation_factor` column with the adjustment factor used to estimate 30-year rates between 2002 and 2006 (`NA` outside of that period).
 * `tr_yield_curve()` now correctly labels the 1.5-month maturity (previously shown as `1 _5month`).
 
 # treasury 0.5.0

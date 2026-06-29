@@ -115,6 +115,30 @@ test_that("clean_long_term_rate works", {
   expect_identical(actual, expected)
 })
 
+test_that("parse_long_term_rate parses the extrapolation factor", {
+  make = function(factor) {
+    xml2::read_xml(sprintf(
+      '<properties xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+         <d:QUOTE_DATE>2004-01-02T00:00:00</d:QUOTE_DATE>
+         <d:RATE_TYPE>BC_20year</d:RATE_TYPE>
+         <d:RATE>5.21</d:RATE>
+         <d:EXTRAPOLATION_FACTOR>%s</d:EXTRAPOLATION_FACTOR>
+       </properties>',
+      factor
+    ))
+  }
+  expect_identical(
+    parse_long_term_rate(make("0.05")),
+    data.table(
+      date = as.Date("2004-01-02"),
+      rate_type = "BC_20year",
+      rate = 5.21,
+      extrapolation_factor = 0.05
+    )
+  )
+  expect_identical(parse_long_term_rate(make("N/A"))$extrapolation_factor, NA_real_)
+})
+
 test_that("clean_real_yield_curve works", {
   date = rep("2020-02-03", 10L)
   maturity = rep(c("TC_5YEAR", "TC_7YEAR", "TC_10YEAR", "TC_20YEAR", "TC_30YEAR"), 2L)
