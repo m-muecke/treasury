@@ -29,10 +29,7 @@ tr_yield_curve(date = NULL)
 
 A
 [`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html)
-containing the rates or `NULL` when no entries were found. The table
-carries an `updated_at` attribute with the feed's last update time as a
-[POSIXct](https://rdrr.io/r/base/DateTimeClasses.html), accessible via
-`attr(x, "updated_at")`.
+containing the rates or `NULL` when no entries were found.
 
 ## See also
 
@@ -48,33 +45,33 @@ Other interest rate:
 # \donttest{
 # get data for a single month
 tr_yield_curve("202201")
-#>            date maturity  rate
-#>          <Date>   <char> <num>
-#>   1: 2022-01-03  1 month  0.05
-#>   2: 2022-01-03  2 month  0.06
-#>   3: 2022-01-03  3 month  0.08
-#>   4: 2022-01-03  6 month  0.22
-#>   5: 2022-01-03   1 year  0.40
-#>  ---                          
-#> 236: 2022-01-31   5 year  1.62
-#> 237: 2022-01-31   7 year  1.75
-#> 238: 2022-01-31  10 year  1.79
-#> 239: 2022-01-31  20 year  2.17
-#> 240: 2022-01-31  30 year  2.11
+#>            date maturity  rate          updated_at
+#>          <Date>   <char> <num>              <POSc>
+#>   1: 2022-01-03  1 month  0.05 2026-06-29 14:41:10
+#>   2: 2022-01-03  2 month  0.06 2026-06-29 14:41:10
+#>   3: 2022-01-03  3 month  0.08 2026-06-29 14:41:10
+#>   4: 2022-01-03  6 month  0.22 2026-06-29 14:41:10
+#>   5: 2022-01-03   1 year  0.40 2026-06-29 14:41:10
+#>  ---                                              
+#> 236: 2022-01-31   5 year  1.62 2026-06-29 14:41:10
+#> 237: 2022-01-31   7 year  1.75 2026-06-29 14:41:10
+#> 238: 2022-01-31  10 year  1.79 2026-06-29 14:41:10
+#> 239: 2022-01-31  20 year  2.17 2026-06-29 14:41:10
+#> 240: 2022-01-31  30 year  2.11 2026-06-29 14:41:10
 # or for the entire year
 tr_yield_curve(2022)
-#>             date maturity  rate
-#>           <Date>   <char> <num>
-#>    1: 2022-01-03  1 month  0.05
-#>    2: 2022-01-03  2 month  0.06
-#>    3: 2022-01-03  3 month  0.08
-#>    4: 2022-01-03  6 month  0.22
-#>    5: 2022-01-03   1 year  0.40
-#>   ---                          
-#> 3034: 2022-12-30   5 year  3.99
-#> 3035: 2022-12-30   7 year  3.96
-#> 3036: 2022-12-30  10 year  3.88
-#> 3037: 2022-12-30  20 year  4.14
-#> 3038: 2022-12-30  30 year  3.97
+#>             date maturity  rate          updated_at
+#>           <Date>   <char> <num>              <POSc>
+#>    1: 2022-01-03  1 month  0.05 2026-06-26 15:51:19
+#>    2: 2022-01-03  2 month  0.06 2026-06-26 15:51:19
+#>    3: 2022-01-03  3 month  0.08 2026-06-26 15:51:19
+#>    4: 2022-01-03  6 month  0.22 2026-06-26 15:51:19
+#>    5: 2022-01-03   1 year  0.40 2026-06-26 15:51:19
+#>   ---                                              
+#> 3034: 2022-12-30   5 year  3.99 2026-06-26 15:51:19
+#> 3035: 2022-12-30   7 year  3.96 2026-06-26 15:51:19
+#> 3036: 2022-12-30  10 year  3.88 2026-06-26 15:51:19
+#> 3037: 2022-12-30  20 year  4.14 2026-06-26 15:51:19
+#> 3038: 2022-12-30  30 year  3.97 2026-06-26 15:51:19
 # }
 ```

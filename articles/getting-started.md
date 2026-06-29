@@ -24,14 +24,14 @@ full history. The daily par yield curve is the most commonly used:
 
 yield_curve = tr_yield_curve(2025)
 head(yield_curve)
-#>          date maturity  rate
-#>        <Date>   <char> <num>
-#> 1: 2025-01-02  1 month  4.45
-#> 2: 2025-01-02  2 month  4.36
-#> 3: 2025-01-02  3 month  4.36
-#> 4: 2025-01-02  4 month  4.31
-#> 5: 2025-01-02  6 month  4.25
-#> 6: 2025-01-02   1 year  4.17
+#>          date maturity  rate          updated_at
+#>        <Date>   <char> <num>              <POSc>
+#> 1: 2025-01-02  1 month  4.45 2026-06-26 15:50:13
+#> 2: 2025-01-02  2 month  4.36 2026-06-26 15:50:13
+#> 3: 2025-01-02  3 month  4.36 2026-06-26 15:50:13
+#> 4: 2025-01-02  4 month  4.31 2026-06-26 15:50:13
+#> 5: 2025-01-02  6 month  4.25 2026-06-26 15:50:13
+#> 6: 2025-01-02   1 year  4.17 2026-06-26 15:50:13
 ```
 
 The remaining interest rate functions follow the same pattern:

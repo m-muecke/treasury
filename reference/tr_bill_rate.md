@@ -29,10 +29,7 @@ tr_bill_rates(date = NULL)
 
 A
 [`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html)
-containing the rates or `NULL` when no entries were found. The table
-carries an `updated_at` attribute with the feed's last update time as a
-[POSIXct](https://rdrr.io/r/base/DateTimeClasses.html), accessible via
-`attr(x, "updated_at")`.
+containing the rates or `NULL` when no entries were found.
 
 ## Details
 
@@ -65,33 +62,33 @@ Other interest rate:
 # \donttest{
 # get data for a single month
 tr_bill_rate("202201")
-#>            date   type maturity value
-#>          <Date> <char>   <char> <num>
-#>   1: 2022-01-03  close  4 weeks  0.05
-#>   2: 2022-01-03  yield  4 weeks  0.05
-#>   3: 2022-01-03  close  8 weeks  0.06
-#>   4: 2022-01-03  yield  8 weeks  0.06
-#>   5: 2022-01-03  close 13 weeks  0.09
-#>  ---                                 
-#> 196: 2022-01-31  yield 13 weeks  0.24
-#> 197: 2022-01-31  close 26 weeks  0.49
-#> 198: 2022-01-31  yield 26 weeks  0.50
-#> 199: 2022-01-31  close 52 weeks  0.76
-#> 200: 2022-01-31  yield 52 weeks  0.77
+#>            date   type maturity value          updated_at
+#>          <Date> <char>   <char> <num>              <POSc>
+#>   1: 2022-01-03  close  4 weeks  0.05 2026-06-29 14:41:03
+#>   2: 2022-01-03  yield  4 weeks  0.05 2026-06-29 14:41:03
+#>   3: 2022-01-03  close  8 weeks  0.06 2026-06-29 14:41:03
+#>   4: 2022-01-03  yield  8 weeks  0.06 2026-06-29 14:41:03
+#>   5: 2022-01-03  close 13 weeks  0.09 2026-06-29 14:41:03
+#>  ---                                                     
+#> 196: 2022-01-31  yield 13 weeks  0.24 2026-06-29 14:41:03
+#> 197: 2022-01-31  close 26 weeks  0.49 2026-06-29 14:41:03
+#> 198: 2022-01-31  yield 26 weeks  0.50 2026-06-29 14:41:03
+#> 199: 2022-01-31  close 52 weeks  0.76 2026-06-29 14:41:03
+#> 200: 2022-01-31  yield 52 weeks  0.77 2026-06-29 14:41:03
 # or for the entire year
 tr_bill_rate(2022)
-#>             date   type maturity value
-#>           <Date> <char>   <char> <num>
-#>    1: 2022-01-03  close  4 weeks  0.05
-#>    2: 2022-01-03  yield  4 weeks  0.05
-#>    3: 2022-01-03  close  8 weeks  0.06
-#>    4: 2022-01-03  yield  8 weeks  0.06
-#>    5: 2022-01-03  close 13 weeks  0.09
-#>   ---                                 
-#> 2586: 2022-12-30  yield 17 weeks  4.70
-#> 2587: 2022-12-30  close 26 weeks  4.60
-#> 2588: 2022-12-30  yield 26 weeks  4.77
-#> 2589: 2022-12-30  close 52 weeks  4.51
-#> 2590: 2022-12-30  yield 52 weeks  4.73
+#>             date   type maturity value          updated_at
+#>           <Date> <char>   <char> <num>              <POSc>
+#>    1: 2022-01-03  close  4 weeks  0.05 2026-06-29 01:14:30
+#>    2: 2022-01-03  yield  4 weeks  0.05 2026-06-29 01:14:30
+#>    3: 2022-01-03  close  8 weeks  0.06 2026-06-29 01:14:30
+#>    4: 2022-01-03  yield  8 weeks  0.06 2026-06-29 01:14:30
+#>    5: 2022-01-03  close 13 weeks  0.09 2026-06-29 01:14:30
+#>   ---                                                     
+#> 2586: 2022-12-30  yield 17 weeks  4.70 2026-06-29 01:14:30
+#> 2587: 2022-12-30  close 26 weeks  4.60 2026-06-29 01:14:30
+#> 2588: 2022-12-30  yield 26 weeks  4.77 2026-06-29 01:14:30
+#> 2589: 2022-12-30  close 52 weeks  4.51 2026-06-29 01:14:30
+#> 2590: 2022-12-30  yield 52 weeks  4.73 2026-06-29 01:14:30
 # }
 ```

@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">treasury</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,14 +92,14 @@ history. The daily par yield curve is the most commonly used:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">yield_curve</span> <span class="op">=</span> <span class="fu"><a href="../reference/tr_yield_curve.html">tr_yield_curve</a></span><span class="op">(</span><span class="fl">2025</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">yield_curve</span><span class="op">)</span></span>
-<span><span class="co">#&gt;          date maturity  rate</span></span>
-<span><span class="co">#&gt;        &lt;Date&gt;   &lt;char&gt; &lt;num&gt;</span></span>
-<span><span class="co">#&gt; 1: 2025-01-02  1 month  4.45</span></span>
-<span><span class="co">#&gt; 2: 2025-01-02  2 month  4.36</span></span>
-<span><span class="co">#&gt; 3: 2025-01-02  3 month  4.36</span></span>
-<span><span class="co">#&gt; 4: 2025-01-02  4 month  4.31</span></span>
-<span><span class="co">#&gt; 5: 2025-01-02  6 month  4.25</span></span>
-<span><span class="co">#&gt; 6: 2025-01-02   1 year  4.17</span></span></code></pre></div>
+<span><span class="co">#&gt;          date maturity  rate          updated_at</span></span>
+<span><span class="co">#&gt;        &lt;Date&gt;   &lt;char&gt; &lt;num&gt;              &lt;POSc&gt;</span></span>
+<span><span class="co">#&gt; 1: 2025-01-02  1 month  4.45 2026-06-26 15:50:13</span></span>
+<span><span class="co">#&gt; 2: 2025-01-02  2 month  4.36 2026-06-26 15:50:13</span></span>
+<span><span class="co">#&gt; 3: 2025-01-02  3 month  4.36 2026-06-26 15:50:13</span></span>
+<span><span class="co">#&gt; 4: 2025-01-02  4 month  4.31 2026-06-26 15:50:13</span></span>
+<span><span class="co">#&gt; 5: 2025-01-02  6 month  4.25 2026-06-26 15:50:13</span></span>
+<span><span class="co">#&gt; 6: 2025-01-02   1 year  4.17 2026-06-26 15:50:13</span></span></code></pre></div>
 <p>The remaining interest rate functions follow the same pattern:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/tr_bill_rate.html">tr_bill_rate</a></span><span class="op">(</span><span class="fl">2025</span><span class="op">)</span>        <span class="co"># secondary market treasury bill rates</span></span>
