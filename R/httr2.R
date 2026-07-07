@@ -21,8 +21,14 @@ tr_updated = function(resps) {
 tr_make_request = function(data, date) {
   if (!is.null(date)) {
     date = as.character(date)
-    if (length(date) != 1L || !grepl("^\\d{4,6}$", date)) {
+    if (length(date) != 1L || !grepl("^\\d{4}(\\d{2})?$", date)) {
       stop("`date` must be a single value in format yyyy or yyyymm", call. = FALSE)
+    }
+    if (nchar(date) == 6L) {
+      month = as.integer(substr(date, 5L, 6L))
+      if (month < 1L || month > 12L) {
+        stop("`date` must have a month between 01 and 12", call. = FALSE)
+      }
     }
   } else {
     date = "all"

@@ -15,7 +15,14 @@ test_that("input validation works", {
     expect_error(fn(c(2020L, 2021L)))
     expect_error(fn(c("2020", "2021")))
     expect_error(fn(1L))
+    expect_error(fn("20225"))
+    expect_error(fn("202213"))
+    expect_error(fn("202200"))
   }
+  expect_snapshot(error = TRUE, {
+    tr_yield_curve("20225")
+    tr_yield_curve("202213")
+  })
 })
 
 test_that("clean_yield_curve works", {
