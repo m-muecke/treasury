@@ -43,6 +43,9 @@ the bill's yield based on the purchase price, discount, and a 365- or
 a discount bill to the yield on a nominal coupon security that pays
 semiannual interest with the same maturity date.
 
+The `maturity_date` and `cusip` columns give the maturity date and CUSIP
+of the specific bill quoted for each maturity tranche.
+
 ## Deprecated functions
 
 `tr_bill_rates()` has been deprecated and will be removed in a future
@@ -62,33 +65,59 @@ Other interest rate:
 # \donttest{
 # get data for a single month
 tr_bill_rate("202201")
-#>            date   type maturity value          updated_at
-#>          <Date> <char>   <char> <num>              <POSc>
-#>   1: 2022-01-03  close  4 weeks  0.05 2026-06-29 14:41:03
-#>   2: 2022-01-03  yield  4 weeks  0.05 2026-06-29 14:41:03
-#>   3: 2022-01-03  close  8 weeks  0.06 2026-06-29 14:41:03
-#>   4: 2022-01-03  yield  8 weeks  0.06 2026-06-29 14:41:03
-#>   5: 2022-01-03  close 13 weeks  0.09 2026-06-29 14:41:03
-#>  ---                                                     
-#> 196: 2022-01-31  yield 13 weeks  0.24 2026-06-29 14:41:03
-#> 197: 2022-01-31  close 26 weeks  0.49 2026-06-29 14:41:03
-#> 198: 2022-01-31  yield 26 weeks  0.50 2026-06-29 14:41:03
-#> 199: 2022-01-31  close 52 weeks  0.76 2026-06-29 14:41:03
-#> 200: 2022-01-31  yield 52 weeks  0.77 2026-06-29 14:41:03
+#>            date   type maturity maturity_date     cusip value
+#>          <Date> <char>   <char>        <Date>    <char> <num>
+#>   1: 2022-01-03  close  4 weeks    2022-02-01 912796Q93  0.05
+#>   2: 2022-01-03  yield  4 weeks    2022-02-01 912796Q93  0.05
+#>   3: 2022-01-03  close  8 weeks    2022-03-01 912796S26  0.06
+#>   4: 2022-01-03  yield  8 weeks    2022-03-01 912796S26  0.06
+#>   5: 2022-01-03  close 13 weeks    2022-04-07 912796N47  0.09
+#>  ---                                                         
+#> 196: 2022-01-31  yield 13 weeks    2022-05-05 912796P45  0.24
+#> 197: 2022-01-31  close 26 weeks    2022-08-04 912796S67  0.49
+#> 198: 2022-01-31  yield 26 weeks    2022-08-04 912796S67  0.50
+#> 199: 2022-01-31  close 52 weeks    2023-01-26 912796S34  0.76
+#> 200: 2022-01-31  yield 52 weeks    2023-01-26 912796S34  0.77
+#>               updated_at
+#>                   <POSc>
+#>   1: 2026-07-07 16:08:33
+#>   2: 2026-07-07 16:08:33
+#>   3: 2026-07-07 16:08:33
+#>   4: 2026-07-07 16:08:33
+#>   5: 2026-07-07 16:08:33
+#>  ---                    
+#> 196: 2026-07-07 16:08:33
+#> 197: 2026-07-07 16:08:33
+#> 198: 2026-07-07 16:08:33
+#> 199: 2026-07-07 16:08:33
+#> 200: 2026-07-07 16:08:33
 # or for the entire year
 tr_bill_rate(2022)
-#>             date   type maturity value          updated_at
-#>           <Date> <char>   <char> <num>              <POSc>
-#>    1: 2022-01-03  close  4 weeks  0.05 2026-06-29 08:21:01
-#>    2: 2022-01-03  yield  4 weeks  0.05 2026-06-29 08:21:01
-#>    3: 2022-01-03  close  8 weeks  0.06 2026-06-29 08:21:01
-#>    4: 2022-01-03  yield  8 weeks  0.06 2026-06-29 08:21:01
-#>    5: 2022-01-03  close 13 weeks  0.09 2026-06-29 08:21:01
-#>   ---                                                     
-#> 2586: 2022-12-30  yield 17 weeks  4.70 2026-06-29 08:21:01
-#> 2587: 2022-12-30  close 26 weeks  4.60 2026-06-29 08:21:01
-#> 2588: 2022-12-30  yield 26 weeks  4.77 2026-06-29 08:21:01
-#> 2589: 2022-12-30  close 52 weeks  4.51 2026-06-29 08:21:01
-#> 2590: 2022-12-30  yield 52 weeks  4.73 2026-06-29 08:21:01
+#>             date   type maturity maturity_date     cusip value
+#>           <Date> <char>   <char>        <Date>    <char> <num>
+#>    1: 2022-01-03  close  4 weeks    2022-02-01 912796Q93  0.05
+#>    2: 2022-01-03  yield  4 weeks    2022-02-01 912796Q93  0.05
+#>    3: 2022-01-03  close  8 weeks    2022-03-01 912796S26  0.06
+#>    4: 2022-01-03  yield  8 weeks    2022-03-01 912796S26  0.06
+#>    5: 2022-01-03  close 13 weeks    2022-04-07 912796N47  0.09
+#>   ---                                                         
+#> 2586: 2022-12-30  yield 17 weeks    2023-05-02 912796CW7  4.70
+#> 2587: 2022-12-30  close 26 weeks    2023-06-29 912796ZR3  4.60
+#> 2588: 2022-12-30  yield 26 weeks    2023-06-29 912796ZR3  4.77
+#> 2589: 2022-12-30  close 52 weeks    2023-12-28 912796ZN2  4.51
+#> 2590: 2022-12-30  yield 52 weeks    2023-12-28 912796ZN2  4.73
+#>                updated_at
+#>                    <POSc>
+#>    1: 2026-07-07 15:58:34
+#>    2: 2026-07-07 15:58:34
+#>    3: 2026-07-07 15:58:34
+#>    4: 2026-07-07 15:58:34
+#>    5: 2026-07-07 15:58:34
+#>   ---                    
+#> 2586: 2026-07-07 15:58:34
+#> 2587: 2026-07-07 15:58:34
+#> 2588: 2026-07-07 15:58:34
+#> 2589: 2026-07-07 15:58:34
+#> 2590: 2026-07-07 15:58:34
 # }
 ```

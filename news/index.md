@@ -4,6 +4,13 @@
 
 - The daily interest rate functions now include an `updated_at` column
   with the feed’s last update time.
+- [`tr_bill_rate()`](https://m-muecke.github.io/treasury/reference/tr_bill_rate.md)
+  now includes `maturity_date` and `cusip` columns with the maturity
+  date and CUSIP of the bill quoted for each maturity tranche.
+- [`tr_long_term_rate()`](https://m-muecke.github.io/treasury/reference/tr_long_term_rate.md)
+  now includes an `extrapolation_factor` column with the adjustment
+  factor used to estimate 30-year rates between 2002 and 2006 (`NA`
+  outside of that period).
 - [`tr_yield_curve()`](https://m-muecke.github.io/treasury/reference/tr_yield_curve.md)
   now correctly labels the 1.5-month maturity (previously shown as
   `1 _5month`).
