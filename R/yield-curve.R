@@ -67,7 +67,7 @@ tr_curve_rate = function(
     urls = sub("88\\.xls$", "88_0.xls", urls)
   }
 
-  months = rep(month.name, 5L)
+  months = rep(sprintf("%02d", 1:12), 5L)
   res = lapply(seq_along(urls), function(i) {
     tf = tempfile()
     on.exit(unlink(tf), add = TRUE)
@@ -75,7 +75,7 @@ tr_curve_rate = function(
     dt = setDT(readxl::read_excel(tf, skip = 4L, .name_repair = function(nms) {
       year = years[[i]]
       years = rep(year:(year + 4L), each = 12L)
-      nms = paste(months, years, sep = "-")
+      nms = paste(years, months, "01", sep = "-")
       nms = c("maturity", "tmp", nms)
       nms
     }))
@@ -88,7 +88,7 @@ tr_curve_rate = function(
       value.name = "rate",
       na.rm = TRUE
     )
-    dt[, yearmonth := as.Date(paste("01", yearmonth, sep = "-"), format = "%d-%B-%Y")]
+    dt[, yearmonth := as.Date(yearmonth)]
     dt[, c("yearmonth", "maturity", "rate")]
   })
   rbindlist(res)
@@ -166,5 +166,10 @@ download_data = function(x, col_names, skip, names_to, values_to) {
   dt = setDT(readxl::read_excel(tf, col_names = col_names, skip = skip))
   dt[, 2L := NULL]
   dt = melt(dt, id.vars = "yearmonth", variable.name = names_to, value.name = values_to)
-  dt[, yearmonth := as.Date(paste("01", yearmonth), format = "%d %B %Y")][]
+  dt[,
+    yearmonth := {
+      parts = tstrsplit(yearmonth, " ", fixed = TRUE)
+      as.Date(sprintf("%s-%02d-01", parts[[2L]], match(parts[[1L]], month.abb)))
+    }
+  ][]
 }
