@@ -9,7 +9,9 @@
 #'
 #' @param date (`NULL` | `character(1)` | `numeric(1)`)\cr
 #'   Date in format yyyy or yyyymm. If `NULL`, all data is returned. Default `NULL`.
-#' @returns A [data.table::data.table()] containing the rates or `NULL` when no entries were found.
+#' @returns
+#' A [data.table::data.table()] containing the rates, or `NULL` when no entries were found. The
+#' `updated_at` column gives the feed's last update time as a `POSIXct` (UTC).
 #' @source <https://home.treasury.gov/treasury-daily-interest-rate-xml-feed>
 #' @family interest rate
 #' @export
@@ -145,7 +147,7 @@ parse_long_term_rate = function(x) {
     xml2::xml_find_all(".//d:RATE") |>
     xml2::xml_double()
   fctr = x |>
-    xml2::xml_find_all(".//d:EXTRAPOLATION_FACTOR") |>
+    xml2::xml_find_first(".//d:EXTRAPOLATION_FACTOR") |>
     xml2::xml_text()
   fctr[fctr == "N/A"] = NA
   data.table(

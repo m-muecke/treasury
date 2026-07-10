@@ -14,7 +14,8 @@ tr_real_long_term(date = NULL)
 Date in format yyyy or yyyymm. If \code{NULL}, all data is returned. Default \code{NULL}.}
 }
 \value{
-A \code{\link[data.table:data.table]{data.table::data.table()}} containing the rates or \code{NULL} when no entries were found.
+A \code{\link[data.table:data.table]{data.table::data.table()}} containing the rates, or \code{NULL} when no entries were found. The
+\code{updated_at} column gives the feed's last update time as a \code{POSIXct} (UTC).
 }
 \description{
 The Long-Term Real Rate Average is the unweighted average of bid real yields

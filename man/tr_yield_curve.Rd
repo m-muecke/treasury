@@ -14,7 +14,8 @@ tr_yield_curve(date = NULL)
 Date in format yyyy or yyyymm. If \code{NULL}, all data is returned. Default \code{NULL}.}
 }
 \value{
-A \code{\link[data.table:data.table]{data.table::data.table()}} containing the rates or \code{NULL} when no entries were found.
+A \code{\link[data.table:data.table]{data.table::data.table()}} containing the rates, or \code{NULL} when no entries were found. The
+\code{updated_at} column gives the feed's last update time as a \code{POSIXct} (UTC).
 }
 \description{
 This par yield curve, which relates the par yield on a security to its time to

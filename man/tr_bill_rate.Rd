@@ -17,7 +17,8 @@ tr_bill_rates(date = NULL)
 Date in format yyyy or yyyymm. If \code{NULL}, all data is returned. Default \code{NULL}.}
 }
 \value{
-A \code{\link[data.table:data.table]{data.table::data.table()}} containing the rates or \code{NULL} when no entries were found.
+A \code{\link[data.table:data.table]{data.table::data.table()}} containing the rates, or \code{NULL} when no entries were found. The
+\code{updated_at} column gives the feed's last update time as a \code{POSIXct} (UTC).
 }
 \description{
 These rates are the daily secondary market quotations on the most recently
