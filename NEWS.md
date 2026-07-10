@@ -1,7 +1,9 @@
-# treasury 0.5.1
+# treasury 0.6.0
 
 * The daily interest rate functions now include an `updated_at` column with the feed's last update time.
+* The daily interest rate functions now reject an invalid `date`, such as a month outside 01-12, with an informative error instead of silently returning no data.
 * `tr_bill_rate()` now includes `maturity_date` and `cusip` columns identifying the bill quoted for each maturity tranche.
+* `tr_curve_rate()`, `tr_par_yield()`, and `tr_forward_rate()` now parse dates correctly regardless of the session's locale (previously failed under non-English locales).
 * `tr_long_term_rate()` now includes an `extrapolation_factor` column with the adjustment factor used to estimate 30-year rates between 2002 and 2006 (`NA` outside of that period).
 * `tr_yield_curve()` now correctly labels the 1.5-month maturity (previously shown as `1 _5month`).
 
