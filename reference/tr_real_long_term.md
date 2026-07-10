@@ -26,7 +26,9 @@ tr_real_long_term(date = NULL)
 
 A
 [`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html)
-containing the rates or `NULL` when no entries were found.
+containing the rates, or `NULL` when no entries were found. The
+`updated_at` column gives the feed's last update time as a `POSIXct`
+(UTC).
 
 ## See also
 

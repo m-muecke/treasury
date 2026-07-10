@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">treasury</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,10 +43,13 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.5.1" id="treasury-051">treasury 0.5.1<a class="anchor" aria-label="anchor" href="#treasury-051"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.6.0" id="treasury-060">treasury 0.6.0<a class="anchor" aria-label="anchor" href="#treasury-060"></a></h2>
 <ul><li>The daily interest rate functions now include an <code>updated_at</code> column with the feed’s last update time.</li>
+<li>The daily interest rate functions now reject an invalid <code>date</code>, such as a month outside 01-12, with an informative error instead of silently returning no data.</li>
 <li>
-<code><a href="../reference/tr_bill_rate.html">tr_bill_rate()</a></code> now includes <code>maturity_date</code> and <code>cusip</code> columns with the maturity date and CUSIP of the bill quoted for each maturity tranche.</li>
+<code><a href="../reference/tr_bill_rate.html">tr_bill_rate()</a></code> now includes <code>maturity_date</code> and <code>cusip</code> columns identifying the bill quoted for each maturity tranche.</li>
+<li>
+<code><a href="../reference/tr_curve_rate.html">tr_curve_rate()</a></code>, <code><a href="../reference/tr_curve_rate.html">tr_par_yield()</a></code>, and <code><a href="../reference/tr_curve_rate.html">tr_forward_rate()</a></code> now parse dates correctly regardless of the session’s locale (previously failed under non-English locales).</li>
 <li>
 <code><a href="../reference/tr_long_term_rate.html">tr_long_term_rate()</a></code> now includes an <code>extrapolation_factor</code> column with the adjustment factor used to estimate 30-year rates between 2002 and 2006 (<code>NA</code> outside of that period).</li>
 <li>
@@ -94,7 +97,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>

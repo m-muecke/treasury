@@ -1,12 +1,21 @@
 # Changelog
 
-## treasury 0.5.1
+## treasury 0.6.0
 
 - The daily interest rate functions now include an `updated_at` column
   with the feed’s last update time.
+- The daily interest rate functions now reject an invalid `date`, such
+  as a month outside 01-12, with an informative error instead of
+  silently returning no data.
 - [`tr_bill_rate()`](https://m-muecke.github.io/treasury/reference/tr_bill_rate.md)
-  now includes `maturity_date` and `cusip` columns with the maturity
-  date and CUSIP of the bill quoted for each maturity tranche.
+  now includes `maturity_date` and `cusip` columns identifying the bill
+  quoted for each maturity tranche.
+- [`tr_curve_rate()`](https://m-muecke.github.io/treasury/reference/tr_curve_rate.md),
+  [`tr_par_yield()`](https://m-muecke.github.io/treasury/reference/tr_curve_rate.md),
+  and
+  [`tr_forward_rate()`](https://m-muecke.github.io/treasury/reference/tr_curve_rate.md)
+  now parse dates correctly regardless of the session’s locale
+  (previously failed under non-English locales).
 - [`tr_long_term_rate()`](https://m-muecke.github.io/treasury/reference/tr_long_term_rate.md)
   now includes an `extrapolation_factor` column with the adjustment
   factor used to estimate 30-year rates between 2002 and 2006 (`NA`

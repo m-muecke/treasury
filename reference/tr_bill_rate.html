@@ -13,7 +13,7 @@ bills."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">treasury</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,7 +78,8 @@ Date in format yyyy or yyyymm. If <code>NULL</code>, all data is returned. Defau
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <code><a href="https://rdrr.io/pkg/data.table/man/data.table.html" class="external-link">data.table::data.table()</a></code> containing the rates or <code>NULL</code> when no entries were found.</p>
+    <p>A <code><a href="https://rdrr.io/pkg/data.table/man/data.table.html" class="external-link">data.table::data.table()</a></code> containing the rates, or <code>NULL</code> when no entries were found. The
+<code>updated_at</code> column gives the feed's last update time as a <code>POSIXct</code> (UTC).</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -130,17 +131,17 @@ bill quoted for each maturity tranche.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 200: 2022-01-31  yield 52 weeks    2023-01-26 912796S34  0.77</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               updated_at</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                   &lt;POSc&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   1: 2026-07-07 16:08:33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   2: 2026-07-07 16:08:33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   3: 2026-07-07 16:08:33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   4: 2026-07-07 16:08:33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   5: 2026-07-07 16:08:33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1: 2026-07-10 14:11:35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   2: 2026-07-10 14:11:35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   3: 2026-07-10 14:11:35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   4: 2026-07-10 14:11:35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   5: 2026-07-10 14:11:35</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ---                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 196: 2026-07-07 16:08:33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 197: 2026-07-07 16:08:33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 198: 2026-07-07 16:08:33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 199: 2026-07-07 16:08:33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 200: 2026-07-07 16:08:33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 196: 2026-07-10 14:11:35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 197: 2026-07-10 14:11:35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 198: 2026-07-10 14:11:35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 199: 2026-07-10 14:11:35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 200: 2026-07-10 14:11:35</span>
 <span class="r-in"><span><span class="co"># or for the entire year</span></span></span>
 <span class="r-in"><span><span class="fu">tr_bill_rate</span><span class="op">(</span><span class="fl">2022</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             date   type maturity maturity_date     cusip value</span>
@@ -158,17 +159,17 @@ bill quoted for each maturity tranche.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2590: 2022-12-30  yield 52 weeks    2023-12-28 912796ZN2  4.73</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                updated_at</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                    &lt;POSc&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    1: 2026-07-07 15:58:34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    2: 2026-07-07 15:58:34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    3: 2026-07-07 15:58:34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    4: 2026-07-07 15:58:34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    5: 2026-07-07 15:58:34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    1: 2026-07-10 07:37:17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    2: 2026-07-10 07:37:17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    3: 2026-07-10 07:37:17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    4: 2026-07-10 07:37:17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    5: 2026-07-10 07:37:17</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ---                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2586: 2026-07-07 15:58:34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2587: 2026-07-07 15:58:34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2588: 2026-07-07 15:58:34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2589: 2026-07-07 15:58:34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2590: 2026-07-07 15:58:34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2586: 2026-07-10 07:37:17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2587: 2026-07-10 07:37:17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2588: 2026-07-10 07:37:17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2589: 2026-07-10 07:37:17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2590: 2026-07-10 07:37:17</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
@@ -181,7 +182,7 @@ bill quoted for each maturity tranche.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>
