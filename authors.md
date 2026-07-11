@@ -8,7 +8,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/m-muecke/treasury/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/m-muecke/treasury/blob/v0.6.0/DESCRIPTION)
 
 Mücke M (2026). *treasury: Client for US Treasury XML Feed and Published
 Data*. R package version 0.6.0, <https://m-muecke.github.io/treasury/>.

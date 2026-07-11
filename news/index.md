@@ -2,6 +2,8 @@
 
 ## treasury 0.6.0
 
+CRAN release: 2026-07-11
+
 - The daily interest rate functions now include an `updated_at` column
   with the feed’s last update time.
 - The daily interest rate functions now reject an invalid `date`, such
