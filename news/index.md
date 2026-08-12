@@ -2,6 +2,9 @@
 
 ## treasury (development version)
 
+- [`tr_curve_rate()`](https://m-muecke.github.io/treasury/reference/tr_curve_rate.md)
+  now rejects a `year` outside the range of available data with an
+  informative error instead of silently returning an empty table.
 - [`tr_forward_rate()`](https://m-muecke.github.io/treasury/reference/tr_curve_rate.md)
   and
   [`tr_par_yield()`](https://m-muecke.github.io/treasury/reference/tr_curve_rate.md)

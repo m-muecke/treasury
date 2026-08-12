@@ -54,7 +54,8 @@ tr_forward_rate(
 
   (`NULL` \| `integer(1)`)  
   Year to download. Default is `NULL`. If `NULL`, then all available
-  years are downloaded.
+  years are downloaded. The earliest year available depends on `x`: 1978
+  for `"tnc"`, 1984 for `"hqm"`, and 2003 for `"trc"` and `"tbi"`.
 
 ## Value
 

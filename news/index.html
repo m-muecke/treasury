@@ -45,6 +45,8 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="treasury-development-version">treasury (development version)<a class="anchor" aria-label="anchor" href="#treasury-development-version"></a></h2>
 <ul><li>
+<code><a href="../reference/tr_curve_rate.html">tr_curve_rate()</a></code> now rejects a <code>year</code> outside the range of available data with an informative error instead of silently returning an empty table.</li>
+<li>
 <code><a href="../reference/tr_curve_rate.html">tr_forward_rate()</a></code> and <code><a href="../reference/tr_curve_rate.html">tr_par_yield()</a></code> now return the <code>type</code> and <code>maturity</code> columns as character vectors instead of factors, for consistency with the other functions in the package.</li>
 </ul></div>
     <div class="section level2">
