@@ -1,5 +1,7 @@
 # treasury (development version)
 
+* `tr_forward_rate()` and `tr_par_yield()` now return the `type` and `maturity` columns as character vectors instead of factors, for consistency with the other functions in the package.
+
 # treasury 0.6.0
 
 * The daily interest rate functions now include an `updated_at` column with the feed's last update time.

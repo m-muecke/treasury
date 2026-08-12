@@ -86,7 +86,8 @@ tr_curve_rate = function(
       id.vars = "maturity",
       variable.name = "yearmonth",
       value.name = "rate",
-      na.rm = TRUE
+      na.rm = TRUE,
+      variable.factor = FALSE
     )
     dt[, yearmonth := as.Date(yearmonth)]
     dt[, c("yearmonth", "maturity", "rate")]
@@ -165,7 +166,13 @@ download_data = function(x, col_names, skip, names_to, values_to) {
   curl::curl_download(url, tf)
   dt = setDT(readxl::read_excel(tf, col_names = col_names, skip = skip))
   dt[, 2L := NULL]
-  dt = melt(dt, id.vars = "yearmonth", variable.name = names_to, value.name = values_to)
+  dt = melt(
+    dt,
+    id.vars = "yearmonth",
+    variable.name = names_to,
+    value.name = values_to,
+    variable.factor = FALSE
+  )
   dt[,
     yearmonth := {
       parts = tstrsplit(yearmonth, " ", fixed = TRUE)
