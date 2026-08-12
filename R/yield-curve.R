@@ -20,7 +20,9 @@
 #' @param type (`character(1)`)\cr
 #'   Either `"monthly"` or `"end-of-month"`. Default is `"monthly"`.
 #' @param year (`NULL` | `integer(1)`)\cr
-#'   Year to download. Default is `NULL`. If `NULL`, then all available years are downloaded.
+#'   Year to download. Default is `NULL`. If `NULL`, then all available years are downloaded. The
+#'   earliest year available depends on `x`: 1978 for `"tnc"`, 1984 for `"hqm"`, and 2003 for
+#'   `"trc"` and `"tbi"`.
 #' @returns A [data.table::data.table()] containing the treasury rates.
 #' @family yield curve
 #' @source <https://home.treasury.gov/data/treasury-coupon-issues-and-corporate-bond-yield-curves>
@@ -45,11 +47,24 @@ tr_curve_rate = function(
   x = match.arg(x)
   type = match.arg(type)
   start_year = switch(x, hqm = 1984L, tnc = 1978L, trc = 2003L, tbi = 2003L)
-  x = if (type == "monthly") x else paste0(x, "eom")
   years = seq.int(start_year, 2027L, by = 5L)
+  end_year = max(years) + 4L
   if (!is.null(year)) {
+    if (year < start_year || year > end_year) {
+      stop(
+        sprintf(
+          "`year` must be between %d and %d for \"%s\" data, not %d",
+          start_year,
+          end_year,
+          x,
+          year
+        ),
+        call. = FALSE
+      )
+    }
     years = years[findInterval(year, years)]
   }
+  x = if (type == "monthly") x else paste0(x, "eom")
   urls = vapply(
     years,
     function(year) {

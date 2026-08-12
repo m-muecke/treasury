@@ -13,6 +13,11 @@ test_that("tr_curve_rate works", {
   expect_error(tr_curve_rate(year = "2024"))
   expect_error(tr_curve_rate(year = 202.5))
   expect_error(tr_curve_rate(year = NA))
+
+  expect_snapshot(error = TRUE, {
+    tr_curve_rate("trc", year = 1990L)
+    tr_curve_rate("hqm", year = 2030L)
+  })
 })
 
 test_that("tr_forward_rate works", {

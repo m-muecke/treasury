@@ -39,7 +39,9 @@ One of the following options:
 Either \code{"monthly"} or \code{"end-of-month"}. Default is \code{"monthly"}.}
 
 \item{year}{(\code{NULL} | \code{integer(1)})\cr
-Year to download. Default is \code{NULL}. If \code{NULL}, then all available years are downloaded.}
+Year to download. Default is \code{NULL}. If \code{NULL}, then all available years are downloaded. The
+earliest year available depends on \code{x}: 1978 for \code{"tnc"}, 1984 for \code{"hqm"}, and 2003 for
+\code{"trc"} and \code{"tbi"}.}
 }
 \value{
 A \code{\link[data.table:data.table]{data.table::data.table()}} containing the treasury rates.
