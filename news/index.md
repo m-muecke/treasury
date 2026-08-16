@@ -2,6 +2,9 @@
 
 ## treasury (development version)
 
+- The daily interest rate functions no longer emit a spurious data.table
+  shallow copy warning when downloading the full history with
+  `date = NULL`.
 - [`tr_curve_rate()`](https://m-muecke.github.io/treasury/reference/tr_curve_rate.md)
   now rejects a `year` outside the range of available data with an
   informative error instead of silently returning an empty table.
