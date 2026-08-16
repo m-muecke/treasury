@@ -1,5 +1,6 @@
 # treasury (development version)
 
+* The daily interest rate functions no longer emit a spurious data.table shallow copy warning when downloading the full history with `date = NULL`.
 * `tr_curve_rate()` now rejects a `year` outside the range of available data with an informative error instead of silently returning an empty table.
 * `tr_forward_rate()` and `tr_par_yield()` now return the `type` and `maturity` columns as character vectors instead of factors, for consistency with the other functions in the package.
 

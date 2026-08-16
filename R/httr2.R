@@ -59,9 +59,11 @@ tr_make_request = function(data, date) {
 
 tr_process_response = function(resps, fn) {
   if (inherits(resps, "list")) {
-    resps |>
+    dt = resps |>
       resps_successes() |>
       resps_data(\(resp) tr_parse_response(resp, fn))
+    # resps_data() combines with vctrs, which drops data.table's over-allocation
+    if (is.null(dt)) NULL else setalloccol(dt)
   } else {
     tr_parse_response(resps, fn)
   }
