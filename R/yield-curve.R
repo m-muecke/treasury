@@ -53,7 +53,7 @@ tr_curve_rate = function(
     if (year < start_year || year > end_year) {
       stop(
         sprintf(
-          "`year` must be between %d and %d for \"%s\" data, not %d",
+          "`year` must be between %d and %d for \"%s\" data, not %s",
           start_year,
           end_year,
           x,

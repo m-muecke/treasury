@@ -21,10 +21,9 @@ A \code{\link[data.table:data.table]{data.table::data.table()}} containing the r
 \code{updated_at} column gives the feed's last update time as a \code{POSIXct} (UTC).
 }
 \description{
-These rates are the daily secondary market quotations on the most recently
-auctioned Treasury Bills for each maturity tranche (4-week, 8-week, 13-week,
-17-week, 26-week, and 52-week) for which Treasury currently issues new
-bills.
+These rates are the daily secondary market quotations on the most recently auctioned Treasury
+Bills for each maturity tranche for which Treasury currently issues new bills. The tranches
+offered change over time, so the maturities returned depend on the requested \code{date}.
 }
 \details{
 Market quotations are obtained at approximately 3:30 PM each business
