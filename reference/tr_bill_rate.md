@@ -1,9 +1,9 @@
 # Daily treasury bill rates
 
 These rates are the daily secondary market quotations on the most
-recently auctioned Treasury Bills for each maturity tranche (4-week,
-8-week, 13-week, 17-week, 26-week, and 52-week) for which Treasury
-currently issues new bills.
+recently auctioned Treasury Bills for each maturity tranche for which
+Treasury currently issues new bills. The tranches offered change over
+time, so the maturities returned depend on the requested `date`.
 
 ## Usage
 
@@ -110,16 +110,16 @@ tr_bill_rate(2022)
 #> 2590: 2022-12-30  yield 52 weeks    2023-12-28 912796ZN2  4.73
 #>                updated_at
 #>                    <POSc>
-#>    1: 2026-08-14 22:37:17
-#>    2: 2026-08-14 22:37:17
-#>    3: 2026-08-14 22:37:17
-#>    4: 2026-08-14 22:37:17
-#>    5: 2026-08-14 22:37:17
+#>    1: 2026-08-14 15:54:35
+#>    2: 2026-08-14 15:54:35
+#>    3: 2026-08-14 15:54:35
+#>    4: 2026-08-14 15:54:35
+#>    5: 2026-08-14 15:54:35
 #>   ---                    
-#> 2586: 2026-08-14 22:37:17
-#> 2587: 2026-08-14 22:37:17
-#> 2588: 2026-08-14 22:37:17
-#> 2589: 2026-08-14 22:37:17
-#> 2590: 2026-08-14 22:37:17
+#> 2586: 2026-08-14 15:54:35
+#> 2587: 2026-08-14 15:54:35
+#> 2588: 2026-08-14 15:54:35
+#> 2589: 2026-08-14 15:54:35
+#> 2590: 2026-08-14 15:54:35
 # }
 ```
