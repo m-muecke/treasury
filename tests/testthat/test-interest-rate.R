@@ -86,7 +86,7 @@ test_that("clean_bill_rate works", {
     "ROUND_B1_YIELD_52WK_2"
   )
   maturity_date = as.Date("2020-03-01") + rep(1:6, each = 2L)
-  cusip = rep(sprintf("CUSIP%d", 1:6), each = 2L)
+  cusip = rep(sprintf("CUSIP%i", 1:6), each = 2L)
   data = data.table(
     date = date,
     type = type,

@@ -53,7 +53,7 @@ tr_curve_rate = function(
     if (year < start_year || year > end_year) {
       stop(
         sprintf(
-          "`year` must be between %d and %d for \"%s\" data, not %s",
+          "`year` must be between %i and %i for \"%s\" data, not %s",
           start_year,
           end_year,
           x,
@@ -69,7 +69,7 @@ tr_curve_rate = function(
     years,
     function(year) {
       sprintf(
-        "https://home.treasury.gov/system/files/226/%s_%02d_%02d.%s",
+        "https://home.treasury.gov/system/files/226/%s_%02i_%02i.%s",
         x,
         year %% 100L,
         (year + 4L) %% 100L,
@@ -82,7 +82,7 @@ tr_curve_rate = function(
     urls = sub("88\\.xls$", "88_0.xls", urls)
   }
 
-  months = rep(sprintf("%02d", 1:12), 5L)
+  months = rep(sprintf("%02i", 1:12), 5L)
   res = lapply(seq_along(urls), function(i) {
     tf = tempfile()
     on.exit(unlink(tf), add = TRUE)
@@ -191,7 +191,7 @@ download_data = function(x, col_names, skip, names_to, values_to) {
   dt[,
     yearmonth := {
       parts = tstrsplit(yearmonth, " ", fixed = TRUE)
-      as.Date(sprintf("%s-%02d-01", parts[[2L]], match(parts[[1L]], month.abb)))
+      as.Date(sprintf("%s-%02i-01", parts[[2L]], match(parts[[1L]], month.abb)))
     }
   ][]
 }
