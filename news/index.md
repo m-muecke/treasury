@@ -11,9 +11,9 @@
 - [`tr_forward_rate()`](https://m-muecke.github.io/treasury/reference/tr_curve_rate.md)
   and
   [`tr_par_yield()`](https://m-muecke.github.io/treasury/reference/tr_curve_rate.md)
-  now return the `type` and `maturity` columns as character vectors
-  instead of factors, for consistency with the other functions in the
-  package.
+  now return the `type` and `maturity` columns, respectively, as
+  character vectors instead of factors, for consistency with the other
+  functions in the package.
 
 ## treasury 0.6.0
 
