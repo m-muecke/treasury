@@ -1,6 +1,6 @@
 # Changelog
 
-## treasury (development version)
+## treasury 0.7.0
 
 - The daily interest rate functions no longer emit a spurious data.table
   shallow copy warning when downloading the full history with
