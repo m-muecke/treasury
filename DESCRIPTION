@@ -28,7 +28,7 @@ Imports:
 Suggests:
     ggplot2,
     knitr,
-    readxl,
+    readxl (>= 1.2.0),
     scales,
     testthat (>= 3.3.0)
 Config/Needs/website: knitr, rmarkdown
