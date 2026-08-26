@@ -1,4 +1,5 @@
 ^.*\.Rproj$
+^AGENTS\.md$
 ^CITATION\.cff$
 ^CRAN-RELEASE$
 ^CRAN-SUBMISSION$
