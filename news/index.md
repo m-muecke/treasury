@@ -4,6 +4,8 @@
 
 ## treasury 0.7.0
 
+CRAN release: 2026-08-22
+
 - The daily interest rate functions no longer emit a spurious data.table
   shallow copy warning when downloading the full history with
   `date = NULL`.
