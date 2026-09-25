@@ -107,7 +107,7 @@ bill_tranche = function(nm) {
 
 clean_bill_rate = function(dt) {
   dt[, type := gsub("round_b1_", "", tolower(type), fixed = TRUE)]
-  dt[, type := gsub("_2$", "", type)]
+  dt[, type := sub("_2$", "", type)]
   dt[, c("type", "maturity") := tstrsplit(type, "_", fixed = TRUE, keep = 1:2)]
   dt[, maturity := gsub("wk", " weeks", maturity, fixed = TRUE)]
   dt[, c("date", "type", "maturity", "maturity_date", "cusip", "value")][]
