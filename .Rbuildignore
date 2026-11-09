@@ -12,7 +12,6 @@
 ^\.Renviron$
 ^\.Rproj\.user$
 ^\.ccache$
-^\.claude$
 ^\.dockerignore$
 ^\.editorconfig$
 ^\.github$
