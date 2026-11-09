@@ -24,12 +24,12 @@ Imports:
     curl,
     data.table (>= 1.16.0),
     httr2 (>= 1.0.0),
-    xml2
+    xml2 (>= 1.0.0)
 Suggests:
-    ggplot2,
+    ggplot2 (>= 3.4.0),
     knitr,
     readxl (>= 1.2.0),
-    scales,
+    scales (>= 1.1.0),
     testthat (>= 3.3.0)
 Config/Needs/website: knitr, rmarkdown
 Config/roxygen2/markdown: TRUE
